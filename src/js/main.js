@@ -1,5 +1,5 @@
 'use strict';
 
-import './lib/core';
+import './lib/lib';
 
-$('div');
+$('.active').hide().toggleDisplay();
