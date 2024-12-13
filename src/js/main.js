@@ -2,4 +2,4 @@
 
 import './lib/lib';
 
-$('.active').hide().toggleDisplay();
+$('.active').toggleClass('hello');
