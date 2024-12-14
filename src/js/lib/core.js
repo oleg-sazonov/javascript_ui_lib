@@ -8,6 +8,16 @@ $.prototype.init = function(selector) {
 	if (!selector) {
 		return this; // return empty obj: {}
 	}
+
+	// Check is this element Node
+	if (selector.tagName) {
+		this[0] = selector;
+		console.log(this);
+		console.log(this[0]);
+		this.length = 1;
+		return this;
+	}
+
 	Object.assign(this, document.querySelectorAll(selector));
 	this.length = document.querySelectorAll(selector).length;
 

@@ -2,4 +2,10 @@
 
 import './lib/lib';
 
-$('.active').toggleClass('hello');
+$('div').on('click', function() {
+	$(this).addClass('active');
+});
+
+// $('button').on('click', function() {
+// 	$(this).addClass('active-btn');
+// });
