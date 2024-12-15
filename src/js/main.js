@@ -2,10 +2,14 @@
 
 import './lib/lib';
 
-$('div').on('click', function() {
-	$(this).addClass('active');
-});
+$('button').addAttr('data-btn', 'true');
 
 // $('button').on('click', function() {
-// 	$(this).addClass('active-btn');
+// 	$(this).removeAttr('data-btn');
 // });
+
+console.log($('button').getAttrValue('data-btn'));
+
+$('button').removeAttr('data-btn');
+
+console.log($('button').getAttrValue('data-btn'));
