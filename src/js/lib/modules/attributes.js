@@ -2,6 +2,7 @@
 
 import $ from "../core";
 
+// Func add attribute
 $.prototype.addAttr = function(attrName, attrValue = '') {
 	for (let i = 0; i < this.length; i++) {
 		if (this[i].classList && attrName) {
@@ -13,6 +14,7 @@ $.prototype.addAttr = function(attrName, attrValue = '') {
 	return this;
 };
 
+// Func remove attribute
 $.prototype.removeAttr = function(attrName, attrValue = '') {
 	for (let i = 0; i < this.length; i++) {
 		if (this[i].classList && attrName) {
@@ -24,6 +26,7 @@ $.prototype.removeAttr = function(attrName, attrValue = '') {
 	return this;
 };
 
+// Func get attribute value by it's name
 $.prototype.getAttrValue = function(attrName) {
 	let attributes = [];
 	for (let i = 0; i < this.length; i++) {

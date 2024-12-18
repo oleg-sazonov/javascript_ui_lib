@@ -2,6 +2,7 @@
 
 import $ from "../core";
 
+// Func become element visible
 $.prototype.show = function() {
 	for (let i = 0; i < this.length; i++) {
 		if (!this[i].style) {
@@ -13,6 +14,7 @@ $.prototype.show = function() {
 	return this;
 };
 
+// Func become element invisible
 $.prototype.hide = function() {
 	for (let i = 0; i < this.length; i++) {
 		if (!this[i].style) {
@@ -24,6 +26,7 @@ $.prototype.hide = function() {
 	return this;
 };
 
+// Func become element visible/invisible
 $.prototype.toggleDisplay = function() {
 	for (let i = 0; i < this.length; i++) {
 		if (!this[i].style) {

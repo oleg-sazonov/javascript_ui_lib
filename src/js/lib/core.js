@@ -12,8 +12,8 @@ $.prototype.init = function(selector) {
 	// Check is this element Node
 	if (selector.tagName) {
 		this[0] = selector;
-		console.log(this);
-		console.log(this[0]);
+		// console.log(this);
+		// console.log(this[0]);
 		this.length = 1;
 		return this;
 	}

@@ -9,7 +9,6 @@ $.prototype.addClass = function(...classNames) {
 		}
 		this[i].classList.add(...classNames);
 	}
-
 	return this;
 };
 
@@ -20,7 +19,6 @@ $.prototype.removeClass = function(...classNames) {
 		}
 		this[i].classList.remove(...classNames);
 	}
-
 	return this;
 };
 
@@ -31,6 +29,5 @@ $.prototype.toggleClass = function(className) {
 		}
 		this[i].classList.toggle(className);
 	}
-
 	return this;
 };
