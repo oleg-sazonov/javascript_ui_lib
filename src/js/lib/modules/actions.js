@@ -50,31 +50,59 @@ $.prototype.find = function(selector) {
 	let counter = 0;
 
 	const copyObj = {...this};
-	console.log(copyObj);
 
 	for (let i = 0; i < copyObj.length; i++) {
 		const arr = copyObj[i].querySelectorAll(selector); // try to get elem by it's selector
 		if (arr.length == 0) {
 			continue;
 		}
-		console.log(arr);
 
 		for (let j = 0; j < arr.length; j++) {
 			this[counter] = arr[j]; // rewrite items in this-obj
 			counter++;
 		}
 
-		console.log(this);
 		numberOfItems += arr.length;
 	}
 
 	this.length = numberOfItems;
 
 	const objLength = Object.keys(this).length;
+
 	for (; numberOfItems < objLength; numberOfItems++) {
 		delete this[numberOfItems]; // delete items except arr(selected-items)
 	}
-	console.log(this);
 
 	return this;
 };
+
+// Func get closest parent-node
+$.prototype.closest = function(selector) {
+	let counter = 0;
+
+	for (let i = 0; i < this.length; i++) {
+		if (!this[i].closest(selector)) {
+			console.log(`This parent Class "${selector}" is not found for used child Class`);
+			continue;
+		} else {
+			this[i] = this[i].closest(selector);
+			counter++;
+		}
+	}
+	this.length = counter;
+
+	return this;
+};
+
+// Func get all childs inside parent-block except current
+$.prototype.siblings = function () {
+    const copyObj = [...this[0].parentElement.children].filter(item => item !== this[0]);
+ 
+    for (let i = 0; i < this.length; i++) {
+        delete this[i]
+    }
+ 
+    Object.assign(this, copyObj);
+    this.length = copyObj.length;
+    return this;
+}

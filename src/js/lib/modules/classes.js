@@ -4,10 +4,11 @@ import $ from "../core";
 
 $.prototype.addClass = function(...classNames) {
 	for (let i = 0; i < this.length; i++) {
-		if (!this[i].classList) {
+		if (!this[i]) {
 			continue;
+		} else {
+			this[i].classList.add(...classNames);
 		}
-		this[i].classList.add(...classNames);
 	}
 	return this;
 };
