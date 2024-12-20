@@ -26,8 +26,10 @@ $('div').click(function() {
 
 // console.log($('button').html('Click me smoothly'));
 
-console.log($('.findme').find('.some'));
+// console.log($('.findme').find('.some'));
 
 // console.log($('.some').closest('.actives').addClass('check'));
 
 // console.log($('.more').eq(0).siblings());
+
+$('button').fadeIn(1500);
