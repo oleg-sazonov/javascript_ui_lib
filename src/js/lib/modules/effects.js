@@ -2,6 +2,7 @@
 
 import $ from "../core";
 
+// Core animation method
 $.prototype.animateOverTime = function(duration, callback, finalize) {
 	let timeStart;
 
@@ -27,197 +28,97 @@ $.prototype.animateOverTime = function(duration, callback, finalize) {
 	return _animateOverTime;
 }
 
-// Fade in
-$.prototype.fadeIn = function(duration, display = '', finalize) {
-	for (let i = 0; i < this.length; i++) {
-		this[i].style.display = display;
+// Generic animation method
+$.prototype.animateFade = function(duration, type, direction, offset = '50px', finalize) {
+    const transforms = {
+        up: `translateY(-${offset})`,
+        down: `translateY(${offset})`,
+        left: `translateX(-${offset})`,
+        right: `translateX(${offset})`,
+        none: '',
+    };
 
-		const _fadeIn = (complection) => {
-			this[i].style.opacity = complection;
-		};
+    for (let i = 0; i < this.length; i++) {
+        if (type === 'fadeIn') {
+            this[i].style.display = '';
+            this[i].style.opacity = 0;
+            if (direction !== 'none') {
+                this[i].style.transform = transforms[direction];
+            }
+        }
 
-		const animation = this.animateOverTime(duration, _fadeIn, finalize);
-		requestAnimationFrame(animation);
-	}
+        const animationCallback = (completion) => {
+            if (type === 'fadeIn') {
+                this[i].style.opacity = completion;
+                if (direction !== 'none') {
+                    this[i].style.transform = transforms[direction].replace(
+                        offset,
+                        `${parseInt(offset) * (1 - completion)}px`
+                    );
+                }
+            } else if (type === 'fadeOut') {
+                this[i].style.opacity = 1 - completion;
+                if (direction !== 'none') {
+                    this[i].style.transform = transforms[direction].replace(
+                        offset,
+                        `${parseInt(offset) * completion}px`
+                    );
+                }
+            }
+        };
 
-	return this;
-}
+        const animation = this.animateOverTime(duration, animationCallback, () => {
+            if (type === 'fadeOut') {
+                this[i].style.display = 'none'; 
+            }
+            if (typeof finalize === 'function') {
+                finalize();
+            }
+        });
 
-// Fade out
+        requestAnimationFrame(animation);
+    }
+
+    return this;
+};
+
+// Wrapper methods
+$.prototype.fadeIn = function(duration, finalize) {
+    return this.animateFade(duration, 'fadeIn', 'none', '0px', finalize);
+};
+
 $.prototype.fadeOut = function(duration, finalize) {
-	for (let i = 0; i < this.length; i++) {
-
-		const _fadeOut = (complection) => {
-			this[i].style.opacity = 1 - complection;
-			if (complection === 1) {
-				this[i].style.display = 'none';
-			}
-		};
-
-		const animation = this.animateOverTime(duration, _fadeOut, finalize);
-		requestAnimationFrame(animation);
-	}
-
-	return this;
-}
-
-// Fade in from the top
-// $('button').fadeInDown(500, '-100px', () => console.log('Fade-in from up complete!'));
-$.prototype.fadeInDown = function(duration, startY = '-50px', finalize) {
-    for (let i = 0; i < this.length; i++) {
-        this[i].style.display = '';
-        this[i].style.opacity = 0;
-        this[i].style.transform = `translateY(${startY})`;
-
-        const _fadeInDown = (complection) => {
-            this[i].style.opacity = complection;
-            this[i].style.transform = `translateY(${parseInt(startY) * (1 - complection)}px)`;
-        };
-
-        const animation = this.animateOverTime(duration, _fadeInDown, finalize);
-        requestAnimationFrame(animation);
-    }
-
-    return this;
+    return this.animateFade(duration, 'fadeOut', 'none', '0px', finalize);
 };
 
-// Fade out to the top
-$.prototype.fadeOutDown = function(duration, endY = '-50px', finalize) {
-    for (let i = 0; i < this.length; i++) {
-        const _fadeOutDown = (complection) => {
-            this[i].style.opacity = 1 - complection;
-            this[i].style.transform = `translateY(${parseInt(endY) * complection}px)`;
-        };
-
-        const animation = this.animateOverTime(duration, _fadeOutDown, () => {
-            this[i].style.display = 'none'; 
-            if (typeof finalize === 'function') {
-                finalize();
-            }
-        });
-
-        requestAnimationFrame(animation);
-    }
-
-    return this;
+$.prototype.fadeInDown = function(duration, offset, finalize) {
+    return this.animateFade(duration, 'fadeIn', 'up', offset, finalize);
 };
 
-// Fade in from the Bottom
-$.prototype.fadeInUp = function(duration, startY = '50px', finalize) {
-    for (let i = 0; i < this.length; i++) {
-        this[i].style.display = '';
-        this[i].style.opacity = 0;
-        this[i].style.transform = `translateY(${startY})`;
-
-        const _fadeInUp = (complection) => {
-            this[i].style.opacity = complection;
-            this[i].style.transform = `translateY(${parseInt(startY) * (1 - complection)}px)`;
-        };
-
-        const animation = this.animateOverTime(duration, _fadeInUp, finalize);
-        requestAnimationFrame(animation);
-    }
-
-    return this;
+$.prototype.fadeOutDown = function(duration, offset, finalize) {
+    return this.animateFade(duration, 'fadeOut', 'up', offset, finalize);
 };
 
-// Fade out to the bottom
-$.prototype.fadeOutUp = function(duration, endY = '50px', finalize) {
-    for (let i = 0; i < this.length; i++) {
-        const _fadeOutUp = (complection) => {
-            this[i].style.opacity = 1 - complection;
-            this[i].style.transform = `translateY(${parseInt(endY) * complection}px)`;
-        };
-
-        const animation = this.animateOverTime(duration, _fadeOutUp, () => {
-            this[i].style.display = 'none'; // Hide after fade-out
-            if (typeof finalize === 'function') {
-                finalize();
-            }
-        });
-
-        requestAnimationFrame(animation);
-    }
-
-    return this;
+$.prototype.fadeInUp = function(duration, offset, finalize) {
+    return this.animateFade(duration, 'fadeIn', 'down', offset, finalize);
 };
 
-// Fade in from the left
-$.prototype.fadeInLeft = function(duration, startX = '-50px', finalize) {
-    for (let i = 0; i < this.length; i++) {
-        this[i].style.display = '';
-        this[i].style.opacity = 0;
-        this[i].style.transform = `translateX(${startX})`;
-
-        const _fadeInLeft = (complection) => {
-            this[i].style.opacity = complection;
-            this[i].style.transform = `translateX(${parseInt(startX) * (1 - complection)}px)`;
-        };
-
-        const animation = this.animateOverTime(duration, _fadeInLeft, finalize);
-        requestAnimationFrame(animation);
-    }
-
-    return this;
+$.prototype.fadeOutUp = function(duration, offset, finalize) {
+    return this.animateFade(duration, 'fadeOut', 'down', offset, finalize);
 };
 
-// Fade out to the left
-$.prototype.fadeOutLeft = function(duration, endX = '-50px', finalize) {
-    for (let i = 0; i < this.length; i++) {
-        const _fadeOutLeft = (complection) => {
-            this[i].style.opacity = 1 - complection;
-            this[i].style.transform = `translateX(${parseInt(endX) * complection}px)`;
-        };
-
-        const animation = this.animateOverTime(duration, _fadeOutLeft, () => {
-            this[i].style.display = 'none'; 
-            if (typeof finalize === 'function') {
-                finalize();
-            }
-        });
-
-        requestAnimationFrame(animation);
-    }
-
-    return this;
+$.prototype.fadeInRight = function(duration, offset, finalize) {
+    return this.animateFade(duration, 'fadeIn', 'right', offset, finalize);
 };
 
-// Fade in from the right
-$.prototype.fadeInRight = function(duration, startX = '50px', finalize) {
-    for (let i = 0; i < this.length; i++) {
-        this[i].style.display = '';
-        this[i].style.opacity = 0;
-        this[i].style.transform = `translateX(${startX})`;
-
-        const _fadeInRight = (complection) => {
-            this[i].style.opacity = complection;
-            this[i].style.transform = `translateX(${parseInt(startX) * (1 - complection)}px)`;
-        };
-
-        const animation = this.animateOverTime(duration, _fadeInRight, finalize);
-        requestAnimationFrame(animation);
-    }
-
-    return this;
+$.prototype.fadeOutRight = function(duration, offset, finalize) {
+    return this.animateFade(duration, 'fadeOut', 'right', offset, finalize);
 };
 
-// Fade out to the right
-$.prototype.fadeOutRight = function(duration, endX = '50px', finalize) {
-    for (let i = 0; i < this.length; i++) {
-        const _fadeOutRight = (complection) => {
-            this[i].style.opacity = 1 - complection;
-            this[i].style.transform = `translateX(${parseInt(endX) * complection}px)`;
-        };
+$.prototype.fadeInLeft = function(duration, offset, finalize) {
+    return this.animateFade(duration, 'fadeIn', 'left', offset, finalize);
+};
 
-        const animation = this.animateOverTime(duration, _fadeOutRight, () => {
-            this[i].style.display = 'none'; // Hide after fade-out
-            if (typeof finalize === 'function') {
-                finalize();
-            }
-        });
-
-        requestAnimationFrame(animation);
-    }
-
-    return this;
+$.prototype.fadeOutLeft = function(duration, offset, finalize) {
+    return this.animateFade(duration, 'fadeOut', 'left', offset, finalize);
 };

@@ -32,6 +32,6 @@ $('div').click(function() {
 
 // console.log($('.more').eq(0).siblings());
 
-$('button').fadeInLeft(1500, '-150px');
+$('button').fadeInDown(1500, '150px');
 
 // $('button').fadeOutUp(1500, '150px');
