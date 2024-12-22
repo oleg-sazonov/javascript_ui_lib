@@ -122,3 +122,15 @@ $.prototype.fadeInLeft = function(duration, offset, finalize) {
 $.prototype.fadeOutLeft = function(duration, offset, finalize) {
     return this.animateFade(duration, 'fadeOut', 'left', offset, finalize);
 };
+
+// Toggle fadeIn and fadeOut
+$.prototype.fadeToggle = function(duration, finalize) {
+    for (let i = 0; i < this.length; i++) {
+        if (window.getComputedStyle(this[i]).display === 'none' || this[i].style.opacity === '0') {
+            this.fadeIn(duration, finalize);
+        } else {
+            this.fadeOut(duration, finalize);
+        }
+    }
+    return this;
+};
