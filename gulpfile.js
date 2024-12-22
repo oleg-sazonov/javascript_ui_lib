@@ -60,7 +60,7 @@ const buildJs = () => {
                     [
                       "@babel/preset-env",
                       {
-                        debug: true,
+                        debug: false,
                         corejs: 3,
                         useBuiltIns: "usage",
                       },

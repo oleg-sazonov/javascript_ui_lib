@@ -1,0 +1,44 @@
+@use '../general/variables';
+
+.fz-12 {
+	font-size: 12px;
+}
+.fz-14 {
+	font-size: 14px;
+}
+.fz-16 {
+	font-size: 16px;
+}
+.fz-18 {
+	font-size: 18px;
+}
+.fz-20 {
+	font-size: 20px;
+}
+.fz-24 {
+	font-size: 24px;
+}
+.bold {
+	font-weight: bold;
+}
+.thin {
+	font-weight: 300;
+}
+.italic {
+	font-style: italic;
+}
+.text-color-primary {
+	color: variables.$primary;
+}
+.text-color-success {
+	color: variables.$success;
+}
+.text-color-danger {
+	color: variables.$danger;
+}
+.text-color-warning {
+	color: variables.$warning;
+}
+.text-color-dark {
+	color: variables.$dark;
+}

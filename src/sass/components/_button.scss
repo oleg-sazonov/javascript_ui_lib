@@ -1,0 +1,101 @@
+@use 'sass:color';
+@use '../general/variables';
+
+.btn {
+	display: inline-block;
+	padding: 10px 20px;
+	border: 1px solid variables.$primary;
+	background-color: transparent;
+	border-radius: 4px;
+	cursor: pointer;
+	color: variables.$dark;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 14px;
+	line-height: 1.5;
+	transition: all 0.2s;
+	&:hover {
+		background-color: color.adjust($color: variables.$primary, $lightness: 10%);
+		color: #fff;
+	}	
+	&-primary {
+		background-color: variables.$primary;
+		border-color: variables.$primary;
+		color: #fff;
+		&:hover {
+			background-color: color.adjust($color: variables.$primary, $lightness: -10%);
+		}
+	}	
+	&-success {
+		background-color: variables.$success;
+		border-color: variables.$success;
+		color: #fff;
+		&:hover {
+			background-color: color.adjust($color: variables.$success, $lightness: -10%);
+		}
+	}	
+	&-danger {
+		background-color: variables.$danger;
+		border-color: variables.$danger;
+		color: #fff;
+		&:hover {
+			background-color: color.adjust($color: variables.$danger, $lightness: -10%);
+		}
+	}	
+	&-warning {
+		background-color: variables.$warning;
+		border-color: variables.$warning;
+		color: #fff;
+		&:hover {
+			background-color: color.adjust($color: variables.$warning, $lightness: -10%);
+		}
+	}	
+	&-dark {
+		background-color: variables.$dark;
+		border-color: variables.$dark;
+		color: #fff;
+		&:hover {
+			background-color: color.adjust($color: variables.$dark, $lightness: -10%);
+		}
+	}	
+	&-outline-primary {
+		border-color: variables.$primary;
+		color: variables.$primary;
+		&:hover {
+			background-color: variables.$primary;
+		}
+	}	
+	&-outline-success {
+		border-color: variables.$success;
+		color: variables.$success;
+		&:hover {
+			background-color: variables.$success;
+		}
+	}	
+	&-outline-danger {
+		border-color: variables.$danger;
+		color: variables.$danger;
+		&:hover {
+			background-color: variables.$danger;
+		}
+	}	
+	&-outline-warning {
+		border-color: variables.$warning;
+		color: variables.$warning;
+		&:hover {
+			background-color: variables.$warning;
+		}
+	}	
+	&-outline-dark {
+		border-color: variables.$dark;
+		color: variables.$dark;
+		&:hover {
+			background-color: variables.$dark;
+		}
+	}	
+	&-block {
+		display: block;
+		width: 100%;
+	}
+}
