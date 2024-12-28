@@ -20,7 +20,7 @@ $('#trigger').click(() => $('#trigger').createModal({
 		body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque a temporibus perspiciatis quos vero, labore sed aspernatur aut est eaque blanditiis officia repudiandae culpa vel, nemo quis quisquam soluta nesciunt?'
 	},
 	btns: {
-		count: 2,
+		count: 3,
 		settings: [
 			[
 				'Close',
@@ -34,7 +34,15 @@ $('#trigger').click(() => $('#trigger').createModal({
 				() => {
 					alert('Data has saved');	
 				}
-			]
+			],
+			[
+				'Like',
+				['btn-primary', 'ml-10'],
+				false,
+				() => {
+					alert('Liked');	
+				}
+			],
 		]
 	}
 }));
