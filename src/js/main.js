@@ -14,6 +14,31 @@ $('button').eq(2).click(() => {
 	$('.w-500px').fadeToggle(900);
 });
 
+$('#trigger').click(() => $('#trigger').createModal({
+	text: {
+		title: 'Modal title',
+		body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque a temporibus perspiciatis quos vero, labore sed aspernatur aut est eaque blanditiis officia repudiandae culpa vel, nemo quis quisquam soluta nesciunt?'
+	},
+	btns: {
+		count: 2,
+		settings: [
+			[
+				'Close',
+				['btn-danger', 'mr-10'],
+				true
+			],
+			[
+				'Save changes',
+				['btn-success'],
+				false,
+				() => {
+					alert('Data has saved');	
+				}
+			]
+		]
+	}
+}));
+
 // $('.wrap').html(`
 // 	<div class="dropdown">
 // 		<button class="btn btn-primary dropdown-toggle" id="dropdownMenuButton">Dropdown Button</button>
