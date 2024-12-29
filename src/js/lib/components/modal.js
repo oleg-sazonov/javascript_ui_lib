@@ -39,6 +39,7 @@ $.prototype.modal = function(created) {
 $('[data-toggle="modal"]').modal();
 
 $.prototype.createModal	= function({text, btns} = {}) {
+	const { title, body } = text;
 	const { count, settings } = btns;
 
 	for (let i = 0; i < this.length; i++) {
@@ -71,11 +72,11 @@ $.prototype.createModal	= function({text, btns} = {}) {
 					</button>
 					<div class="modal-header">
 						<h4 class="modal-title">
-							${text.title}
+							${title}
 						</h4>
 					</div>
 					<div class="modal-body">
-						${text.body}
+						${body}
 					</div>
 					<div class="modal-footer">
 
