@@ -5,7 +5,9 @@ import $ from '../core';
 $.prototype.tab = function() {
 	for (let i = 0; i < this.length; i++) {
 		$(this[i]).click(() => {
-			console.log(this[i]);
+
+			$(this[i]).fadeIn(500);
+
 			$(this[i])
 				.addClass('tab-item_active')
 				.siblings()
