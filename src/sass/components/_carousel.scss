@@ -70,19 +70,20 @@
 		transition: opacity 0.15s ease, background 0.3s ease;
 		text-decoration: none;
 		&:hover {
-		  opacity: 0.7;
+		  opacity: 0.8;
+		  background-color: rgba(0,0,0, .2);
 		}
 	  }
 	&-prev {
 		left: 0;
-		&:hover {
-			background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0) 100%);
-		  }
+		// &:hover {
+		// 	background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0) 100%);
+		//   }
 	}
 	&-next {
 		right: 0;
-		&:hover {
-			background: linear-gradient(to left, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0) 100%);
-		  }
+		// &:hover {
+		// 	background: linear-gradient(to left, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0) 100%);
+		//   }
 	}
 }

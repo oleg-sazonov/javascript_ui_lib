@@ -2,7 +2,7 @@
 
 import $ from '../core';
 
-$.prototype.carousel = function() {
+$.prototype.carousel = function(autoplay = true, duration = 3000) {
 	for (let i = 0; i < this.length; i++) {
 		const width = window.getComputedStyle(this[i].querySelector('.carousel-inner')).width;
 		const slides = this[i].querySelectorAll('.carousel-item');
@@ -16,28 +16,50 @@ $.prototype.carousel = function() {
 
 		let offset = 0;
 		let slideIndex = 0;
+		let autoplayInterval;
 
-		$(this[i].querySelector('[data-slide="next"]')).click((e) => { // click on arrow
-			e.preventDefault();
-			if (offset == (+width.replace(/\D/g, '') * (slides.length - 1))) {
-				offset = 0; // if current slide is the last one
+		// Function to move to the next slide
+		const nextSlide = () => {
+			if (offset === (+width.replace(/\D/g, '') * (slides.length - 1))) {
+				offset = 0;
 			} else {
-				offset += +width.replace(/\D/g, ''); // add width of slide
+				offset += +width.replace(/\D/g, '');
 			}
 
 			slidesField.style.transform = `translateX(-${offset}px)`;
+			slideIndex = (slideIndex + 1) % slides.length; // slideIndex++ or slideIndex = 0
 
-			if (slideIndex == slides.length - 1) {
-				slideIndex = 0;
-			} else {
-				slideIndex++;
-			}
+			updateDots();
+		};
 
+		// Function to update dots (indicators)
+		const updateDots = () => {
 			dots.forEach(dot => dot.classList.remove('active'));
 			dots[slideIndex].classList.add('active');
+		};
+
+		// Start autoplay if enabled
+		const startAutoplay = () => {
+			if (autoplay) {
+				autoplayInterval = setInterval(nextSlide, duration);
+			}
+		};
+
+		// Stop autoplay
+		const stopAutoplay = () => {
+			if (autoplay) {
+				clearInterval(autoplayInterval);
+			}
+		};
+
+		// Handle next button click
+		$(this[i].querySelector('[data-slide="next"]')).click((e) => {
+			e.preventDefault();
+			nextSlide();
 		});
 
-		$(this[i].querySelector('[data-slide="prev"]')).click((e) => { // click on arrow
+		// Handle prev button click
+		$(this[i].querySelector('[data-slide="prev"]')).click((e) => {
 			e.preventDefault();
 			if (offset == 0) {
 				offset = +width.replace(/\D/g, '') * (slides.length - 1);
@@ -46,17 +68,12 @@ $.prototype.carousel = function() {
 			}
 
 			slidesField.style.transform = `translateX(-${offset}px)`;
+			slideIndex = slideIndex === 0 ? slides.length - 1 : slideIndex - 1;
 
-			if (slideIndex == 0) {
-				slideIndex = slides.length - 1;
-			} else {
-				slideIndex--;
-			}
-
-			dots.forEach(dot => dot.classList.remove('active'));
-			dots[slideIndex].classList.add('active');
+			updateDots();
 		});
 
+		// Handle dot (indicator) click
 		const sliderId = this[i].getAttribute('id');
 		$(`#${sliderId} .carousel-indicators li`).click((e) => {
 			const slideTo = e.target.getAttribute('data-slide-to');
@@ -65,10 +82,19 @@ $.prototype.carousel = function() {
 			offset = +width.replace(/\D/g, '') * slideTo;
 
 			slidesField.style.transform = `translateX(-${offset}px)`;
-			dots.forEach(dot => dot.classList.remove('active'));
-			dots[slideIndex].classList.add('active');
+
+			updateDots();
 		});
+
+		// Mouseenter event to stop autoplay
+		this[i].addEventListener('mouseenter', () => stopAutoplay());
+
+		// Mouseleave event to restart autoplay
+		this[i].addEventListener('mouseleave', () => startAutoplay());
+
+		// Start autoplay when the function is first called
+		startAutoplay();
 	}
 }
 
-$('.carousel').carousel();
+$('.carousel').carousel(true, 5000);
