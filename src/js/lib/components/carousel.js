@@ -19,7 +19,8 @@ $.prototype.createCarousel = function({
     selector = 'body',
 	sliderId = 'carousel',
 	showDots = true,
-    showArrows = true
+    showArrows = true,
+	stopAutoplayAtEnd = false
 } = {}) {
 
     // Validate container selector
@@ -70,7 +71,7 @@ $.prototype.createCarousel = function({
     });
 
 	// Navigation arrows if showArrows is true
-	if (showArrows) { //use it inside carousel()
+	if (showArrows) { 
 		const prev = document.createElement('a');
 		prev.classList.add('carousel-prev');
 		prev.setAttribute('href', '#');
@@ -98,7 +99,8 @@ $.prototype.createCarousel = function({
 		autoplay: autoplay,
 		duration: duration,
 		showDots: showDots,
-		showArrows: showArrows
+		showArrows: showArrows,
+		stopAutoplayAtEnd: stopAutoplayAtEnd
 	});
 };
 
@@ -110,7 +112,8 @@ $.prototype.carousel = function({
 	innerClass = '.carousel-inner', 
 	itemClass = '.carousel-item', 
 	slidesClass = '.carousel-slides', 
-	indicatorsClass = '.carousel-indicators'
+	indicatorsClass = '.carousel-indicators',
+	stopAutoplayAtEnd = false
 } = {}) {
 
 	for (let i = 0; i < this.length; i++) {
@@ -125,24 +128,33 @@ $.prototype.carousel = function({
 		});
 
 		let offset = 0;
+		let finishOffset = (+width.replace(/\D/g, '') * (slides.length - 1));
 		let slideIndex = 0;
 		let autoplayInterval;
+		let reachedLastSlide;
 
-		// Function to move to the next slide
+		// Move to the next slide
 		const nextSlide = () => {
-			if (offset === (+width.replace(/\D/g, '') * (slides.length - 1))) {
-				offset = 0;
+			
+			// if the last slide was been reached autoplay stops and dowsn't play again until refresh webpage
+			if (stopAutoplayAtEnd && offset === finishOffset && !reachedLastSlide) {
+				stopAutoplay();
+				reachedLastSlide = true;
 			} else {
-				offset += +width.replace(/\D/g, '');
+				if (offset === finishOffset) {
+					offset = 0;
+				} else {
+					offset += +width.replace(/\D/g, '');
+				}
+	
+				slidesField.style.transform = `translateX(-${offset}px)`;
+				slideIndex = (slideIndex + 1) % slides.length; // slideIndex++ or slideIndex = 0
+	
+				updateDots();
 			}
-
-			slidesField.style.transform = `translateX(-${offset}px)`;
-			slideIndex = (slideIndex + 1) % slides.length; // slideIndex++ or slideIndex = 0
-
-			updateDots();
 		};
 
-		// Function to update dots (indicators)
+		// Update dots (indicators)
 		const updateDots = () => {
 			if (showDots && dots.length > 0) {
 				dots.forEach(dot => dot.classList.remove('active'));
@@ -173,8 +185,8 @@ $.prototype.carousel = function({
 		// Handle prev button click
 		$(this[i].querySelector('[data-slide="prev"]')).click((e) => {
 			e.preventDefault();
-			if (offset == 0) {
-				offset = +width.replace(/\D/g, '') * (slides.length - 1);
+			if (offset === 0) {
+				offset = finishOffset;
 			} else {
 				offset -= +width.replace(/\D/g, ''); // add width of slide
 			}
@@ -204,10 +216,16 @@ $.prototype.carousel = function({
 		this[i].addEventListener('mouseenter', () => stopAutoplay());
 
 		// Mouseleave event to restart autoplay
-		this[i].addEventListener('mouseleave', () => startAutoplay());
+		this[i].addEventListener('mouseleave', () => {
+			if (!reachedLastSlide) {
+				startAutoplay();
+			}
+		});
 
 		// Start autoplay when the function is first called
-		startAutoplay();
+		if (!reachedLastSlide) {
+			startAutoplay();
+		}
 	}
 }
 
