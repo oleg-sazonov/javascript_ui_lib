@@ -229,7 +229,4 @@ $.prototype.carousel = function({
 	}
 }
 
-$('.carousel').carousel({
-	autoplay: true, 
-	duration: 3000, 
-});
+$('.carousel').carousel();

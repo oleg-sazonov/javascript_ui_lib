@@ -75,4 +75,5 @@ $().createCarousel({
 	stopAutoplayAtEnd: true 
 });
 
-// don't change classes: '.carousel-inner', '.carousel-item', '.carousel-slides', '.carousel-indicators' if I need to get smth unique, use data-atr id etc.
+$().get('https://jsonplaceholder.typicode.com/todos/1')
+	.then(res => console.log(res));
