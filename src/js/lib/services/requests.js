@@ -19,9 +19,15 @@ async function handleResponse(res, dataTypeAnswer) {
     }
 }
 
-$.prototype.get = async function(url, dataTypeAnswer = 'json', headers = {}) {
+$.prototype.request = async function(method, url, data = null, dataTypeAnswer = 'json') {
     try {
-        let res = await fetch(url, { headers });
+        const options = {
+            method,
+            headers: { 'Content-Type': 'application/json' },
+            body: data ? JSON.stringify(data) : null
+        };
+
+        const res = await fetch(url, options);
 
         if (!res.ok) {
             throw new Error(`Could not fetch ${url}, status: ${res.status}`);
@@ -34,58 +40,22 @@ $.prototype.get = async function(url, dataTypeAnswer = 'json', headers = {}) {
     }
 };
 
-$.prototype.post = async function(url, data, dataTypeAnswer = 'text', headers = {}) {
-    try {
-        let res = await fetch(url, {
-            method: 'POST',
-            body: data,
-            headers
-        });
-
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-        }
-
-        return await handleResponse(res, dataTypeAnswer);
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
+$.prototype.get = function(url, dataTypeAnswer = 'json') {
+    return this.request('GET', url, null, dataTypeAnswer);
 };
 
-$.prototype.put = async function(url, data, dataTypeAnswer = 'text', headers = {}) {
-    try {
-        let res = await fetch(url, {
-            method: 'PUT',
-            body: data,
-            headers
-        });
-
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-        }
-
-        return await handleResponse(res, dataTypeAnswer);
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
+$.prototype.post = function(url, data, dataTypeAnswer = 'json') {
+    return this.request('POST', url, data, dataTypeAnswer);
 };
 
-$.prototype.delete = async function(url, dataTypeAnswer = 'text', headers = {}) {
-    try {
-        let res = await fetch(url, {
-            method: 'DELETE',
-            headers
-        });
+$.prototype.put = function(url, data, dataTypeAnswer = 'json') {
+    return this.request('PUT', url, data, dataTypeAnswer);
+};
 
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-        }
+$.prototype.patch = function(url, data, dataTypeAnswer = 'json') {
+    return this.request('PATCH', url, data, dataTypeAnswer);
+};
 
-        return await handleResponse(res, dataTypeAnswer);
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
+$.prototype.delete = function(url, dataTypeAnswer = 'json') {
+    return this.request('DELETE', url, null, dataTypeAnswer);
 };
