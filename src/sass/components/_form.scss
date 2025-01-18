@@ -1,0 +1,125 @@
+@use 'sass:color';
+@use '../general/variables';
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: variables.$dark;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 16px;
+            color: variables.$dark;
+            background-color: #f9f9f9;
+
+            &:focus {
+                outline: none;
+                border-color: variables.$primary;
+                box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+            }
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+
+            &.btn-primary {
+                background-color: variables.$primary;
+                color: #fff;
+                border: none;
+
+                &:hover {
+                    background-color: color.scale(variables.$primary, $lightness: -10%);
+                }
+
+                &:active {
+                    background-color: color.scale(variables.$primary, $lightness: -20%);
+                }
+            }
+
+            &.btn-secondary {
+                background-color: #f8f9fa;
+                color: variables.$dark;
+                border: 1px solid #dee2e6;
+
+                &:hover {
+                    background-color: #e2e6ea;
+                }
+
+                &:active {
+                    background-color: #dae0e5;
+                }
+            }
+
+            &.btn-danger {
+                background-color: variables.$danger;
+                color: #fff;
+                border: none;
+
+                &:hover {
+                    background-color: color.scale(variables.$danger, $lightness: -10%);
+                }
+
+                &:active {
+                    background-color: color.scale(variables.$danger, $lightness: -20%);
+                }
+            }
+        }
+    }
+
+    &__status {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .status__img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .status__text {
+            font-size: 14px;
+            font-weight: 500;
+            color: variables.$dark;
+        }
+    }
+}

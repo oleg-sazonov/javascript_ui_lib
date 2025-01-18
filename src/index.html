@@ -186,6 +186,31 @@
             
         </div>
 
+        <!-- Form -->
+
+        <form class="form">
+            <div class="form__group">
+                <label for="username">Name</label>
+                <input type="text" id="username" name="username" placeholder="Enter your name" required />
+            </div>
+            <div class="form__group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form__group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your message..."></textarea>
+            </div>
+            <div class="form__actions">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+            <!-- <div class="form__status">
+                <img class="status__img" src="./assets/img/spinner.gif" alt="Status" />
+                <span class="status__text">Loading...</span>
+            </div> -->
+        </form>        
+
     </div>
 
     <script src='script.js'></script>
