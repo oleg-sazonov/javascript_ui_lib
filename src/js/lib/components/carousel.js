@@ -20,6 +20,7 @@ $.prototype.createCarousel = function({
 	sliderId = 'carousel',
 	showDots = true,
     showArrows = true,
+	arrowsOpacity = true,
 	stopAutoplayAtEnd = false
 } = {}) {
 
@@ -84,6 +85,11 @@ $.prototype.createCarousel = function({
 		next.setAttribute('data-slide', 'next');
 		next.innerHTML = `<span class="carousel-next-icon">${nextArrow}</span>`;
 
+		if (!arrowsOpacity) {
+			prev.style.opacity = '0';
+			next.style.opacity = '0';
+		}
+
 		carousel.appendChild(prev);
 		carousel.appendChild(next);
 	}
@@ -100,7 +106,8 @@ $.prototype.createCarousel = function({
 		duration: duration,
 		showDots: showDots,
 		showArrows: showArrows,
-		stopAutoplayAtEnd: stopAutoplayAtEnd
+		stopAutoplayAtEnd: stopAutoplayAtEnd,
+		arrowsOpacity: arrowsOpacity
 	});
 };
 
@@ -108,7 +115,7 @@ $.prototype.carousel = function({
 	autoplay = true, 
 	duration = 3000, 
 	showDots = true,
-    showArrows = true,
+	arrowsOpacity = true,
 	innerClass = '.carousel-inner', 
 	itemClass = '.carousel-item', 
 	slidesClass = '.carousel-slides', 
@@ -128,8 +135,8 @@ $.prototype.carousel = function({
 		});
 
 		let offset = 0;
-		let finishOffset = (+width.replace(/\D/g, '') * (slides.length - 1));
 		let slideIndex = 0;
+		let finishOffset = (+width.replace(/\D/g, '') * (slides.length - 1));
 		let autoplayInterval;
 		let reachedLastSlide;
 

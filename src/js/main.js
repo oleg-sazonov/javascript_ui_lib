@@ -60,6 +60,8 @@ $('#trigger').click(() => $('#trigger').createModal({
 // 	sliderId: 'carousel'
 // });
 
+// add property arrowsOpacity: opacity: 0; -> opacity: 0.5;
+// add smooth scroll
 $().createCarousel({
     images: [
         'https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg',
@@ -72,6 +74,7 @@ $().createCarousel({
 	sliderId: 'secondCarousel',
 	showDots: true,
     showArrows: true,
+	arrowsOpacity: false,
 	stopAutoplayAtEnd: true 
 });
 

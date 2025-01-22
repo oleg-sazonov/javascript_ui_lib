@@ -5,7 +5,8 @@
 }
 
 html {   
-	overflow-x: hidden; 
+	// add if scroll would have needed 
+	// overflow-x: hidden; 
 	margin-right: calc(-1 * (100vw - 100%));
 }
 
