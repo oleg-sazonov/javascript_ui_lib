@@ -74,9 +74,19 @@ $().createCarousel({
 	sliderId: 'secondCarousel',
 	showDots: true,
     showArrows: true,
-	arrowsOpacity: false,
 	stopAutoplayAtEnd: true 
 });
 
 $().get('https://jsonplaceholder.typicode.com/todos/1')
 	.then(res => console.log(res));
+
+// 1) First arg is scrollOffset; Second arg is upSelector; No one of args is required 
+// 2) I can change styles of SVG using '.svg-wrapper'
+// $('.scroll-arrow').smoothScrollUp(900);
+
+// Create scrollUpBtn inside selector and then use its functionality
+$('body').createScrollUpBtn().smoothScrollUp();
+
+
+
+// console.log($('.form').find('.form__group'));

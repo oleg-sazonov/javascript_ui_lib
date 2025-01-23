@@ -12,6 +12,7 @@ import './components/modal';
 import './components/tab';
 import './components/accordion';
 import './components/carousel';
+import './components/scrollUpBtn';
 import './services/requests';
 
 export default $;

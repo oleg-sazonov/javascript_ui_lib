@@ -1,0 +1,24 @@
+@use 'sass:color';
+@use '../general/variables';
+
+.scroll-arrow {
+	opacity: 0;
+	width: 26px ;
+	height: 26px;
+	position: fixed;
+	bottom: 100px;
+	right: 5%;
+	z-index: 300;
+	background-color: #fff;
+	cursor: pointer;
+	/* border: 1px solid white; */
+	// transition: 1s all;
+  }
+
+  .svg-wrapper {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    overflow: hidden;
+}
