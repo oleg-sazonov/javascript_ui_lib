@@ -77,8 +77,9 @@ $().createCarousel({
 	stopAutoplayAtEnd: true 
 });
 
-$().get('https://jsonplaceholder.typicode.com/todos/1')
-	.then(res => console.log(res));
+// $().get('https://jsonplaceholder.typicode.com/todos/1')
+// 	.then(res => console.log(res));
+
 
 // 1) First arg is scrollOffset; Second arg is upSelector; No one of args is required 
 // 2) I can change styles of SVG using '.svg-wrapper'
@@ -87,6 +88,8 @@ $().get('https://jsonplaceholder.typicode.com/todos/1')
 // Create scrollUpBtn inside selector and then use its functionality
 $('body').createScrollUpBtn().smoothScrollUp();
 
+// console.log($('form').containsClass('form').clearClasses().addClass('newForm'));
 
+// $('form').clearClasses().addClass('newFormeddd').addClass().toggleClass('form').removeClass('newFormeddd');
 
-// console.log($('.form').find('.form__group'));
+console.log($('form').clearClasses().addClass('newFormeddd', 'form', 'gambler').addClass().hasClasses('newFormeddd', 'gamblers'));
