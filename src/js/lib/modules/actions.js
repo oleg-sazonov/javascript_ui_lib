@@ -2,8 +2,7 @@
 
 import $ from "../core";
 
-// Func change html-content (content included) or get html-content
-// Func is finalize (doesn't return obj (this))
+// Changes html-content (content included) or gets html-content
 $.prototype.html = function(content) {
 	for (let i = 0; i < this.length; i++) {
 		if (content) {
@@ -15,7 +14,7 @@ $.prototype.html = function(content) {
 	return this;	
 };
 
-// Func get elem by it's index
+// Gets elem by it's index
 // Example: $('div').eq(2).toggleClass('active');
 $.prototype.eq = function(i) {
 	const swap = this[i];
@@ -30,7 +29,7 @@ $.prototype.eq = function(i) {
 	return this;	
 };
 
-// Func get an index of element inside parent-element
+// Gets an index of element inside parent-element
 // Func is finalize (doesn't return obj (this))
 $.prototype.index = function() {
 	const parent = this[0].parentNode;
@@ -43,7 +42,7 @@ $.prototype.index = function() {
 	return childs.findIndex(findMyIndex);
 };
 
-// Func get "this"(obj with elements) and find element by it's selector
+// Gets "this"(obj with elements) and find element by it's selector
 // Func returns new obj with selected elements
 $.prototype.find = function(selector) {
 	let numberOfItems = 0;
@@ -76,7 +75,7 @@ $.prototype.find = function(selector) {
 	return this;
 };
 
-// Func get closest parent-node
+// Gets closest parent-node
 $.prototype.closest = function(selector) {
 	let counter = 0;
 
@@ -94,7 +93,8 @@ $.prototype.closest = function(selector) {
 	return this;
 };
 
-// Func get all childs inside parent-block except current
+// Gets all childs inside parent-block except current
+// Example: $('.form__group').siblings()
 $.prototype.siblings = function () {
     const copyObj = [...this[0].parentElement.children].filter(item => item !== this[0]);
  
@@ -106,3 +106,33 @@ $.prototype.siblings = function () {
     this.length = copyObj.length;
     return this;
 }
+
+// Gets all childs inside parent-block
+// Example: $('.form').filterChildren('.form__group')
+$.prototype.filterChildren = function(selector) {
+    return this.find(selector);
+};
+
+// Appends a new element or HTML string to each element in the current collection
+$.prototype.append = function(content) {
+    for (let i = 0; i < this.length; i++) {
+        if (typeof content === 'string') {
+            this[i].insertAdjacentHTML('beforeend', content);
+        } else if (content instanceof Element) {
+            this[i].appendChild(content.cloneNode(true));
+        }
+    }
+    return this;
+};
+
+// Prepends a new element or HTML string to each element in the current collection
+$.prototype.prepend = function(content) {
+    for (let i = 0; i < this.length; i++) {
+        if (typeof content === 'string') {
+            this[i].insertAdjacentHTML('afterbegin', content);
+        } else if (content instanceof Element) {
+            this[i].insertBefore(content.cloneNode(true), this[i].firstChild);
+        }
+    }
+    return this;
+};

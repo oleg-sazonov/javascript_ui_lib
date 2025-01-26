@@ -99,3 +99,20 @@ console.log($('form').clearClasses().addClass('newFormeddd', 'form', 'gambler').
 // I need to include jsdoc!!!!!!!!!!
 
 // Should I add to my UI JS Lib module with methods which will create DOM-elements?
+
+
+
+// $('.form').filterChildren('.form__group');
+
+console.log($('.form').filterChildren('.form__group'));
+console.log($('.form__group').siblings());
+
+const newFormGroup = document.createElement('div');
+newFormGroup.classList.add('form__group');
+
+console.log(newFormGroup);
+
+// $('.form').append('<div class="form__group"></div>');
+$('.form').append(newFormGroup);
+
+// $('.form__group').siblings();
