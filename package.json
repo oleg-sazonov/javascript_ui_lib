@@ -21,6 +21,7 @@
 		"gulp-clean-css": "^4.3.0",
 		"gulp-postcss": "^10.0.0",
 		"gulp-sass": "^6.0.0",
+		"jsdoc": "^4.0.4",
 		"sass": "^1.82.0",
 		"webpack": "^5.97.1",
 		"webpack-stream": "^7.0.0"
@@ -29,5 +30,10 @@
 		"last 2 chrome versions",
 		"last 2 firefox versions",
 		"last 2 ios versions"
-	]
+	],
+	"dependencies": {
+		"handlebars": "^4.7.8",
+		"minami": "^1.2.3",
+		"taffydb": "^2.7.3"
+	}
 }

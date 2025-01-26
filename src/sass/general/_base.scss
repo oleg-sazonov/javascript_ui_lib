@@ -6,7 +6,7 @@
 
 html {   
 	// add if scroll would have needed 
-	// overflow-x: hidden; 
+	overflow-x: hidden; 
 	margin-right: calc(-1 * (100vw - 100%));
 }
 
@@ -21,4 +21,8 @@ html {
 	padding: 0px 15px;
 	margin: 0 auto;
 	margin-bottom: 20px;
+}
+
+.modal-dialog {
+	margin-right: calc(-1 * (100vw - 100%));
 }

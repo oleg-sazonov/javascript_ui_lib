@@ -93,3 +93,9 @@ $('body').createScrollUpBtn().smoothScrollUp();
 // $('form').clearClasses().addClass('newFormeddd').addClass().toggleClass('form').removeClass('newFormeddd');
 
 console.log($('form').clearClasses().addClass('newFormeddd', 'form', 'gambler').addClass().hasClasses('newFormeddd', 'gamblers'));
+
+
+
+// I need to include jsdoc!!!!!!!!!!
+
+// Should I add to my UI JS Lib module with methods which will create DOM-elements?

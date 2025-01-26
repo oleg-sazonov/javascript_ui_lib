@@ -1,6 +1,6 @@
 'use strict';
 
-import $ from "./core";
+import $ from './core';
 import './modules/display';
 import './modules/classes';
 import './modules/handlers';
@@ -15,4 +15,9 @@ import './components/carousel';
 import './components/scrollUpBtn';
 import './services/requests';
 
+/**
+ * Main entry point for the library.
+ * Imports core functionality and modules.
+ * @module Library
+ */
 export default $;
