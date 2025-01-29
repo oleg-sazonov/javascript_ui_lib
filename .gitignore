@@ -89,3 +89,7 @@ __pycache__/
 
 # Docker-specific data
 docker-compose.override.yml
+
+# Documentation
+
+docs

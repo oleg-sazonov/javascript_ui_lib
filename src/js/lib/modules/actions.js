@@ -2,99 +2,133 @@
 
 import $ from "../core";
 
-// Changes html-content (content included) or gets html-content
+/**
+ * @file Предоставляет набор методов для работы с DOM, включая изменение содержимого, навигацию по элементам и управление дочерними элементами.
+ */
+
+/**
+ * Изменяет или получает HTML-содержимое элементов.
+ * @method html
+ * @memberof $
+ * @param {string} [content] - Содержимое для установки.
+ * @returns {Object|string} Текущий объект или HTML-содержимое первого элемента.
+ */
 $.prototype.html = function(content) {
-	for (let i = 0; i < this.length; i++) {
-		if (content) {
-			this[i].innerHTML = content;
-		} else {
-			return this[i].innerHTML;
-		}
-	}
-	return this;	
+    for (let i = 0; i < this.length; i++) {
+        if (content) {
+            this[i].innerHTML = content;
+        } else {
+            return this[i].innerHTML;
+        }
+    }
+    return this;    
 };
 
-// Gets elem by it's index
-// Example: $('div').eq(2).toggleClass('active');
+/**
+ * Получает элемент по его индексу.
+ * @method eq
+ * @memberof $
+ * @param {number} i - Индекс элемента.
+ * @returns {Object} Объект с выбранным элементом.
+ */
 $.prototype.eq = function(i) {
-	const swap = this[i];
-	const objLength = Object.keys(this).length;
+    const swap = this[i];
+    const objLength = Object.keys(this).length;
 
-	for (let i = 0; i < objLength; i++) {
-		delete this[i];
-	}
+    for (let i = 0; i < objLength; i++) {
+        delete this[i];
+    }
 
-	this[0] = swap;
-	this.length = 1;
-	return this;	
+    this[0] = swap;
+    this.length = 1;
+    return this;    
 };
 
-// Gets an index of element inside parent-element
-// Func is finalize (doesn't return obj (this))
+/**
+ * Определяет индекс элемента внутри родителя.
+ * @method index
+ * @memberof $
+ * @returns {number} Индекс элемента.
+ */
 $.prototype.index = function() {
-	const parent = this[0].parentNode;
-	const childs = [...parent.children]; // get an array from HTMLCollection
+    const parent = this[0].parentNode;
+    const childs = [...parent.children]; // Преобразуем HTMLCollection в массив
 
-	const findMyIndex = (item) => {
-		return item == this[0];
-	};
+    const findMyIndex = (item) => {
+        return item == this[0];
+    };
 
-	return childs.findIndex(findMyIndex);
+    return childs.findIndex(findMyIndex);
 };
 
-// Gets "this"(obj with elements) and find element by it's selector
-// Func returns new obj with selected elements
+/**
+ * Ищет элементы по указанному селектору внутри текущей коллекции.
+ * @method find
+ * @memberof $
+ * @param {string} selector - CSS-селектор для поиска.
+ * @returns {Object} Объект с найденными элементами.
+ */
 $.prototype.find = function(selector) {
-	let numberOfItems = 0;
-	let counter = 0;
+    let numberOfItems = 0;
+    let counter = 0;
 
-	const copyObj = {...this};
+    const copyObj = {...this};
 
-	for (let i = 0; i < copyObj.length; i++) {
-		const arr = copyObj[i].querySelectorAll(selector); // try to get elem by it's selector
-		if (arr.length == 0) {
-			continue;
-		}
+    for (let i = 0; i < copyObj.length; i++) {
+        const arr = copyObj[i].querySelectorAll(selector); // Ищем элементы по селектору
+        if (arr.length == 0) {
+            continue;
+        }
 
-		for (let j = 0; j < arr.length; j++) {
-			this[counter] = arr[j]; // rewrite items in this-obj
-			counter++;
-		}
+        for (let j = 0; j < arr.length; j++) {
+            this[counter] = arr[j]; // Переписываем элементы в текущий объект
+            counter++;
+        }
 
-		numberOfItems += arr.length;
-	}
+        numberOfItems += arr.length;
+    }
 
-	this.length = numberOfItems;
+    this.length = numberOfItems;
 
-	const objLength = Object.keys(this).length;
+    const objLength = Object.keys(this).length;
 
-	for (; numberOfItems < objLength; numberOfItems++) {
-		delete this[numberOfItems]; // delete items except arr(selected-items)
-	}
+    for (; numberOfItems < objLength; numberOfItems++) {
+        delete this[numberOfItems]; // Удаляем ненужные элементы
+    }
 
-	return this;
+    return this;
 };
 
-// Gets closest parent-node
+/**
+ * Находит ближайшего родителя по селектору.
+ * @method closest
+ * @memberof $
+ * @param {string} selector - CSS-селектор родительского элемента.
+ * @returns {Object} Объект с ближайшим родителем.
+ */
 $.prototype.closest = function(selector) {
-	let counter = 0;
+    let counter = 0;
 
-	for (let i = 0; i < this.length; i++) {
-		if (!this[i].closest(selector)) {
-			console.log(`This parent Class "${selector}" is not found for used child Class`);
-			continue;
-		} else {
-			this[i] = this[i].closest(selector);
-			counter++;
-		}
-	}
-	this.length = counter;
+    for (let i = 0; i < this.length; i++) {
+        if (!this[i].closest(selector)) {
+            console.log(`Родительский класс "${selector}" не найден для данного элемента.`);
+            continue;
+        } else {
+            this[i] = this[i].closest(selector);
+            counter++;
+        }
+    }
+    this.length = counter;
 
-	return this;
+    return this;
 };
 
-// Gets all childs inside parent-block except current
-// Example: $('.form__group').siblings()
+/**
+ * Получает все элементы внутри родителя, кроме текущего.
+ * @method siblings
+ * @memberof $
+ * @returns {Object} Объект с соседними элементами.
+ */
 $.prototype.siblings = function () {
     const copyObj = [...this[0].parentElement.children].filter(item => item !== this[0]);
  
@@ -107,13 +141,24 @@ $.prototype.siblings = function () {
     return this;
 }
 
-// Gets all childs inside parent-block
-// Example: $('.form').filterChildren('.form__group')
+/**
+ * Фильтрует дочерние элементы внутри родителя по селектору.
+ * @method filterChildren
+ * @memberof $
+ * @param {string} selector - CSS-селектор для фильтрации дочерних элементов.
+ * @returns {Object} Объект с отфильтрованными элементами.
+ */
 $.prototype.filterChildren = function(selector) {
     return this.find(selector);
 };
 
-// Appends a new element or HTML string to each element in the current collection
+/**
+ * Добавляет новый элемент или HTML-строку к каждому элементу в коллекции.
+ * @method append
+ * @memberof $
+ * @param {string|Element} content - HTML-строка или DOM-элемент для добавления.
+ * @returns {Object} Текущий объект.
+ */
 $.prototype.append = function(content) {
     for (let i = 0; i < this.length; i++) {
         if (typeof content === 'string') {
@@ -125,7 +170,13 @@ $.prototype.append = function(content) {
     return this;
 };
 
-// Prepends a new element or HTML string to each element in the current collection
+/**
+ * Добавляет новый элемент или HTML-строку в начало каждого элемента в коллекции.
+ * @method prepend
+ * @memberof $
+ * @param {string|Element} content - HTML-строка или DOM-элемент для добавления.
+ * @returns {Object} Текущий объект.
+ */
 $.prototype.prepend = function(content) {
     for (let i = 0; i < this.length; i++) {
         if (typeof content === 'string') {
