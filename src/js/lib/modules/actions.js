@@ -52,13 +52,9 @@ $.prototype.eq = function(i) {
  */
 $.prototype.index = function() {
     const parent = this[0].parentNode;
-    const childs = [...parent.children]; // Преобразуем HTMLCollection в массив
+    const childs = [...parent.children]; // Convert HTMLCollection to an array
 
-    const findMyIndex = (item) => {
-        return item == this[0];
-    };
-
-    return childs.findIndex(findMyIndex);
+    return childs.findIndex(item => item === this[0]);
 };
 
 /**
@@ -75,13 +71,13 @@ $.prototype.find = function(selector) {
     const copyObj = {...this};
 
     for (let i = 0; i < copyObj.length; i++) {
-        const arr = copyObj[i].querySelectorAll(selector); // Ищем элементы по селектору
+        const arr = copyObj[i].querySelectorAll(selector); // Find elements by selector
         if (arr.length == 0) {
             continue;
         }
 
         for (let j = 0; j < arr.length; j++) {
-            this[counter] = arr[j]; // Переписываем элементы в текущий объект
+            this[counter] = arr[j]; // Rewrite elements in current object
             counter++;
         }
 
@@ -93,7 +89,7 @@ $.prototype.find = function(selector) {
     const objLength = Object.keys(this).length;
 
     for (; numberOfItems < objLength; numberOfItems++) {
-        delete this[numberOfItems]; // Удаляем ненужные элементы
+        delete this[numberOfItems]; // Delete unnecessary elements
     }
 
     return this;
@@ -110,12 +106,12 @@ $.prototype.closest = function(selector) {
     let counter = 0;
 
     for (let i = 0; i < this.length; i++) {
-        if (!this[i].closest(selector)) {
-            console.log(`Родительский класс "${selector}" не найден для данного элемента.`);
-            continue;
-        } else {
-            this[i] = this[i].closest(selector);
+        const closestElement = this[i].closest(selector);
+        if (closestElement) {
+            this[i] = closestElement;
             counter++;
+        } else {
+            console.warn(`No parent matching selector "${selector}" found for the element.`);
         }
     }
     this.length = counter;

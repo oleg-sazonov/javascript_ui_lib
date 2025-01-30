@@ -116,3 +116,29 @@ console.log(newFormGroup);
 $('.form').append(newFormGroup);
 
 // $('.form__group').siblings();
+
+$('.form').addAttr('data-submit', 'true');
+
+console.log($('.form').getAttrValue('data-submit'));
+
+console.log($('.form').hasAttr());
+
+$('.form').toggleAttr('data-set', 'true');
+
+$('.form').toggleAttr('data-set');
+
+
+// │── /library (project-name) 
+// │   │── /docs               
+// │   │   ├── /fonts
+// │   │   ├── /scripts
+// │   │   │   ├── /prettify
+// │   │   │   ├── linenumber.js
+// │   │   ├── /styles
+// │   │   ├── $_init.html
+// │   │   ├── actions.js.html
+// │   │   ├── core.js.html
+// │   │   ├── global.html
+// │   │   ├── index.html
+// │   │   ├── lib.js.html
+// │   │   ├── module-Library.html
