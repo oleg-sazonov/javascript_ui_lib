@@ -2,6 +2,9 @@
 
 import './lib/lib';
 
+// Create scrollUpBtn inside selector and then use its functionality
+$('.container').createScrollUpBtn().smoothScrollUp();
+
 $('#first').click(() => {
 	$('.w-500px').eq(0).fadeToggle(900);
 });
@@ -85,9 +88,6 @@ $().createCarousel({
 // 2) I can change styles of SVG using '.svg-wrapper'
 // $('.scroll-arrow').smoothScrollUp(900);
 
-// Create scrollUpBtn inside selector and then use its functionality
-$('body').createScrollUpBtn().smoothScrollUp();
-
 // console.log($('form').containsClass('form').clearClasses().addClass('newForm'));
 
 // $('form').clearClasses().addClass('newFormeddd').addClass().toggleClass('form').removeClass('newFormeddd');
@@ -128,17 +128,8 @@ $('.form').toggleAttr('data-set', 'true');
 $('.form').toggleAttr('data-set');
 
 
-// │── /library (project-name) 
-// │   │── /docs               
-// │   │   ├── /fonts
-// │   │   ├── /scripts
-// │   │   │   ├── /prettify
-// │   │   │   ├── linenumber.js
-// │   │   ├── /styles
-// │   │   ├── $_init.html
-// │   │   ├── actions.js.html
-// │   │   ├── core.js.html
-// │   │   ├── global.html
-// │   │   ├── index.html
-// │   │   ├── lib.js.html
-// │   │   ├── module-Library.html
+
+
+
+// $('nav').createHamburger() returns .hamburger
+$('nav').createHamburger().fadeIn(500).click(() => $('.hamburger').toggleClass('hamburger_active'));

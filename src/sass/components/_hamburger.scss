@@ -1,0 +1,35 @@
+@use 'sass:color';
+@use '../general/variables';
+
+.hamburger {
+	display: none;
+	position: absolute;
+	right: 50px;
+	top: 50%;
+	transform: translateY(-65%);
+	width: 26px;
+	height: 12px;
+	cursor: pointer;
+	span {
+		display: block;
+		height: 2px;
+		width: 100%;
+		background: variables.$light;
+		margin-bottom: 4px;
+		transition: 0.4s all;
+	}
+	&_active {
+		span {
+			margin-bottom: 3px;
+			&:nth-child(1) {
+				transform: translateY(8px) rotate(-45deg);
+			}
+			&:nth-child(2) {
+				display: none;
+			}
+			&:nth-child(3) {
+				transform: translateY(4px) rotate(45deg);
+			}
+		}
+	}
+}

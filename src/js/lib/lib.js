@@ -13,6 +13,7 @@ import './components/tab';
 import './components/accordion';
 import './components/carousel';
 import './components/scrollUpBtn';
+import './components/hamburger';
 import './services/requests';
 
 /**
