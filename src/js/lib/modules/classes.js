@@ -3,22 +3,19 @@
 import $ from "../core";
 
 /**
- * Checks if the provided element is a valid DOM element with classList support.
- * @param {Element} element - The DOM element to check.
- * @returns {boolean} `true` if the element has a classList property, `false` otherwise.
+ * @file Предоставляет методы для работы с классами DOM-элементов.
  */
-function isValidElement(element) {
-    return element && element.classList;
-}
 
 /**
- * Adds one or more class names to each selected element.
- * @param {...string} classNames - One or more class names to add to the selected elements.
- * @returns {Object} The `$` object for chaining.
+ * Добавляет один или несколько классов к элементу.
+ * @method addClass
+ * @memberof $
+ * @param {...string} classNames - Один или несколько классов.
+ * @returns {Object} Текущий объект.
  */
 $.prototype.addClass = function (...classNames) {
     for (let i = 0; i < this.length; i++) {
-        if (isValidElement(this[i])) {
+        if (this[i].classList) {
             this[i].classList.add(...classNames);
         }
     }
@@ -26,13 +23,15 @@ $.prototype.addClass = function (...classNames) {
 };
 
 /**
- * Removes one or more class names from each selected element.
- * @param {...string} classNames - One or more class names to remove from the selected elements.
- * @returns {Object} The `$` object for chaining.
+ * Удаляет один или несколько классов у элемента.
+ * @method removeClass
+ * @memberof $
+ * @param {...string} classNames - Один или несколько классов.
+ * @returns {Object} Текущий объект.
  */
 $.prototype.removeClass = function (...classNames) {
     for (let i = 0; i < this.length; i++) {
-        if (isValidElement(this[i])) {
+        if (this[i].classList) {
             this[i].classList.remove(...classNames);
         }
     }
@@ -40,12 +39,14 @@ $.prototype.removeClass = function (...classNames) {
 };
 
 /**
- * Clears all class names from each selected element.
- * @returns {Object} The `$` object for chaining.
+ * Очищает все классы у элемента.
+ * @method clearClasses
+ * @memberof $
+ * @returns {Object} Текущий объект.
  */
 $.prototype.clearClasses = function () {
     for (let i = 0; i < this.length; i++) {
-        if (isValidElement(this[i])) {
+        if (this[i].classList) {
             const classes = [...this[i].classList];
             this.removeClass(...classes);
         }
@@ -54,13 +55,15 @@ $.prototype.clearClasses = function () {
 };
 
 /**
- * Toggles the presence of a class name on each selected element.
- * @param {string} className - The class name to toggle.
- * @returns {Object} The `$` object for chaining.
+ * Переключает наличие класса у элемента.
+ * @method toggleClass
+ * @memberof $
+ * @param {string} className - Имя класса.
+ * @returns {Object} Текущий объект.
  */
 $.prototype.toggleClass = function (className) {
     for (let i = 0; i < this.length; i++) {
-        if (isValidElement(this[i])) {
+        if (this[i].classList) {
             this[i].classList.toggle(className);
         }
     }
@@ -68,14 +71,15 @@ $.prototype.toggleClass = function (className) {
 };
 
 /**
- * Checks if all specified class names are present on each selected element.
- * @param {...string} classNames - The class names to check for.
- * @returns {boolean} `true` if all specified class names are present, `false` otherwise.
+ * Проверяет, содержит ли элемент указанные классы.
+ * @method hasClasses
+ * @memberof $
+ * @param {...string} classNames - Один или несколько классов.
+ * @returns {boolean} `true`, если элемент содержит все классы, иначе `false`.
  */
 $.prototype.hasClasses = function (...classNames) {
     for (let i = 0; i < this.length; i++) {
-        if (isValidElement(this[i])) {
-            // Check if the element contains all the given class names
+        if (this[i].classList) {
             const hasAllClasses = classNames.every((className) => this[i].classList.contains(className));
             if (hasAllClasses) {
                 return true;
@@ -86,9 +90,11 @@ $.prototype.hasClasses = function (...classNames) {
 };
 
 /**
- * Checks if the selected element contains the specified class name.
- * @param {string} className - The class name to check for.
- * @returns {boolean} `true` if the class name is present, `false` otherwise.
+ * Проверяет, содержит ли элемент указанный класс.
+ * @method containsClass
+ * @memberof $
+ * @param {string} className - Имя класса.
+ * @returns {boolean} `true`, если элемент содержит класс, иначе `false`.
  */
 $.prototype.containsClass = function (className) {
     return this.hasClasses(className);

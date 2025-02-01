@@ -133,3 +133,7 @@ $('.form').toggleAttr('data-set');
 
 // $('nav').createHamburger() returns .hamburger
 $('nav').createHamburger().fadeIn(500).click(() => $('.hamburger').toggleClass('hamburger_active'));
+
+
+console.log($('.form').isVisible());
+$('.form').display('flex');

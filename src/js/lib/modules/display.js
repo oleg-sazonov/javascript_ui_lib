@@ -2,43 +2,81 @@
 
 import $ from "../core";
 
-// Func become element visible
+/**
+ * @file Предоставляет методы для управления видимостью DOM-элементов.
+ */
+
+/**
+ * Делает элементы видимыми, сбрасывая свойство display.
+ * @method show
+ * @memberof $
+ * @returns {Object} Текущий объект.
+ */
 $.prototype.show = function() {
-	for (let i = 0; i < this.length; i++) {
-		if (!this[i].style) {
-			continue;
-		}
-		this[i].style.display = '';
-	}
-
-	return this;
+    for (let i = 0; i < this.length; i++) {
+        if (this[i].style) {
+            this[i].style.display = '';
+        }
+    }
+    return this;
 };
 
-// Func become element invisible
+/**
+ * Делает элементы невидимыми, устанавливая display: none.
+ * @method hide
+ * @memberof $
+ * @returns {Object} Текущий объект.
+ */
 $.prototype.hide = function() {
-	for (let i = 0; i < this.length; i++) {
-		if (!this[i].style) {
-			continue;
-		}
-		this[i].style.display = 'none';
-	}
-
-	return this;
+    for (let i = 0; i < this.length; i++) {
+        if (this[i].style) {
+            this[i].style.display = 'none';
+        }
+    }
+    return this;
 };
 
-// Func become element visible/invisible
+/**
+ * Переключает видимость элементов.
+ * @method toggleDisplay
+ * @memberof $
+ * @returns {Object} Текущий объект.
+ */
 $.prototype.toggleDisplay = function() {
-	for (let i = 0; i < this.length; i++) {
-		if (!this[i].style) {
-			continue;
-		}
+    for (let i = 0; i < this.length; i++) {
+        if (this[i].style) {
+            this[i].style.display = (this[i].style.display === 'none') ? '' : 'none';
+        }
+    }
+    return this;
+};
 
-		if (this[i].style.display === 'none') {
-			this[i].style.display = '';
-		} else {
-			this[i].style.display = 'none';
-		}
-	}
+/**
+ * Проверяет, является ли элемент видимым.
+ * @method isVisible
+ * @memberof $
+ * @returns {boolean} `true`, если элемент видим, иначе `false`.
+ */
+$.prototype.isVisible = function() {
+    if (!this[0] || !this[0].style) return false;
+    return this[0].style.display !== 'none';
+};
 
-	return this;
+/**
+ * Устанавливает или получает CSS-значение display.
+ * @method display
+ * @memberof $
+ * @param {string} [value] - Значение display (если передано).
+ * @returns {Object|string} Текущий объект или текущее значение display.
+ */
+$.prototype.display = function(value) {
+    if (value === undefined) {
+        return this[0] ? this[0].style.display : undefined;
+    }
+    for (let i = 0; i < this.length; i++) {
+        if (this[i].style) {
+            this[i].style.display = value;
+        }
+    }
+    return this;
 };
