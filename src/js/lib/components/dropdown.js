@@ -23,7 +23,7 @@ $.prototype.dropdownByHover = function() {
         // Show dropdown menu
         const showDropdown = () => {
             clearTimeout(timeout); // Cancel any pending fadeOut
-            dropdown.fadeIn(300);
+            dropdown.fadeToggle(300);
         };
 
         // Hide dropdown menu

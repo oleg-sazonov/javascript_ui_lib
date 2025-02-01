@@ -6,14 +6,14 @@ import './lib/lib';
 $('.container').createScrollUpBtn().smoothScrollUp();
 
 $('#first').click(() => {
-	$('.w-500px').eq(0).fadeToggle(900);
+	$('.w-500px').eq(0).fadeToggleLeft(900);
 });
 
 $('[data-count="second"]').click(() => {
-	$('.w-500px').eq(1).fadeToggle(900);
+	$('.w-500px').eq(1).fadeToggleRight(900);
 });
 
-$('button').eq(2).click(() => {
+$('.btn-warning').click(() => {
 	$('.w-500px').fadeToggle(900);
 });
 
