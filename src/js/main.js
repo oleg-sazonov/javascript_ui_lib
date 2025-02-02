@@ -2,18 +2,20 @@
 
 import './lib/lib';
 
+$('nav').createHamburger().display('block').click(() => $('.hamburger').toggleClass('hamburger_active'));
+
 // Create scrollUpBtn inside selector and then use its functionality
 $('.container').createScrollUpBtn().smoothScrollUp();
 
 $('#first').click(() => {
-	$('.w-500px').eq(0).fadeToggle(900);
+	$('.w-500px').eq(0).fadeToggleLeft(900);
 });
 
 $('[data-count="second"]').click(() => {
-	$('.w-500px').eq(1).fadeToggle(900);
+	$('.w-500px').eq(1).fadeToggleRight(900);
 });
 
-$('button').eq(2).click(() => {
+$('.btn-warning').click(() => {
 	$('.w-500px').fadeToggle(900);
 });
 
@@ -132,8 +134,25 @@ $('.form').toggleAttr('data-set');
 
 
 // $('nav').createHamburger() returns .hamburger
-$('nav').createHamburger().fadeIn(500).click(() => $('.hamburger').toggleClass('hamburger_active'));
+// $('nav').createHamburger().fadeIn(500).click(() => $('.hamburger').toggleClass('hamburger_active'));
+
+// console.log($('nav').createHamburger());
+
+// $('.hamburger').fadeIn(500).click(() => $('.hamburger').toggleClass('hamburger_active'));
 
 
 console.log($('.form').isVisible());
 $('.form').display('flex');
+
+
+
+// $('.accordion').delegate('click', '.accordion-head', function() {
+//     console.log('Click on .child: ', this);
+// });
+
+let t = 0;
+$('.accordion-head').hover(() => console.log(t++), () => console.log(t--));
+
+$('.tab-item').one('click', function() {
+	console.log('Click on .tab-item: ', this);
+});
