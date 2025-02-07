@@ -82,8 +82,8 @@ $().createCarousel({
 	stopAutoplayAtEnd: true 
 });
 
-// $().get('https://jsonplaceholder.typicode.com/todos/1')
-// 	.then(res => console.log(res));
+$().get('https://jsonplaceholder.typicode.com/todos/1')
+	.then(res => console.log(res));
 
 
 // 1) First arg is scrollOffset; Second arg is upSelector; No one of args is required 
@@ -156,3 +156,9 @@ $('.accordion-head').hover(() => console.log(t++), () => console.log(t--));
 $('.tab-item').one('click', function() {
 	console.log('Click on .tab-item: ', this);
 });
+
+
+//Timer
+
+$('.timer-container').createTimer('2025-04-31');
+// $('.timer').timer('2025-04-31');

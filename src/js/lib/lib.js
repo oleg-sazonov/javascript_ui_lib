@@ -14,6 +14,7 @@ import './components/accordion';
 import './components/carousel';
 import './components/scrollUpBtn';
 import './components/hamburger';
+import './components/timer';
 import './services/requests';
 
 /**
