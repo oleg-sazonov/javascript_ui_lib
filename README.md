@@ -106,7 +106,7 @@ window.$ = $;
 export default $;
 ```
 
-### Использование компонента Accordion
+### Accordion Component
 
 Accordion — это компонент, позволяющий скрывать и отображать контент по клику на заголовок.
 
@@ -140,46 +140,6 @@ Accordion — это компонент, позволяющий скрывать
 </div>
 ```
 
-#### SCSS стили:
-
-```scss
-.accordion {
-    max-width: 700px;
-    &-head {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        min-height: 50px;
-        padding: 0 20px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        font-size: 18px;
-        color: #333;
-        cursor: pointer;
-        &_active {
-            color: #007bff;
-        }
-    }
-    &-content {
-        max-height: 0px;
-        opacity: 0;
-        overflow: hidden;
-        transition: opacity 0.5s, max-height 0.6s, padding 0.1s;
-        background-color: #fff;
-        border: 1px solid rgba(224, 211, 211, 1);
-        border-top: none;
-        border-radius: 0 0 4px 4px;
-        &_active {
-            overflow: visible;
-            opacity: 1;
-        }
-    }
-    &-inner {
-        display: block;
-        padding: 20px;
-    }
-}
-```
-
 #### 📜 Автоматическая инициализация:
 
 Файл `accordion.js` содержит автоинициализацию:
@@ -204,6 +164,124 @@ $(".accordion-head").hover(
     () => console.log(t--)
 );
 ```
+
+# 🖼 Carousel Component
+
+Универсальный компонент карусели на JavaScript, с поддержкой:
+
+-   Автопрокрутки
+-   Переключения по стрелкам и точкам
+-   Кастомизации стрелок, стилей и поведения
+
+---
+
+#### 📦 Что нужно для использования:
+
+1. Добавьте HTML-структуру (пример ниже) или создайте карусель динамически с помощью createCarousel()
+2. Используйте строго указанные классы (`carousel`, `carousel-indicators`, `carousel-inner`, `carousel-slides`, `carousel-item`, `carousel-prev`, `carousel-next`, `carousel-prev-icon`, `carousel-next-icon`)
+3. Можно назначить вспомогательные классы, например: `mt-20 mb-20 block-center`
+4. Скрипт работает **автоматически** при подключении `accordion.js`
+
+### 1. HTML-разметка
+
+```html
+<div class="carousel" id="carousel">
+    <ol class="carousel-indicators">
+        <li class="active" data-slide-to="0"></li>
+        <li data-slide-to="1"></li>
+        <li data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner mb-20">
+        <div class="carousel-slides">
+            <div class="carousel-item">
+                <img src="img1.jpg" alt="slide1" />
+            </div>
+            <div class="carousel-item">
+                <img src="img2.jpg" alt="slide2" />
+            </div>
+            <div class="carousel-item">
+                <img src="img3.jpg" alt="slide3" />
+            </div>
+        </div>
+    </div>
+    <a href="#" class="carousel-prev" data-slide="prev">
+        <span class="carousel-prev-icon">‹</span>
+    </a>
+    <a href="#" class="carousel-next" data-slide="next">
+        <span class="carousel-next-icon">›</span>
+    </a>
+</div>
+```
+
+#### 📜 Автоматическая инициализация:
+
+Файл `carousel.js` содержит автоинициализацию:
+
+```js
+$(".carousel").carousel();
+```
+
+---
+
+## 🧠 Пример с `carousel()` (ручная инициализация)
+
+Если у тебя уже есть HTML-структура, можно изменить некоторые параметры:
+
+```js
+$(".carousel").carousel({
+    autoplay: true,
+    duration: 4000,
+    showDots: true,
+    stopAutoplayAtEnd: false,
+});
+```
+
+---
+
+### 2. Инициализация слайдера
+
+Создай динамическую карусель:
+
+```js
+$().createCarousel({
+    images: [
+        "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
+        "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
+        "https://as1.ftcdn.net/jpg/05/35/43/12/1000_F_535431282_VhH2Uo9QfgdEvRQdxMbwgn70ZIWisCQh.jpg",
+    ],
+    autoplay: true,
+    duration: 3000,
+    containerSelector: ".container",
+    sliderId: "carousel",
+    carouselWidth: "700px",
+    showDots: true,
+    showArrows: true,
+    stopAutoplayAtEnd: true,
+});
+```
+
+---
+
+## ⚙️ Настройки
+
+| Параметр            | Тип        | По умолчанию | Описание                         |
+| ------------------- | ---------- | ------------ | -------------------------------- |
+| `images`            | `string[]` | `[]`         | Массив изображений               |
+| `autoplay`          | `boolean`  | `true`       | Включить автопрокрутку           |
+| `duration`          | `number`   | `3000`       | Интервал между слайдами (мс)     |
+| `containerSelector` | `string`   | `'body'`     | Куда вставлять HTML слайдера     |
+| `sliderId`          | `string`   | `'carousel'` | Уникальный ID для слайдера       |
+| `carouselWidth`     | `string`   | `'900px'`    | Ширина компонента карусели.      |
+| `showDots`          | `boolean`  | `true`       | Показывать индикаторы (точки)    |
+| `showArrows`        | `boolean`  | `true`       | Показывать стрелки               |
+| `arrowsOpacity`     | `boolean`  | `true`       | Управлять прозрачностью стрелок  |
+| `stopAutoplayAtEnd` | `boolean`  | `false`      | Остановить автопрокрутку в конце |
+
+---
+
+## 🧩 Зависимости
+
+Компонент зависит кастомной библиотеки с методом `createCarousel()` и `carousel()` на базе jQuery-like `$()`.
 
 ## Лицензия
 

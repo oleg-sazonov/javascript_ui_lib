@@ -2,6 +2,36 @@
 
 import "./lib/lib";
 
+// Generic Carousel
+
+$().createCarousel({
+    images: [
+        "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
+        "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
+        "https://as1.ftcdn.net/jpg/05/35/43/12/1000_F_535431282_VhH2Uo9QfgdEvRQdxMbwgn70ZIWisCQh.jpg",
+    ],
+    autoplay: true,
+    duration: 3000,
+    containerSelector: ".secondContainer",
+    sliderId: "secondCarousel",
+    showDots: true,
+    showArrows: true,
+    stopAutoplayAtEnd: true,
+    carouselWidth: "700px",
+});
+
+// Accordion
+
+$(".accordion").delegate("click", ".accordion-head", function () {
+    console.log("Click on .child: ", this);
+});
+
+let t = 0;
+$(".accordion-head").hover(
+    () => console.log(t++),
+    () => console.log(t--)
+);
+
 $("nav")
     .createHamburger()
     .display("block")
@@ -53,35 +83,7 @@ $("#trigger").click(() =>
     })
 );
 
-// This call "$('.carousel')" works however '.carousel' isn't exist because prototype method is still available even if the NodeList is empty.
-// $('.carousel').createCarousel({
-//     images: [
-//         'https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/0cc642a1-acb5-4608-9d4b-dbef43553606/original=true,quality=90/00085-2378084303.jpeg',
-//         'https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/400c2aa5-4647-4714-94d8-ffaa9c56acd7/original=true,quality=90/00068-689895813.jpeg',
-//         'https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/062ec1ad-3fab-48d5-9e02-cce8fc6a6ccd/original=true,quality=90/00092-2318760738.jpeg',
-//     ],
-//     autoplay: true,
-//     duration: 3000,
-// 	selector: '.container',
-// 	sliderId: 'carousel'
-// });
-
-// add property arrowsOpacity: opacity: 0; -> opacity: 0.5;
-// add smooth scroll
-$().createCarousel({
-    images: [
-        "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
-        "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
-        "https://as1.ftcdn.net/jpg/05/35/43/12/1000_F_535431282_VhH2Uo9QfgdEvRQdxMbwgn70ZIWisCQh.jpg",
-    ],
-    autoplay: true,
-    duration: 3000,
-    selector: ".secondContainer",
-    sliderId: "secondCarousel",
-    showDots: true,
-    showArrows: true,
-    stopAutoplayAtEnd: true,
-});
+// Get request
 
 $()
     .get("https://jsonplaceholder.typicode.com/todos/1")
@@ -141,20 +143,6 @@ $(".form").toggleAttr("data-set");
 
 console.log($(".form").isVisible());
 $(".form").display("flex");
-
-// Accordion
-
-// $(".accordion").delegate("click", ".accordion-head", function () {
-//     console.log("Click on .child: ", this);
-// });
-
-// let t = 0;
-// $(".accordion-head").hover(
-//     () => console.log(t++),
-//     () => console.log(t--)
-// );
-
-// $(".accordion-head").accordion(undefined, undefined, 40);
 
 $(".tab-item").one("click", function () {
     console.log("Click on .tab-item: ", this);
