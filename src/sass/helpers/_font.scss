@@ -1,44 +1,168 @@
-@use '../general/variables';
+@use "../general/variables";
 
-.fz-12 {
-	font-size: 12px;
+// Font size utilities (px)
+@for $i from 10 through 30 {
+    .fz-#{$i} {
+        font-size: #{$i}px;
+    }
 }
-.fz-14 {
-	font-size: 14px;
+
+// Font size utilities (rem)
+//   @for $i from 1 through 3 {
+// 	@for $j from 0 through 9 {
+// 	  .fz-#{$i}-#{$j} {
+// 		font-size: #{$i}.#{$j}rem;
+// 	  }
+// 	}
+//   }
+
+// Font weight
+.fw-thin {
+    font-weight: 300;
 }
-.fz-16 {
-	font-size: 16px;
+.fw-light {
+    font-weight: 400;
 }
-.fz-18 {
-	font-size: 18px;
+.fw-medium {
+    font-weight: 500;
 }
-.fz-20 {
-	font-size: 20px;
+.fw-semibold {
+    font-weight: 600;
 }
-.fz-24 {
-	font-size: 24px;
+.fw-bold {
+    font-weight: 700;
 }
-.bold {
-	font-weight: bold;
+.fw-black {
+    font-weight: 900;
 }
-.thin {
-	font-weight: 300;
-}
+
+// Font style
 .italic {
-	font-style: italic;
+    font-style: italic;
 }
+.normal {
+    font-style: normal;
+}
+
+// Text transform
+.uppercase {
+    text-transform: uppercase;
+}
+.lowercase {
+    text-transform: lowercase;
+}
+.capitalize {
+    text-transform: capitalize;
+}
+
+// Text alignment
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.text-justify {
+    text-align: justify;
+}
+
+// Letter spacing
+.ls-tight {
+    letter-spacing: -0.5px;
+}
+.ls-normal {
+    letter-spacing: 0;
+}
+.ls-wide {
+    letter-spacing: 1px;
+}
+.ls-wider {
+    letter-spacing: 2px;
+}
+
+// Line height
+.lh-1 {
+    line-height: 1;
+}
+.lh-1-2 {
+    line-height: 1.2;
+}
+.lh-1-5 {
+    line-height: 1.5;
+}
+.lh-2 {
+    line-height: 2;
+}
+
+// Text colors
 .text-color-primary {
-	color: variables.$primary;
+    color: variables.$primary;
 }
 .text-color-success {
-	color: variables.$success;
+    color: variables.$success;
 }
 .text-color-danger {
-	color: variables.$danger;
+    color: variables.$danger;
 }
 .text-color-warning {
-	color: variables.$warning;
+    color: variables.$warning;
 }
 .text-color-dark {
-	color: variables.$dark;
+    color: variables.$dark;
+}
+.text-color-light {
+    color: variables.$light;
+}
+
+// Dark/Light Theme Support
+
+// .theme-dark {
+//     .text-color-primary {
+//         color: variables.$primary-dark;
+//     }
+//     .text-color-success {
+//         color: variables.$success-dark;
+//     }
+//     .text-color-danger {
+//         color: variables.$danger-dark;
+//     }
+//     .text-color-warning {
+//         color: variables.$warning-dark;
+//     }
+//     .text-color-dark {
+//         color: variables.$light;
+//     }
+//     .text-color-light {
+//         color: variables.$light;
+//     }
+//     .text-color-muted {
+//         color: variables.$gray-dark;
+//     }
+// }
+
+.theme-light {
+    .text-color-primary {
+        color: variables.$primary;
+    }
+    .text-color-success {
+        color: variables.$success;
+    }
+    .text-color-danger {
+        color: variables.$danger;
+    }
+    .text-color-warning {
+        color: variables.$warning;
+    }
+    .text-color-dark {
+        color: variables.$dark;
+    }
+    // .text-color-light {
+    //     color: variables.$gray-light;
+    // }
+    // .text-color-muted {
+    //     color: variables.$gray;
+    // }
 }

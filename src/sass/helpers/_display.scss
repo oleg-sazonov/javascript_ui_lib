@@ -1,33 +1,32 @@
-.hidden {
-	visibility: hidden;
-}
-.visible {
-	visibility: visible;
-}
+// Display utilities
 .d-none {
-	display: none;
+    display: none;
 }
+
+.d-inline {
+    display: inline;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
 .d-block {
-	display: block;
+    display: block;
 }
+
 .d-flex {
-	display: flex;
+    display: flex;
 }
-.f-centered {
-	justify-content: center;
-	align-items: center;
+
+.d-inline-flex {
+    display: inline-flex;
 }
-.f-left {
-	justify-content: left;
-	align-items: left;
+
+.d-grid {
+    display: grid;
 }
-.f-right {
-	justify-content: right;
-	align-items: right;
-}
-.f-space-around {
-	justify-content: space-around;
-}
-.f-space-between {
-	justify-content: space-between;
+
+.d-inline-grid {
+    display: inline-grid;
 }

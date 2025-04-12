@@ -1,6 +1,44 @@
-.text-center {
-	text-align: center;
+// Text alignment
+.text-left {
+    text-align: left;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+// Horizontal block alignment
+.block-left {
+    margin-right: auto;
+}
+
 .block-center {
-	margin: 0 auto;
+    margin: 0 auto;
+}
+
+.block-right {
+    margin-left: auto;
+}
+
+// Flex vertical alignment
+.v-align-middle {
+    display: flex;
+    align-items: center;
+}
+
+// Flex horizontal alignment
+.h-align-center {
+    display: flex;
+    justify-content: center;
+}
+
+// Full centering on both axes
+.centered-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

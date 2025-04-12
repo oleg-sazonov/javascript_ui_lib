@@ -1,0 +1,64 @@
+// Flex alignment shortcuts
+.f-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.f-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+// Flex direction
+.f-column {
+    flex-direction: column;
+}
+
+.f-row {
+    flex-direction: row;
+}
+
+// Flex wrap
+.f-wrap {
+    flex-wrap: wrap;
+}
+
+.f-nowrap {
+    flex-wrap: nowrap;
+}
+
+// Justify content
+.f-justify-start {
+    justify-content: flex-start;
+}
+.f-justify-center {
+    justify-content: center;
+}
+.f-justify-end {
+    justify-content: flex-end;
+}
+.f-justify-between {
+    justify-content: space-between;
+}
+.f-justify-around {
+    justify-content: space-around;
+}
+
+// Align items
+.f-align-start {
+    align-items: flex-start;
+}
+.f-align-center {
+    align-items: center;
+}
+.f-align-end {
+    align-items: flex-end;
+}

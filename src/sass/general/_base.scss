@@ -1,40 +1,65 @@
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+/* Light theme is default (no class needed) */
+:root {
+    --bg: #ffffff;
+    --text: #212529;
+    --text-secondary: #495057;
+    --border: #dee2e6;
+    --card: #f8f9fa;
+    transition: all 0.3s ease;
 }
 
-html {   
-	// add if scroll would have needed 
-	overflow-x: hidden; 
-	margin-right: calc(-1 * (100vw - 100%));
+/* Dark theme (applied via dark-theme class) */
+:root.dark-theme {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --text-secondary: #adb5bd;
+    --border: #333333;
+    --card: #1e1e1e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    // add if scroll would have needed
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
 }
 
 .container {
-	max-width: 1440px;
-	padding: 0px 15px;
-	margin: 0 auto;
-	margin-top: 52px;
+    max-width: 1440px;
+    padding: 0px 15px;
+    margin: 0 auto;
+    margin-top: 52px;
 }
 
 .secondContainer {
-	position: relative;
-	width: 100%;
-	padding: 0px 15px;
-	margin: 0 auto;
-	margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+    padding: 0px 15px;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 nav {
-	position: fixed;
-	width: 100%;
-	top: 0;
-	left: 0;
-	height: 55px;
-	background: #343a40;
-	z-index: 100;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 55px;
+    background: #343a40;
+    z-index: 100;
 }
 
 .modal-dialog {
-	margin-right: calc(-1 * (100vw - 100%));
+    margin-right: calc(-1 * (100vw - 100%));
 }

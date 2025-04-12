@@ -2,24 +2,6 @@
 
 import "./lib/lib";
 
-// Generic Carousel
-
-$().createCarousel({
-    images: [
-        "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
-        "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
-        "https://as1.ftcdn.net/jpg/05/35/43/12/1000_F_535431282_VhH2Uo9QfgdEvRQdxMbwgn70ZIWisCQh.jpg",
-    ],
-    autoplay: true,
-    duration: 3000,
-    containerSelector: ".secondContainer",
-    sliderId: "secondCarousel",
-    showDots: true,
-    showArrows: true,
-    stopAutoplayAtEnd: true,
-    carouselWidth: "700px",
-});
-
 // Accordion
 
 $(".accordion").delegate("click", ".accordion-head", function () {
@@ -31,6 +13,25 @@ $(".accordion-head").hover(
     () => console.log(t++),
     () => console.log(t--)
 );
+
+// Generic Carousel
+
+$().createCarousel({
+    images: [
+        "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
+        "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
+        "https://as1.ftcdn.net/jpg/05/35/43/12/1000_F_535431282_VhH2Uo9QfgdEvRQdxMbwgn70ZIWisCQh.jpg",
+    ],
+    autoplay: true,
+    duration: 2000,
+    containerSelector: ".secondContainer",
+    sliderId: "secondCarousel",
+    carouselWidth: "700px",
+    showDots: false,
+    showArrows: true,
+    stopAutoplayAtEnd: false,
+    arrowsOpacity: false,
+});
 
 $("nav")
     .createHamburger()
