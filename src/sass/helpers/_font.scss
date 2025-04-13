@@ -1,7 +1,7 @@
 @use "../general/variables";
 
 // Font size utilities (px)
-@for $i from 10 through 30 {
+@for $i from 4 through 60 {
     .fz-#{$i} {
         font-size: #{$i}px;
     }
@@ -117,32 +117,6 @@
     color: variables.$light;
 }
 
-// Dark/Light Theme Support
-
-// .theme-dark {
-//     .text-color-primary {
-//         color: variables.$primary-dark;
-//     }
-//     .text-color-success {
-//         color: variables.$success-dark;
-//     }
-//     .text-color-danger {
-//         color: variables.$danger-dark;
-//     }
-//     .text-color-warning {
-//         color: variables.$warning-dark;
-//     }
-//     .text-color-dark {
-//         color: variables.$light;
-//     }
-//     .text-color-light {
-//         color: variables.$light;
-//     }
-//     .text-color-muted {
-//         color: variables.$gray-dark;
-//     }
-// }
-
 .theme-light {
     .text-color-primary {
         color: variables.$primary;
@@ -159,10 +133,4 @@
     .text-color-dark {
         color: variables.$dark;
     }
-    // .text-color-light {
-    //     color: variables.$gray-light;
-    // }
-    // .text-color-muted {
-    //     color: variables.$gray;
-    // }
 }

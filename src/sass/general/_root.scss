@@ -1,0 +1,79 @@
+// sass/general/_root-colors.scss
+@use "sass:color";
+@use "./variables" as vars;
+
+:root {
+    /* ===== Core Colors ===== */
+    --primary: #1976ff;
+    --primary-light: #4d9eff;
+    --primary-bright: #0066ff;
+    --primary-brighter: #52a0ff;
+    --primary-dark: #0055cc;
+
+    /* ===== Neutral Palette ===== */
+    --bg: #ffffff; // Main background
+    --surface: #f8f9fa; // Cards, panels, surfaces
+    --hover: #e9ecef; // Interactive states
+    --border: #dee2e6; // Default borders
+    --border-light: #e9ecef; // Subtle borders
+    --border-dark: #ced4da; // Strong borders
+
+    /* ===== Text Hierarchy ===== */
+    --text: #212529; // Primary text
+    --text-soft: #495057; // Secondary text
+    --text-muted: #6c757d; // Disabled/tertiary text
+
+    /* ===== Brightness Spectrum ===== */
+    --bright-100: #ffffff;
+    --bright-90: #f8f9fa;
+    --bright-80: #e9ecef;
+    --bright-70: #dee2e6;
+    --bright-60: #ced4da;
+    --bright-50: #adb5bd;
+
+    /* ===== Status Colors ===== */
+    --success: #28a745;
+    --success-bright: #34ce57;
+    --warning: #ffc107;
+    --warning-bright: #ffd43b;
+    --danger: #dc3545;
+    --danger-bright: #ff3e4d;
+}
+
+/* ===== Dark Theme Overrides ===== */
+:root.dark-theme {
+    --primary: #4d9eff;
+    --primary-light: #66b0ff;
+    --primary-bright: #3a86ff;
+    --primary-brighter: #52a0ff;
+    --primary-dark: #2a6fd1;
+
+    /* ===== Neutrals ===== */
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --hover: #2d2d2d;
+    --border: rgba(255, 255, 255, 0.15);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --border-dark: rgba(255, 255, 255, 0.25);
+
+    /* ===== Text ===== */
+    --text: #f0f0f0;
+    --text-soft: #d1d1d1;
+    --text-muted: #adb5bd;
+
+    /* ===== Brightness ===== */
+    --bright-100: #ffffff;
+    --bright-90: #e0e0e0;
+    --bright-80: #b0b0b0;
+    --bright-70: #808080;
+    --bright-60: #505050;
+    --bright-50: #303030;
+
+    /* ===== Status ===== */
+    --success: #38c172;
+    --success-bright: #4ae38a;
+    --warning: #ffd43b;
+    --warning-bright: #ffe066;
+    --danger: #ff3e4d;
+    --danger-bright: #ff5c6c;
+}

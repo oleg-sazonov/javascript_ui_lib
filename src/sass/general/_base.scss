@@ -1,21 +1,5 @@
-/* Light theme is default (no class needed) */
-:root {
-    --bg: #ffffff;
-    --text: #212529;
-    --text-secondary: #495057;
-    --border: #dee2e6;
-    --card: #f8f9fa;
-    transition: all 0.3s ease;
-}
-
-/* Dark theme (applied via dark-theme class) */
-:root.dark-theme {
-    --bg: #121212;
-    --text: #e0e0e0;
-    --text-secondary: #adb5bd;
-    --border: #333333;
-    --card: #1e1e1e;
-}
+@use "sass:color";
+@use "../general/variables";
 
 * {
     box-sizing: border-box;

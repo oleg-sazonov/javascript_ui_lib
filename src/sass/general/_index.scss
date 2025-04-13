@@ -1,3 +1,8 @@
-@use './base';
-@use './typography';
-@use './variables';
+// @use './base';
+// @use './typography';
+// @use './variables';
+
+@forward "root";
+@forward "variables";
+@forward "typography";
+@forward "base";

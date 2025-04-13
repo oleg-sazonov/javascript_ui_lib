@@ -15,6 +15,7 @@ import "./components/carousel";
 import "./components/scrollUpBtn";
 import "./components/hamburger";
 import "./components/timer";
+import "./components/themeToggler";
 import "./services/requests";
 
 /**

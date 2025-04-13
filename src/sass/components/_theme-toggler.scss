@@ -1,0 +1,207 @@
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    font-size: 18px;
+
+    &:hover {
+        background: var(--hover);
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 50%;
+    }
+
+    &:hover::before {
+        opacity: 0.1;
+    }
+
+    .dark-theme & {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+        &:hover {
+            background: var(--hover);
+        }
+    }
+
+    & > span {
+        position: relative;
+        z-index: 1;
+        transition: transform 0.3s ease;
+    }
+
+    &.animating {
+        animation: pulse 0.5s ease;
+
+        & > span {
+            transform: scale(1.3);
+        }
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+// Базовые переменные
+// :root {
+//     --toggle-size: 50px;
+//     --toggle-margin: 20px;
+//     --animate-duration: 300ms;
+// }
+
+// // Основные стили
+// .theme-toggle {
+//     border: none;
+//     cursor: pointer;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     background: var(--surface);
+//     color: var(--text);
+//     transition: all 0.3s ease;
+//     position: relative;
+//     overflow: hidden;
+
+//     // Размеры
+//     &--small {
+//         --toggle-size: 40px;
+//         font-size: 1rem;
+//     }
+
+//     &--medium {
+//         --toggle-size: 50px;
+//         font-size: 1.25rem;
+//     }
+
+//     &--large {
+//         --toggle-size: 60px;
+//         font-size: 1.5rem;
+//     }
+
+//     // Формы
+//     &--circle {
+//         width: var(--toggle-size);
+//         height: var(--toggle-size);
+//         border-radius: 50%;
+//     }
+
+//     &--square {
+//         width: var(--toggle-size);
+//         height: var(--toggle-size);
+//         border-radius: 4px;
+//     }
+
+//     &--rectangle {
+//         width: calc(var(--toggle-size) * 1.5);
+//         height: var(--toggle-size);
+//         border-radius: calc(var(--toggle-size) / 2);
+//         padding: 0 15px;
+//     }
+
+//     // Позиционирование
+//     &--fixed {
+//         position: fixed;
+//         z-index: 1000;
+
+//         &[data-position="top-left"] {
+//             top: var(--toggle-margin);
+//             left: var(--toggle-margin);
+//         }
+
+//         &[data-position="top-right"] {
+//             top: var(--toggle-margin);
+//             right: var(--toggle-margin);
+//         }
+
+//         &[data-position="bottom-left"] {
+//             bottom: var(--toggle-margin);
+//             left: var(--toggle-margin);
+//         }
+
+//         &[data-position="bottom-right"] {
+//             bottom: var(--toggle-margin);
+//             right: var(--toggle-margin);
+//         }
+
+//         &[data-position="center"] {
+//             top: 50%;
+//             left: 50%;
+//             transform: translate(-50%, -50%);
+//         }
+//     }
+
+//     &--inline {
+//         position: static;
+//         display: inline-flex;
+//     }
+
+//     // Анимация
+//     &--active {
+//         animation: pulse var(--animate-duration) ease;
+
+//         .theme-icon {
+//             transform: scale(1.3);
+//         }
+//     }
+
+//     // Иконка
+//     .theme-icon {
+//         transition: transform var(--animate-duration) ease;
+//     }
+
+//     // Состояния
+//     &:hover {
+//         background: var(--hover);
+//         transform: scale(1.05);
+//     }
+
+//     &:active {
+//         transform: scale(0.95);
+//     }
+// }
+
+// @keyframes pulse {
+//     0% {
+//         transform: scale(1);
+//     }
+//     50% {
+//         transform: scale(1.1);
+//     }
+//     100% {
+//         transform: scale(1);
+//     }
+// }
