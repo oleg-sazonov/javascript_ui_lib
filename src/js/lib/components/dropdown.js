@@ -1,23 +1,23 @@
-'use strict';
+"use strict";
 
-import $ from '../core';
+import $ from "../core";
 
 // Show/hide dropdown by click
-$.prototype.dropdownByClick = function() {
-	for (let i = 0; i < this.length; i++) {
-		const id = this[i].getAttribute('id');
-		$(this[i]).click(() => {
-			$(`[data-toggle-id="${id}"]`).fadeToggle(300);
-		});
-	}
-}
+$.prototype.dropdownByClick = function () {
+    for (let i = 0; i < this.length; i++) {
+        const id = this[i].getAttribute("id");
+        $(this[i]).click(() => {
+            $(`[data-toggle-id="${id}"]`).fadeToggle(300);
+        });
+    }
+};
 
 // Show/hide dropdown by mouseenter/mouseleave
-$.prototype.dropdownByHover = function() {
+$.prototype.dropdownByHover = function () {
     for (let i = 0; i < this.length; i++) {
-        const id = this[i].getAttribute('id');
+        const id = this[i].getAttribute("id");
         const dropdown = $(`[data-toggle-id="${id}"]`);
-        const parent = this[i].closest('.dropdown'); // Parent dropdown container
+        const parent = this[i].closest(".dropdown"); // Parent dropdown container
         let timeout;
 
         // Show dropdown menu
@@ -38,10 +38,10 @@ $.prototype.dropdownByHover = function() {
         };
 
         // Attach events to the parent container
-        $(parent).on('mouseenter', showDropdown);
-        $(parent).on('mouseleave', hideDropdown);
+        $(parent).on("mouseenter", showDropdown);
+        $(parent).on("mouseleave", hideDropdown);
     }
-}
+};
 
-$('.dropdown-toggle').dropdownByHover();
-$('.dropdown-toggle').dropdownByClick();
+$(".dropdown-toggle").dropdownByHover();
+$(".dropdown-toggle").dropdownByClick();

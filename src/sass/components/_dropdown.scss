@@ -1,43 +1,54 @@
-@use 'sass:color';
-@use '../general/variables';
-
 .dropdown {
-	position: relative;
-	display: inline-block;
-	&-toggle {
-		&::after {
-			content: '';
-			display: inline-block;
-			margin-left: 5px;
-			vertical-align: 3px;
-			border-top: 4px solid;
-			border-right: 4px solid transparent;
-			border-bottom: 0;
-			border-left: 4px solid transparent;
-		}
-	}
-	&-menu {
-		position: absolute;
-		top: 100%;
-		left: 0;
-		z-index: 100;
-		display: none;
-		border: 1px solid rgba(0,0,0, .15);
-		border-radius: 2px;
-		background-color: #fff;
-		min-width: 100%;
-		padding: 10px 0;
-	}
-	&-item {
-		display: block;
-		width: 100%;
-		padding: 7px 10px;
-		color: variables.$dark;
-		background-color: transparent;
-		border: 0;
-		text-decoration: none;
-		&:hover {
-			background-color: rgba(0,0,0, .05);
-		}
-	}
+    position: relative;
+    display: inline-block;
+
+    &-toggle {
+        &::after {
+            content: "";
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: 3px;
+            border-top: 4px solid currentColor;
+            border-right: 4px solid transparent;
+            border-bottom: 0;
+            border-left: 4px solid transparent;
+            transition: transform 0.2s ease;
+        }
+    }
+
+    &-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 100;
+        display: none;
+        min-width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        background-color: var(--surface);
+        padding: 8px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+        .dark-theme & {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    &-item {
+        display: block;
+        width: 100%;
+        padding: 8px 16px;
+        color: var(--text-soft);
+        background-color: transparent;
+        border: 0;
+        text-decoration: none;
+        text-align: left;
+        transition: all 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--hover);
+            // color: var(--primary);
+        }
+    }
 }

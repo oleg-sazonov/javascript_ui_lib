@@ -88,3 +88,9 @@
         //   }
     }
 }
+
+@media (max-width: 768px) {
+    .carousel {
+        width: 500px !important;
+    }
+}
