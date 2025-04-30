@@ -1,49 +1,90 @@
-@use 'sass:color';
-@use '../general/variables';
-
 .modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 200;
-	display: none;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	background-color: rgba(0,0,0, .5);
-	&-dialog {
-		max-width: 500px;
-		margin: 40px auto;
-	}
-	&-content {
-		position: relative;
-		width: 100%;
-		background-color: #fff;
-		border: 1px solid rgba(0,0,0, .2);
-		border-radius: 4px;
-		max-height: 80vh;
-		overflow-y: auto;
-		.close {
-			position: absolute;
-			top: 10px;
-			right: 14px;
-			font-size: 30px;
-			color: variables.$dark;
-			font-weight: 700;
-			border: none;
-			background-color: transparent;
-			cursor: pointer;
-		}
-	}
-	&-header, &-body {
-		padding: 15px;
-		border-bottom: 1px solid #dee2e6;
-	}
-	&-title {
-		font-weight: 500;
-		font-size: 20px;
-	}
-	&-footer {
-		padding: 15px;
-	}
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease;
+
+    &-dialog {
+        max-width: 500px;
+        margin: 40px auto;
+    }
+
+    &-content {
+        position: relative;
+        width: 100%;
+        background-color: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+
+        .dark-theme & {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 4px;
+            right: 13px;
+            font-size: 30px;
+            color: var(--text-muted);
+            font-weight: 700;
+            border: none;
+            opacity: 0.6;
+            background-color: transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+                color: var(--danger);
+                opacity: 0.9;
+                text-decoration: none;
+            }
+
+            span {
+                display: inline-block;
+                transition: transform 0.2s ease;
+            }
+            &:hover span {
+                transform: scale(1.1);
+            }
+        }
+    }
+    &-header {
+        padding: 15px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    &-body {
+        padding: 15px;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        color: var(--text-soft);
+    }
+    &-title {
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 0;
+        line-height: 1.5;
+        color: var(--text);
+    }
+    &-footer {
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 2px;
+    }
 }
