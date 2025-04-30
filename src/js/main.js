@@ -9,13 +9,31 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Click on .child: ", this);
     });
 
-    let t = 0;
-    $(".accordion-head").hover(
-        () => console.log(t++),
-        () => console.log(t--)
-    );
+    // let t = 0;
+    // $(".accordion-head").hover(
+    //     () => console.log(t++),
+    //     () => console.log(t--)
+    // );
 
     // Generic Carousel
+
+    // $().createCarousel({
+    //     images: [
+    //         "https://shikimori.one/system/screenshots/original/14ab4a93d712ae28e62481cd89d3bdd8ef4df2eb.jpg?1712767055",
+    //         "https://shikimori.one/system/screenshots/original/eb043fb026c0ccf012d759210769273c70b357e0.jpg?1712767056",
+    //         "https://shikimori.one/system/screenshots/original/0a9843c8c5cda1296d2d2d3968dd65af5f74462b.jpg?1712767058",
+    //     ],
+    //     autoplay: false,
+    //     duration: 2000,
+    //     containerSelector: ".card-carousel",
+    //     sliderId: "thirdCarousel",
+    //     carouselWidth: "350px",
+    //     carouselHeight: "300px",
+    //     showDots: true,
+    //     showArrows: true,
+    //     stopAutoplayAtEnd: false,
+    //     arrowsOpacity: true,
+    // });
 
     $().createCarousel({
         images: [
@@ -28,11 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
         containerSelector: ".secondContainer",
         sliderId: "secondCarousel",
         carouselWidth: "700px",
+        carouselHeight: "500px",
         showDots: false,
         showArrows: true,
         stopAutoplayAtEnd: false,
         arrowsOpacity: false,
     });
+
+    //Hamburger
 
     $("nav")
         .createHamburger()
@@ -53,6 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".btn-warning").click(() => {
         $(".w-500px").fadeToggle(900);
     });
+
+    // Generic modal-window
 
     $("#trigger").click(() =>
         $("#trigger").createModal({

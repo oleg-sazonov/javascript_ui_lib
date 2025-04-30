@@ -28,6 +28,7 @@ import $ from "../core";
  * @returns {void}
  */
 
+// carousel-inner height -> to dynamic change height
 $.prototype.createCarousel = function ({
     images = [],
     autoplay = true,
@@ -49,6 +50,7 @@ $.prototype.createCarousel = function ({
     arrowsOpacity = true,
     stopAutoplayAtEnd = false,
     carouselWidth = "900px",
+    carouselHeight = "500px",
 } = {}) {
     // Validate container selector
 
@@ -68,6 +70,11 @@ $.prototype.createCarousel = function ({
     carousel.classList.add("carousel");
     carousel.setAttribute("id", sliderId);
     carousel.style.width = carouselWidth;
+    // carousel.style.height = carouselHeight;
+
+    // // const carouselInner = document.querySelector(`#${sliderId}`);
+    // const carouselInner = document.querySelector(".carousel-inner");
+    // carouselInner.style.height = carouselHeight;
 
     // Create indicators if showDots is true
     if (showDots) {
