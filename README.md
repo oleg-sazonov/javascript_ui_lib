@@ -239,6 +239,7 @@ $().createCarousel({
     containerSelector: ".container",
     sliderId: "carousel",
     carouselWidth: "700px",
+    carouselHeight: "400px",
     showDots: true,
     showArrows: true,
     stopAutoplayAtEnd: true,
@@ -257,6 +258,7 @@ $().createCarousel({
 | `containerSelector` | `string`   | `'body'`     | Куда вставлять HTML слайдера     |
 | `sliderId`          | `string`   | `'carousel'` | Уникальный ID для слайдера       |
 | `carouselWidth`     | `string`   | `'900px'`    | Ширина компонента карусели.      |
+| `carouselHeight`    | `string`   | `'500px'`    | Высота компонента карусели.      |
 | `showDots`          | `boolean`  | `true`       | Показывать индикаторы (точки)    |
 | `showArrows`        | `boolean`  | `true`       | Показывать стрелки               |
 | `arrowsOpacity`     | `boolean`  | `true`       | Управлять прозрачностью стрелок  |

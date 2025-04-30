@@ -21,6 +21,7 @@ import $ from "../core";
  * @param {string} [options.containerSelector='body'] - CSS-селектор контейнера, куда будет вставлена карусель.
  * @param {string} [options.sliderId='carousel'] - Уникальный ID карусели.
  * @param {string} [options.carouselWidth='900px'] - Ширина компонента карусели.
+ * @param {string} [options.carouselHeight='500px'] - Высота компонента карусели.
  * @param {boolean} [options.showDots=true] - Показывать индикаторы (точки).
  * @param {boolean} [options.showArrows=true] - Показывать стрелки навигации.
  * @param {boolean} [options.arrowsOpacity=true] - Управлять прозрачностью стрелок.
@@ -28,7 +29,6 @@ import $ from "../core";
  * @returns {void}
  */
 
-// carousel-inner height -> to dynamic change height
 $.prototype.createCarousel = function ({
     images = [],
     autoplay = true,
@@ -70,11 +70,6 @@ $.prototype.createCarousel = function ({
     carousel.classList.add("carousel");
     carousel.setAttribute("id", sliderId);
     carousel.style.width = carouselWidth;
-    // carousel.style.height = carouselHeight;
-
-    // // const carouselInner = document.querySelector(`#${sliderId}`);
-    // const carouselInner = document.querySelector(".carousel-inner");
-    // carouselInner.style.height = carouselHeight;
 
     // Create indicators if showDots is true
     if (showDots) {
@@ -134,6 +129,10 @@ $.prototype.createCarousel = function ({
 
     const target = document.querySelector(containerSelector) || document.body;
     target.appendChild(carousel);
+
+    // Update the carousel width
+    const targetCarousel = document.querySelector(`#${sliderId}`);
+    targetCarousel.lastElementChild.style.height = carouselHeight;
 
     // Initialize the carousel functionality
     $(carousel).carousel({
