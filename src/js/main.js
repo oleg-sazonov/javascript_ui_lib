@@ -17,25 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Generic Carousel
 
-    $().createCarousel({
+    $(".card-carousel").createCarousel({
         images: [
             "https://shikimori.one/system/screenshots/original/14ab4a93d712ae28e62481cd89d3bdd8ef4df2eb.jpg?1712767055",
             "https://shikimori.one/system/screenshots/original/eb043fb026c0ccf012d759210769273c70b357e0.jpg?1712767056",
             "https://shikimori.one/system/screenshots/original/0a9843c8c5cda1296d2d2d3968dd65af5f74462b.jpg?1712767058",
         ],
+        width: "350px",
+        height: "300px",
         autoplay: false,
-        duration: 2000,
-        containerSelector: ".card-carousel",
-        sliderId: "thirdCarousel",
-        carouselWidth: "350px",
-        carouselHeight: "300px",
-        showDots: true,
-        showArrows: true,
-        stopAutoplayAtEnd: false,
-        arrowsOpacity: true,
     });
 
-    $().createCarousel({
+    $(".secondContainer").createCarousel({
         images: [
             "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
             "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
@@ -43,14 +36,47 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
         autoplay: true,
         duration: 2000,
-        containerSelector: ".secondContainer",
-        sliderId: "secondCarousel",
-        carouselWidth: "700px",
-        carouselHeight: "500px",
+        width: "700px",
+        height: "500px",
         showDots: false,
-        showArrows: true,
-        stopAutoplayAtEnd: false,
+        showArrows: false,
+        stopAutoplayAtEnd: true,
         arrowsOpacity: false,
+    });
+
+    // Generic modal-window
+
+    $("#trigger").click(() => {
+        if (!document.querySelector(".modal")) {
+            $("#trigger").createModal({
+                text: {
+                    title: "Modal title",
+                    body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque a temporibus perspiciatis quos vero, labore sed aspernatur aut est eaque blanditiis officia repudiandae culpa vel, nemo quis quisquam soluta nesciunt?",
+                },
+                btns: {
+                    count: 3,
+                    settings: [
+                        ["Close", ["btn-danger", "mr-10"], true],
+                        [
+                            "Save changes",
+                            ["btn-success"],
+                            false,
+                            () => {
+                                alert("Data has saved");
+                            },
+                        ],
+                        [
+                            "Like",
+                            ["btn-primary", "ml-10"],
+                            false,
+                            () => {
+                                alert("Liked");
+                            },
+                        ],
+                    ],
+                },
+            });
+        }
     });
 
     //Hamburger
@@ -74,39 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".btn-warning").click(() => {
         $(".w-500px").fadeToggle(900);
     });
-
-    // Generic modal-window
-
-    $("#trigger").click(() =>
-        $("#trigger").createModal({
-            text: {
-                title: "Modal title",
-                body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque a temporibus perspiciatis quos vero, labore sed aspernatur aut est eaque blanditiis officia repudiandae culpa vel, nemo quis quisquam soluta nesciunt?",
-            },
-            btns: {
-                count: 3,
-                settings: [
-                    ["Close", ["btn-danger", "mr-10"], true],
-                    [
-                        "Save changes",
-                        ["btn-success"],
-                        false,
-                        () => {
-                            alert("Data has saved");
-                        },
-                    ],
-                    [
-                        "Like",
-                        ["btn-primary", "ml-10"],
-                        false,
-                        () => {
-                            alert("Liked");
-                        },
-                    ],
-                ],
-            },
-        })
-    );
 
     // Get request
 
@@ -175,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //Timer
 
-    $(".timer-container").createTimer("2025-04-31");
+    $(".timer-container").createTimer("2026-04-31");
     // $('.timer').timer('2025-04-31');
 
     // Theme toggler with custom element

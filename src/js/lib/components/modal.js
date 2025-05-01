@@ -7,6 +7,7 @@ const animateDuration = 400;
 $.prototype.modal = function (created) {
     for (let i = 0; i < this.length; i++) {
         const target = this[i].getAttribute("data-target");
+        console.log(target);
         $(this[i]).click((e) => {
             e.preventDefault();
             $(target).fadeIn(animateDuration);
