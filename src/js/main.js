@@ -17,22 +17,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Generic Carousel
 
-    $(".card-carousel").createCarousel({
-        images: [
-            "https://shikimori.one/system/screenshots/original/14ab4a93d712ae28e62481cd89d3bdd8ef4df2eb.jpg?1712767055",
-            "https://shikimori.one/system/screenshots/original/eb043fb026c0ccf012d759210769273c70b357e0.jpg?1712767056",
-            "https://shikimori.one/system/screenshots/original/0a9843c8c5cda1296d2d2d3968dd65af5f74462b.jpg?1712767058",
-        ],
-        width: "350px",
-        height: "300px",
-        autoplay: false,
-    });
+    // $(".card-carousel").createCarousel({
+    //     images: [
+    //         {
+    //             src: "https://shikimori.one/system/screenshots/original/14ab4a93d712ae28e62481cd89d3bdd8ef4df2eb.jpg?1712767055",
+    //             alt: "anime girl",
+    //         },
+    //         {
+    //             src: "https://shikimori.one/system/screenshots/original/eb043fb026c0ccf012d759210769273c70b357e0.jpg?1712767056",
+    //             alt: "anime girl",
+    //         },
+    //         {
+    //             src: "https://shikimori.one/system/screenshots/original/0a9843c8c5cda1296d2d2d3968dd65af5f74462b.jpg?1712767058",
+    //             alt: "two anime characters",
+    //         },
+    //     ],
+    //     width: "350px",
+    //     height: "300px",
+    //     autoplay: false,
+    // });
 
     $(".secondContainer").createCarousel({
         images: [
-            "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
-            "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
-            "https://as1.ftcdn.net/jpg/05/35/43/12/1000_F_535431282_VhH2Uo9QfgdEvRQdxMbwgn70ZIWisCQh.jpg",
+            {
+                src: "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
+                alt: "some pic",
+            },
+            {
+                src: "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
+                alt: "some pic",
+            },
+            {
+                src: "https://as1.ftcdn.net/jpg/05/35/43/12/1000_F_535431282_VhH2Uo9QfgdEvRQdxMbwgn70ZIWisCQh.jpg",
+                alt: "some pic",
+            },
         ],
         autoplay: true,
         duration: 2000,

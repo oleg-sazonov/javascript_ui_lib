@@ -72,12 +72,16 @@ $.prototype.createCarousel = function (options = {}) {
         // Slides
         const slides = document.createElement("div");
         slides.classList.add("carousel-slides");
-        settings.images.forEach((src, index) => {
+        settings.images.forEach((image, index) => {
             const item = document.createElement("div");
             item.classList.add("carousel-item");
             if (index === 0) item.classList.add("active");
+
             const img = document.createElement("img");
-            img.setAttribute("src", src);
+            img.setAttribute("src", image.src);
+            img.setAttribute("alt", image.alt || "picture");
+            img.setAttribute("loading", "lazy");
+
             item.appendChild(img);
             slides.appendChild(item);
         });
