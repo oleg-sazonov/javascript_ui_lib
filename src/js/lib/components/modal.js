@@ -17,27 +17,35 @@ $.prototype.modal = function (created) {
         const closeElements = document.querySelectorAll(
             `${target} [data-close]`
         );
+
+        const closeHandler = () => {
+            $(target).fadeOut(animateDuration);
+            document.body.style.overflow = "";
+            if (created) {
+                setTimeout(() => {
+                    document.querySelector(target).remove();
+                }, animateDuration + 1);
+            }
+        };
+
         closeElements.forEach((elem) => {
             $(elem).click(() => {
-                $(target).fadeOut(animateDuration);
-                document.body.style.overflow = "";
-                if (created) {
-                    setTimeout(() => {
-                        document.querySelector(target).remove();
-                    }, animateDuration + 1);
-                }
+                closeHandler();
             });
         });
 
+        const escHandler = (e) => {
+            if (e.key === "Escape") {
+                closeHandler();
+                document.removeEventListener("keydown", escHandler);
+            }
+        };
+
+        document.addEventListener("keydown", escHandler);
+
         $(target).click((e) => {
             if (e.target.classList.contains("modal")) {
-                $(target).fadeOut(animateDuration);
-                document.body.style.overflow = "";
-                if (created) {
-                    setTimeout(() => {
-                        document.querySelector(target).remove();
-                    }, animateDuration + 1);
-                }
+                closeHandler();
             }
         });
     }
@@ -82,9 +90,7 @@ $.prototype.createModal = function ({ text, btns } = {}) {
 							${title}
 						</h4>
 					</div>
-					<div class="modal-body">
-						${body}
-					</div>
+					<div class="modal-body" id="modal-body-slot"></div>
 					<div class="modal-footer">
 
 					</div>
@@ -92,9 +98,35 @@ $.prototype.createModal = function ({ text, btns } = {}) {
 			</div>
 		`;
 
+        const bodyContainer = modal.querySelector("#modal-body-slot");
+
+        if (body instanceof HTMLElement) {
+            bodyContainer.append(body);
+        } else if (typeof body === "string") {
+            bodyContainer.innerHTML = body;
+        }
+
         modal.querySelector(".modal-footer").append(...buttons);
-        document.body.append(modal);
+
+        const modalScript = document.querySelector("body script:last-of-type");
+        document.body.insertBefore(modal, modalScript);
+
+        // document.body.append(modal);
         $(this[i]).modal(true);
-        $(this[i].getAttribute("data-target")).fadeIn(animateDuration);
+        // $(this[i].getAttribute("data-target")).fadeIn(animateDuration);
+
+        const modalTarget = this[i].getAttribute("data-target");
+        $(modalTarget).fadeIn(animateDuration);
+
+        setTimeout(() => {
+            document
+                .querySelectorAll(`${modalTarget} .carousel`)
+                .forEach((el) => {
+                    if (!el.dataset.carouselReady) {
+                        $(el).carousel();
+                        el.dataset.carouselReady = "true";
+                    }
+                });
+        }, animateDuration + 10);
     }
 };

@@ -17,6 +17,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Generic Carousel
 
+    const myCarousel = document.createElement("div");
+    myCarousel.classList.add("modal-carousel");
+
+    $(myCarousel).createCarousel({
+        images: [
+            {
+                src: "https://shikimori.one/system/screenshots/original/14ab4a93d712ae28e62481cd89d3bdd8ef4df2eb.jpg?1712767055",
+                alt: "anime girl",
+            },
+            {
+                src: "https://shikimori.one/system/screenshots/original/eb043fb026c0ccf012d759210769273c70b357e0.jpg?1712767056",
+                alt: "anime girl",
+            },
+            {
+                src: "https://shikimori.one/system/screenshots/original/0a9843c8c5cda1296d2d2d3968dd65af5f74462b.jpg?1712767058",
+                alt: "two anime characters",
+            },
+        ],
+        width: "450px",
+        height: "300px",
+        autoplay: true,
+    });
+
     $(".card-carousel").createCarousel({
         images: [
             {
@@ -34,7 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
         width: "350px",
         height: "300px",
-        autoplay: false,
+        autoplay: true,
+        stopAutoplayAtEnd: true,
     });
 
     $(".secondContainer").createCarousel({
@@ -70,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
             $(e.target).createModal({
                 text: {
                     title: "Aqua title",
-                    body: "Lorem ipsum dolor worship in Aqua my boy",
+                    body: myCarousel,
                 },
                 btns: {
                     count: 3,
