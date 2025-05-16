@@ -165,24 +165,28 @@ $(".accordion-head").hover(
 );
 ```
 
-# 🖼 Carousel Component
+### 🖼 Carousel Component
 
 Универсальный компонент карусели на JavaScript, с поддержкой:
 
 -   Автопрокрутки
 -   Переключения по стрелкам и точкам
--   Кастомизации стрелок, стилей и поведения
+-   Кастомизации стрелок, размеров и поведения
+-   Динамического создания HTML-структуры
+-   Ленивая загрузка изображений (`loading="lazy"`)
 
 ---
 
 #### 📦 Что нужно для использования:
 
-1. Добавьте HTML-структуру (пример ниже) или создайте карусель динамически с помощью createCarousel()
-2. Используйте строго указанные классы (`carousel`, `carousel-indicators`, `carousel-inner`, `carousel-slides`, `carousel-item`, `carousel-prev`, `carousel-next`, `carousel-prev-icon`, `carousel-next-icon`)
-3. Можно назначить вспомогательные классы, например: `mt-20 mb-20 block-center`
-4. Скрипт работает **автоматически** при подключении `accordion.js`
+1. Добавьте HTML-структуру вручную (пример ниже) или создайте карусель динамически через `createCarousel()`
+2. Используйте строго указанные классы:  
+   `carousel`, `carousel-indicators`, `carousel-inner`, `carousel-slides`, `carousel-item`, `carousel-prev`, `carousel-next`, `carousel-prev-icon`, `carousel-next-icon`
+3. Скрипт работает **автоматически** при подключении `carousel.js`
 
-### 1. HTML-разметка
+---
+
+### 1. HTML-разметка (ручная)
 
 ```html
 <div class="carousel" id="carousel">
@@ -191,16 +195,16 @@ $(".accordion-head").hover(
         <li data-slide-to="1"></li>
         <li data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner mb-20">
+    <div class="carousel-inner">
         <div class="carousel-slides">
-            <div class="carousel-item">
-                <img src="img1.jpg" alt="slide1" />
+            <div class="carousel-item active">
+                <img src="img1.jpg" alt="Slide 1" loading="lazy" />
             </div>
             <div class="carousel-item">
-                <img src="img2.jpg" alt="slide2" />
+                <img src="img2.jpg" alt="Slide 2" loading="lazy" />
             </div>
             <div class="carousel-item">
-                <img src="img3.jpg" alt="slide3" />
+                <img src="img3.jpg" alt="Slide 3" loading="lazy" />
             </div>
         </div>
     </div>
@@ -213,9 +217,7 @@ $(".accordion-head").hover(
 </div>
 ```
 
-#### 📜 Автоматическая инициализация:
-
-Файл `carousel.js` содержит автоинициализацию:
+#### 📜 Автоинициализация
 
 ```js
 $(".carousel").carousel();
@@ -223,46 +225,53 @@ $(".carousel").carousel();
 
 ---
 
-### 2. Инициализация слайдера
+### 2. Создание динамической карусели
 
-Создай динамическую карусель:
+Карусель будет помещена в указанный контейнер:
 
 ```js
-$().createCarousel({
+$(".card-carousel").createCarousel({
     images: [
-        "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
-        "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
-        "https://as1.ftcdn.net/jpg/05/35/43/12/1000_F_535431282_VhH2Uo9QfgdEvRQdxMbwgn70ZIWisCQh.jpg",
+        {
+            src: "https://example.com/image1.jpg",
+            alt: "First slide",
+        },
+        {
+            src: "https://example.com/image2.jpg",
+            alt: "Second slide",
+        },
+        {
+            src: "https://example.com/image3.jpg",
+            alt: "Third slide",
+        },
     ],
-    autoplay: true,
-    duration: 3000,
-    containerSelector: ".container",
-    sliderId: "carousel",
-    carouselWidth: "700px",
-    carouselHeight: "400px",
+    width: "350px",
+    height: "300px",
+    autoplay: false,
     showDots: true,
     showArrows: true,
-    stopAutoplayAtEnd: true,
+    arrowsOpacity: true,
+    stopAutoplayAtEnd: false,
 });
 ```
 
 ---
 
-## ⚙️ Настройки
+### ⚙️ Параметры (для `createCarousel` и `carousel`)
 
-| Параметр            | Тип        | По умолчанию | Описание                         |
-| ------------------- | ---------- | ------------ | -------------------------------- |
-| `images`            | `string[]` | `[]`         | Массив изображений               |
-| `autoplay`          | `boolean`  | `true`       | Включить автопрокрутку           |
-| `duration`          | `number`   | `3000`       | Интервал между слайдами (мс)     |
-| `containerSelector` | `string`   | `'body'`     | Куда вставлять HTML слайдера     |
-| `sliderId`          | `string`   | `'carousel'` | Уникальный ID для слайдера       |
-| `carouselWidth`     | `string`   | `'900px'`    | Ширина компонента карусели.      |
-| `carouselHeight`    | `string`   | `'500px'`    | Высота компонента карусели.      |
-| `showDots`          | `boolean`  | `true`       | Показывать индикаторы (точки)    |
-| `showArrows`        | `boolean`  | `true`       | Показывать стрелки               |
-| `arrowsOpacity`     | `boolean`  | `true`       | Управлять прозрачностью стрелок  |
-| `stopAutoplayAtEnd` | `boolean`  | `false`      | Остановить автопрокрутку в конце |
+| Параметр            | Тип        | По умолчанию | Описание                                                                 |
+| ------------------- | ---------- | ------------ | ------------------------------------------------------------------------ |
+| `images`            | `object[]` | `[]`         | Массив объектов `{ src, alt }` для изображений                           |
+| `autoplay`          | `boolean`  | `true`       | Автоматическое перелистывание слайдов                                    |
+| `duration`          | `number`   | `3000`       | Интервал между слайдами (в миллисекундах)                                |
+| `width`             | `string`   | `'900px'`    | Ширина карусели                                                          |
+| `height`            | `string`   | `'500px'`    | Высота блока `.carousel-inner`                                           |
+| `prevArrow`         | `string`   | SVG иконка   | HTML-код кастомной стрелки "назад"                                       |
+| `nextArrow`         | `string`   | SVG иконка   | HTML-код кастомной стрелки "вперёд"                                      |
+| `showDots`          | `boolean`  | `true`       | Показывать индикаторы (точки)                                            |
+| `showArrows`        | `boolean`  | `true`       | Показывать стрелки                                                       |
+| `arrowsOpacity`     | `boolean`  | `true`       | Управлять прозрачностью стрелок (если `false`, стрелки всегда прозрачны) |
+| `stopAutoplayAtEnd` | `boolean`  | `false`      | Остановить автопрокрутку на последнем слайде                             |
 
 ---
 
