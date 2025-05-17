@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         width: "450px",
         height: "300px",
         autoplay: true,
+        stopAutoplayIfHover: false,
     });
 
     $(".card-carousel").createCarousel({

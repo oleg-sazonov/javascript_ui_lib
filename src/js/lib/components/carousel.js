@@ -21,6 +21,7 @@ $.prototype.createCarousel = function (options = {}) {
         showArrows: true,
         arrowsOpacity: true,
         stopAutoplayAtEnd: false,
+        stopAutoplayIfHover: true,
         width: "900px",
         height: "500px",
     };
@@ -124,6 +125,7 @@ $.prototype.createCarousel = function (options = {}) {
             showArrows: settings.showArrows,
             arrowsOpacity: settings.arrowsOpacity,
             stopAutoplayAtEnd: settings.stopAutoplayAtEnd,
+            stopAutoplayIfHover: settings.stopAutoplayIfHover,
         });
 
         // Check if it is visible and initialize it if it is already visible
@@ -162,6 +164,7 @@ $.prototype.carousel = function (options = {}) {
             showArrows: true,
             arrowsOpacity: true,
             stopAutoplayAtEnd: false,
+            stopAutoplayIfHover: true,
             ...datasetOptions,
             ...options,
         };
@@ -291,13 +294,15 @@ $.prototype.carousel = function (options = {}) {
         }
 
         // Mouse events with reference storage
-        carousel._stopAutoplay = () => stopAutoplay();
-        carousel._startAutoplay = () => {
-            if (!reachedLastSlide) startAutoplay();
-        };
+        if (settings.stopAutoplayIfHover) {
+            carousel._stopAutoplay = () => stopAutoplay();
+            carousel._startAutoplay = () => {
+                if (!reachedLastSlide) startAutoplay();
+            };
 
-        carousel.addEventListener("mouseenter", carousel._stopAutoplay);
-        carousel.addEventListener("mouseleave", carousel._startAutoplay);
+            carousel.addEventListener("mouseenter", carousel._stopAutoplay);
+            carousel.addEventListener("mouseleave", carousel._startAutoplay);
+        }
 
         // Mark as initialized
         carousel.dataset.carouselInitialized = "true";
@@ -339,9 +344,16 @@ $.prototype.destroyCarousel = function () {
                 }
             });
 
-            carousel.removeEventListener("mouseenter", carousel._stopAutoplay);
-            carousel.removeEventListener("mouseleave", carousel._startAutoplay);
-
+            if (carousel._stopAutoplay && carousel._startAutoplay) {
+                carousel.removeEventListener(
+                    "mouseenter",
+                    carousel._stopAutoplay
+                );
+                carousel.removeEventListener(
+                    "mouseleave",
+                    carousel._startAutoplay
+                );
+            }
             // Clean up references
             delete carousel.dataset.carouselInitialized;
             delete carousel._autoplayInterval;
