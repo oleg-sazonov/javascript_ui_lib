@@ -9,12 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Click on .child: ", this);
     });
 
-    // let t = 0;
-    // $(".accordion-head").hover(
-    //     () => console.log(t++),
-    //     () => console.log(t--)
-    // );
-
     // Generic Carousel
 
     const myCarousel = document.createElement("div");
@@ -23,16 +17,20 @@ document.addEventListener("DOMContentLoaded", () => {
     $(myCarousel).createCarousel({
         images: [
             {
-                src: "https://shikimori.one/system/screenshots/original/14ab4a93d712ae28e62481cd89d3bdd8ef4df2eb.jpg?1712767055",
-                alt: "anime girl",
+                src: "https://shikimori.one/system/screenshots/original/5a3f863c2cb3e826242d18efdb8484c38bdf46d9.jpg?1682252081",
+                alt: "aqua konosuba character",
             },
             {
-                src: "https://shikimori.one/system/screenshots/original/eb043fb026c0ccf012d759210769273c70b357e0.jpg?1712767056",
-                alt: "anime girl",
+                src: "https://shikimori.one/system/screenshots/original/e31699cf4b4c4dfad85f8700a61fad7d5577e6f0.jpg?1682252091",
+                alt: "aqua konosuba character",
             },
             {
-                src: "https://shikimori.one/system/screenshots/original/0a9843c8c5cda1296d2d2d3968dd65af5f74462b.jpg?1712767058",
-                alt: "two anime characters",
+                src: "https://shikimori.one/system/screenshots/original/f76f911f951bf2761c7b553a7e7ce8c68c6936fd.jpg?1682252071",
+                alt: "taqua konosuba character",
+            },
+            {
+                src: "https://shikimori.one/system/screenshots/original/87ceeff33150d42783f3746e3c4480e1d2cdd5ee.jpg?1682250805",
+                alt: "aqua konosuba character",
             },
         ],
         width: "450px",
@@ -57,37 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
         width: "350px",
         height: "300px",
-        autoplay: true,
-        stopAutoplayAtEnd: true,
-    });
-
-    $(".secondContainer").createCarousel({
-        images: [
-            {
-                src: "https://as1.ftcdn.net/jpg/07/33/90/18/1000_F_733901878_mA9lvDJkhR2RA4Ex8Jlch4Nay1VgKMXc.jpg",
-                alt: "some pic",
-            },
-            {
-                src: "https://as1.ftcdn.net/jpg/04/02/64/08/1000_F_402640862_Mg9kbil2AP20CvQBWr9pX99e9xmfCHpP.jpg",
-                alt: "some pic",
-            },
-            {
-                src: "https://as1.ftcdn.net/jpg/05/35/43/12/1000_F_535431282_VhH2Uo9QfgdEvRQdxMbwgn70ZIWisCQh.jpg",
-                alt: "some pic",
-            },
-        ],
-        autoplay: true,
-        duration: 2000,
-        width: "700px",
-        height: "500px",
-        showDots: false,
-        showArrows: false,
-        stopAutoplayAtEnd: true,
-        arrowsOpacity: false,
+        autoplay: false,
     });
 
     // Generic modal-window
     // Add docs
+    const arr = ["Oleg", "Best", "Chel"];
+
+    const list = document.createElement("ul");
+    list.classList.add("list");
+    list.classList.add("p15");
+    arr.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.append(li);
+    });
 
     $(`[data-toggle="modal-aqua"]`).click((e) => {
         if (!document.querySelector(".modal")) {
@@ -127,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
             $(e.target).createModal({
                 text: {
                     title: "Nana",
-                    body: "Nana is the nice one!",
+                    body: list,
                 },
                 btns: {
                     count: 2,

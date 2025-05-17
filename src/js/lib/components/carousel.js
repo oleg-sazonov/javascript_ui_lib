@@ -29,32 +29,34 @@ $.prototype.createCarousel = function (options = {}) {
 
     for (let i = 0; i < this.length; i++) {
         const container = this[i];
+        if (!container) continue;
+
+        // if (!container) {
+        //     console.error(
+        //         `Selector "${containerSelector}" not found in the DOM.`
+        //     );
+        //     return;
+        // }
+
         const carouselId = `carousel-${Date.now()}-${i}`;
 
-        // Проверка изображений
+        // Check images
         if (!settings.images.length) {
             console.error("No images provided for carousel");
             continue;
         }
 
-        if (!container) {
-            console.error(
-                `Selector "${containerSelector}" not found in the DOM.`
-            );
-            return;
-        }
-
         // Create carousel structure
         const carousel = document.createElement("div");
-        carousel.classList.add("carousel");
+        carousel.classList.add("carousel", "carousel-pending");
         carousel.setAttribute("id", carouselId);
         carousel.style.width = settings.width;
 
         // Create indicators if showDots is true
-        let indicators;
         if (settings.showDots) {
-            indicators = document.createElement("ol");
+            const indicators = document.createElement("ol");
             indicators.classList.add("carousel-indicators");
+
             settings.images.forEach((_, index) => {
                 const li = document.createElement("li");
                 if (index === 0) li.classList.add("active");
@@ -72,6 +74,7 @@ $.prototype.createCarousel = function (options = {}) {
         // Slides
         const slides = document.createElement("div");
         slides.classList.add("carousel-slides");
+
         settings.images.forEach((image, index) => {
             const item = document.createElement("div");
             item.classList.add("carousel-item");
@@ -87,16 +90,14 @@ $.prototype.createCarousel = function (options = {}) {
         });
 
         // Navigation arrows if showArrows is true
-        let prev;
-        let next;
         if (settings.showArrows) {
-            prev = document.createElement("a");
+            const prev = document.createElement("a");
             prev.classList.add("carousel-prev");
             prev.setAttribute("href", "#");
             prev.setAttribute("data-slide", "prev");
             prev.innerHTML = `<span class="carousel-prev-icon">${settings.prevArrow}</span>`;
 
-            next = document.createElement("a");
+            const next = document.createElement("a");
             next.classList.add("carousel-next");
             next.setAttribute("href", "#");
             next.setAttribute("data-slide", "next");
@@ -115,8 +116,8 @@ $.prototype.createCarousel = function (options = {}) {
         carousel.appendChild(inner);
         container.appendChild(carousel);
 
-        // Initialize the carousel functionality
-        $(`#${carouselId}`).carousel({
+        // Store settings in dataset
+        carousel.dataset.carouselOptions = JSON.stringify({
             autoplay: settings.autoplay,
             duration: settings.duration,
             showDots: settings.showDots,
@@ -124,25 +125,51 @@ $.prototype.createCarousel = function (options = {}) {
             arrowsOpacity: settings.arrowsOpacity,
             stopAutoplayAtEnd: settings.stopAutoplayAtEnd,
         });
+
+        // Check if it is visible and initialize it if it is already visible
+        if (carousel.offsetParent !== null) {
+            $(carousel).carousel();
+        }
     }
 
     return this;
 };
 
 $.prototype.carousel = function (options = {}) {
-    const settings = {
-        autoplay: true,
-        duration: 3000,
-        showDots: true,
-        showArrows: true,
-        arrowsOpacity: true,
-        stopAutoplayAtEnd: false,
-        ...options,
-    };
-
     for (let i = 0; i < this.length; i++) {
         const carousel = this[i];
+        if (!document.body.contains(carousel)) continue;
+
+        // Skip if already initialized
+        if (carousel.dataset.carouselInitialized === "true") continue;
+
+        // Parse options with error handling
+        const datasetOptions = (() => {
+            try {
+                return carousel.dataset.carouselOptions
+                    ? JSON.parse(carousel.dataset.carouselOptions)
+                    : {};
+            } catch (e) {
+                console.error("Error parsing carousel options:", e);
+                return {};
+            }
+        })();
+
+        const settings = {
+            autoplay: true,
+            duration: 3000,
+            showDots: true,
+            showArrows: true,
+            arrowsOpacity: true,
+            stopAutoplayAtEnd: false,
+            ...datasetOptions,
+            ...options,
+        };
+
+        // Basic logic of carousel initialization
         const inner = carousel.querySelector(".carousel-inner");
+        if (!inner) continue;
+
         const width = inner.offsetWidth;
         const slides = carousel.querySelectorAll(".carousel-item");
         const slidesField = carousel.querySelector(".carousel-slides");
@@ -151,14 +178,14 @@ $.prototype.carousel = function (options = {}) {
         const nextBtn = carousel.querySelector(".carousel-next");
 
         // Set up sizes
-        slidesField.style.width = 100 * slides.length + "%"; // 3 slides = 300%
+        slidesField.style.width = `${100 * slides.length}%`; // 3 slides = 300%
         slides.forEach((slide) => {
-            slide.style.width = width + "px";
+            slide.style.width = `${width}px`;
         });
 
         let offset = 0;
         let slideIndex = 0;
-        let finishOffset = width * (slides.length - 1);
+        const finishOffset = width * (slides.length - 1);
         let autoplayInterval;
         let reachedLastSlide = false;
 
@@ -197,35 +224,57 @@ $.prototype.carousel = function (options = {}) {
 
         // Start autoplay if enabled
         const startAutoplay = () => {
-            if (settings.autoplay) {
+            if (settings.autoplay && !autoplayInterval) {
                 autoplayInterval = setInterval(nextSlide, settings.duration);
             }
+            carousel._autoplayInterval = autoplayInterval;
         };
+
+        // const startAutoplay = () => {
+        //     if (settings.autoplay && !autoplayInterval) {
+        //         autoplayInterval = setInterval(() => {
+        //             if (carousel.offsetParent !== null) {
+        //                 nextSlide();
+        //             } else {
+        //                 stopAutoplay();
+        //             }
+        //         }, settings.duration);
+        //         carousel._autoplayInterval = autoplayInterval;
+        //     }
+        // };
 
         // Stop autoplay
         const stopAutoplay = () => {
-            if (settings.autoplay) {
+            if (autoplayInterval) {
                 clearInterval(autoplayInterval);
+                autoplayInterval = null;
             }
         };
 
+        // Event handlers with reference storage for cleanup
+        const handleNextClick = (e) => {
+            e.preventDefault();
+            nextSlide();
+        };
+
+        const handlePrevClick = (e) => {
+            e.preventDefault();
+            prevSlide();
+        };
+
         if (nextBtn) {
-            $(nextBtn).click((e) => {
-                e.preventDefault();
-                nextSlide();
-            });
+            nextBtn.addEventListener("click", handleNextClick);
+            carousel._handleNextClick = handleNextClick;
         }
 
         if (prevBtn) {
-            $(prevBtn).click((e) => {
-                e.preventDefault();
-                prevSlide();
-            });
+            prevBtn.addEventListener("click", handlePrevClick);
+            carousel._handlePrevClick = handlePrevClick;
         }
 
         if (settings.showDots && dots.length) {
             dots.forEach((dot) => {
-                $(dot).click((e) => {
+                const handleDotClick = (e) => {
                     const slideTo = +e.target.getAttribute("data-slide-to");
                     slideIndex = slideTo;
                     offset = width * slideTo;
@@ -235,34 +284,26 @@ $.prototype.carousel = function (options = {}) {
                         reachedLastSlide = false;
                         startAutoplay();
                     }
-                });
+                };
+                dot.addEventListener("click", handleDotClick);
+                dot._handleDotClick = handleDotClick;
             });
         }
 
-        // Arrow visibility control
-        // if (settings.arrowsOpacity && settings.showArrows) {
-        //     carousel.addEventListener("mouseenter", () => {
-        //         if (prevBtn) prevBtn.style.opacity = "1";
-        //         if (nextBtn) nextBtn.style.opacity = "1";
-        //     });
+        // Mouse events with reference storage
+        carousel._stopAutoplay = () => stopAutoplay();
+        carousel._startAutoplay = () => {
+            if (!reachedLastSlide) startAutoplay();
+        };
 
-        //     carousel.addEventListener("mouseleave", () => {
-        //         if (prevBtn) prevBtn.style.opacity = "0";
-        //         if (nextBtn) nextBtn.style.opacity = "0";
-        //     });
-        // }
+        carousel.addEventListener("mouseenter", carousel._stopAutoplay);
+        carousel.addEventListener("mouseleave", carousel._startAutoplay);
 
-        // Mouseenter event to stop autoplay
-        carousel.addEventListener("mouseenter", () => stopAutoplay());
+        // Mark as initialized
+        carousel.dataset.carouselInitialized = "true";
+        carousel.classList.remove("carousel-pending");
 
-        // Mouseleave event to restart autoplay
-        carousel.addEventListener("mouseleave", () => {
-            if (!reachedLastSlide) {
-                startAutoplay();
-            }
-        });
-
-        // Start autoplay when the function is first called
+        // Start autoplay
         if (!reachedLastSlide) {
             startAutoplay();
         }
@@ -271,4 +312,83 @@ $.prototype.carousel = function (options = {}) {
     return this;
 };
 
-$(".carousel").carousel();
+$.prototype.destroyCarousel = function () {
+    this.each((carousel) => {
+        if (carousel.dataset.carouselInitialized === "true") {
+            // Clear autoplay
+            if (carousel._autoplayInterval) {
+                clearInterval(carousel._autoplayInterval);
+            }
+
+            // Remove event listeners
+            const prevBtn = carousel.querySelector(".carousel-prev");
+            const nextBtn = carousel.querySelector(".carousel-next");
+            const dots = carousel.querySelectorAll(".carousel-indicators li");
+
+            if (prevBtn && carousel._handlePrevClick) {
+                prevBtn.removeEventListener("click", carousel._handlePrevClick);
+            }
+
+            if (nextBtn && carousel._handleNextClick) {
+                nextBtn.removeEventListener("click", carousel._handleNextClick);
+            }
+
+            dots.forEach((dot) => {
+                if (dot._handleDotClick) {
+                    dot.removeEventListener("click", dot._handleDotClick);
+                }
+            });
+
+            carousel.removeEventListener("mouseenter", carousel._stopAutoplay);
+            carousel.removeEventListener("mouseleave", carousel._startAutoplay);
+
+            // Clean up references
+            delete carousel.dataset.carouselInitialized;
+            delete carousel._autoplayInterval;
+            delete carousel._handlePrevClick;
+            delete carousel._handleNextClick;
+            delete carousel._stopAutoplay;
+            delete carousel._startAutoplay;
+        }
+    });
+    return this;
+};
+
+// Initialize on DOM ready
+if (typeof document !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+        // Initialize visible carousels
+        document
+            .querySelectorAll(".carousel:not(.carousel-pending)")
+            .forEach((el) => {
+                if (el.offsetParent !== null) {
+                    $(el).carousel();
+                }
+            });
+
+        // MutationObserver for dynamically added carousels
+        const carouselObserver = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                for (const node of mutation.addedNodes) {
+                    if (node.nodeType === 1) {
+                        const carousels = node.classList.contains("carousel")
+                            ? [node]
+                            : node.querySelectorAll(".carousel-pending");
+
+                        for (const carousel of carousels) {
+                            if (carousel.offsetParent !== null) {
+                                $(carousel).carousel();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        carouselObserver.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributeFilter: ["style", "class"],
+        });
+    });
+}

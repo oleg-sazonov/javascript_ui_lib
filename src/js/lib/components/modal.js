@@ -111,22 +111,9 @@ $.prototype.createModal = function ({ text, btns } = {}) {
         const modalScript = document.querySelector("body script:last-of-type");
         document.body.insertBefore(modal, modalScript);
 
-        // document.body.append(modal);
         $(this[i]).modal(true);
-        // $(this[i].getAttribute("data-target")).fadeIn(animateDuration);
 
         const modalTarget = this[i].getAttribute("data-target");
         $(modalTarget).fadeIn(animateDuration);
-
-        setTimeout(() => {
-            document
-                .querySelectorAll(`${modalTarget} .carousel`)
-                .forEach((el) => {
-                    if (!el.dataset.carouselReady) {
-                        $(el).carousel();
-                        el.dataset.carouselReady = "true";
-                    }
-                });
-        }, animateDuration + 10);
     }
 };
