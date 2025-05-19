@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import $ from "../core";
 
@@ -13,7 +13,7 @@ import $ from "../core";
  * @param {string} [content] - Содержимое для установки.
  * @returns {Object|string} Текущий объект или HTML-содержимое первого элемента.
  */
-$.prototype.html = function(content) {
+$.prototype.html = function (content) {
     for (let i = 0; i < this.length; i++) {
         if (content) {
             this[i].innerHTML = content;
@@ -21,7 +21,7 @@ $.prototype.html = function(content) {
             return this[i].innerHTML;
         }
     }
-    return this;    
+    return this;
 };
 
 /**
@@ -31,7 +31,7 @@ $.prototype.html = function(content) {
  * @param {number} i - Индекс элемента.
  * @returns {Object} Объект с выбранным элементом.
  */
-$.prototype.eq = function(i) {
+$.prototype.eq = function (i) {
     const swap = this[i];
     const objLength = Object.keys(this).length;
 
@@ -41,7 +41,7 @@ $.prototype.eq = function(i) {
 
     this[0] = swap;
     this.length = 1;
-    return this;    
+    return this;
 };
 
 /**
@@ -50,11 +50,11 @@ $.prototype.eq = function(i) {
  * @memberof $
  * @returns {number} Индекс элемента.
  */
-$.prototype.index = function() {
+$.prototype.index = function () {
     const parent = this[0].parentNode;
     const childs = [...parent.children]; // Convert HTMLCollection to an array
 
-    return childs.findIndex(item => item === this[0]);
+    return childs.findIndex((item) => item === this[0]);
 };
 
 /**
@@ -64,11 +64,11 @@ $.prototype.index = function() {
  * @param {string} selector - CSS-селектор для поиска.
  * @returns {Object} Объект с найденными элементами.
  */
-$.prototype.find = function(selector) {
+$.prototype.find = function (selector) {
     let numberOfItems = 0;
     let counter = 0;
 
-    const copyObj = {...this};
+    const copyObj = { ...this };
 
     for (let i = 0; i < copyObj.length; i++) {
         const arr = copyObj[i].querySelectorAll(selector); // Find elements by selector
@@ -102,7 +102,7 @@ $.prototype.find = function(selector) {
  * @param {string} selector - CSS-селектор родительского элемента.
  * @returns {Object} Объект с ближайшим родителем.
  */
-$.prototype.closest = function(selector) {
+$.prototype.closest = function (selector) {
     let counter = 0;
 
     for (let i = 0; i < this.length; i++) {
@@ -111,7 +111,9 @@ $.prototype.closest = function(selector) {
             this[i] = closestElement;
             counter++;
         } else {
-            console.warn(`No parent matching selector "${selector}" found for the element.`);
+            console.warn(
+                `No parent matching selector "${selector}" found for the element.`
+            );
         }
     }
     this.length = counter;
@@ -126,16 +128,18 @@ $.prototype.closest = function(selector) {
  * @returns {Object} Объект с соседними элементами.
  */
 $.prototype.siblings = function () {
-    const copyObj = [...this[0].parentElement.children].filter(item => item !== this[0]);
- 
+    const copyObj = [...this[0].parentElement.children].filter(
+        (item) => item !== this[0]
+    );
+
     for (let i = 0; i < this.length; i++) {
-        delete this[i]
+        delete this[i];
     }
- 
+
     Object.assign(this, copyObj);
     this.length = copyObj.length;
     return this;
-}
+};
 
 /**
  * Фильтрует дочерние элементы внутри родителя по селектору.
@@ -144,7 +148,7 @@ $.prototype.siblings = function () {
  * @param {string} selector - CSS-селектор для фильтрации дочерних элементов.
  * @returns {Object} Объект с отфильтрованными элементами.
  */
-$.prototype.filterChildren = function(selector) {
+$.prototype.filterChildren = function (selector) {
     return this.find(selector);
 };
 
@@ -155,10 +159,10 @@ $.prototype.filterChildren = function(selector) {
  * @param {string|Element} content - HTML-строка или DOM-элемент для добавления.
  * @returns {Object} Текущий объект.
  */
-$.prototype.append = function(content) {
+$.prototype.append = function (content) {
     for (let i = 0; i < this.length; i++) {
-        if (typeof content === 'string') {
-            this[i].insertAdjacentHTML('beforeend', content);
+        if (typeof content === "string") {
+            this[i].insertAdjacentHTML("beforeend", content);
         } else if (content instanceof Element) {
             this[i].appendChild(content.cloneNode(true));
         }
@@ -173,10 +177,10 @@ $.prototype.append = function(content) {
  * @param {string|Element} content - HTML-строка или DOM-элемент для добавления.
  * @returns {Object} Текущий объект.
  */
-$.prototype.prepend = function(content) {
+$.prototype.prepend = function (content) {
     for (let i = 0; i < this.length; i++) {
-        if (typeof content === 'string') {
-            this[i].insertAdjacentHTML('afterbegin', content);
+        if (typeof content === "string") {
+            this[i].insertAdjacentHTML("afterbegin", content);
         } else if (content instanceof Element) {
             this[i].insertBefore(content.cloneNode(true), this[i].firstChild);
         }
