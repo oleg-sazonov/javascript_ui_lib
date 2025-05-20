@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import $ from "../core";
 
@@ -14,7 +14,7 @@ import $ from "../core";
  * @param {string} [attrValue=''] - Значение атрибута.
  * @returns {Object} Текущий объект.
  */
-$.prototype.addAttr = function(attrName, attrValue = '') {
+$.prototype.addAttr = function (attrName, attrValue = "") {
     for (let i = 0; i < this.length; i++) {
         if (this[i].classList && attrName) {
             this[i].setAttribute(attrName, attrValue);
@@ -30,7 +30,7 @@ $.prototype.addAttr = function(attrName, attrValue = '') {
  * @param {string} attrName - Имя атрибута.
  * @returns {Object} Текущий объект.
  */
-$.prototype.removeAttr = function(attrName) {
+$.prototype.removeAttr = function (attrName) {
     for (let i = 0; i < this.length; i++) {
         if (this[i].classList && attrName) {
             this[i].removeAttribute(attrName);
@@ -46,7 +46,7 @@ $.prototype.removeAttr = function(attrName) {
  * @param {string} attrName - Имя атрибута.
  * @returns {Array<string|null>} Массив значений атрибута.
  */
-$.prototype.getAttrValue = function(attrName) {
+$.prototype.getAttrValue = function (attrName) {
     let attributes = [];
     for (let i = 0; i < this.length; i++) {
         if (this[i].classList && attrName) {
@@ -63,7 +63,7 @@ $.prototype.getAttrValue = function(attrName) {
  * @param {string} attrName - Имя атрибута.
  * @returns {boolean} `true`, если атрибут существует, иначе `false`.
  */
-$.prototype.hasAttr = function(attrName) {
+$.prototype.hasAttr = function (attrName) {
     if (!this[0]) return false;
     return this[0].hasAttribute(attrName);
 };
@@ -78,7 +78,7 @@ $.prototype.hasAttr = function(attrName) {
  * @param {string} [attrValue=''] - Значение атрибута (если добавляется).
  * @returns {Object} Текущий объект.
  */
-$.prototype.toggleAttr = function(attrName, attrValue = '') {
+$.prototype.toggleAttr = function (attrName, attrValue = "") {
     for (let i = 0; i < this.length; i++) {
         if (this[i].hasAttribute(attrName)) {
             this[i].removeAttribute(attrName);
