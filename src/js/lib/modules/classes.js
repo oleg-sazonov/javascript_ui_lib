@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import $ from "../core";
 
@@ -80,7 +80,9 @@ $.prototype.toggleClass = function (className) {
 $.prototype.hasClasses = function (...classNames) {
     for (let i = 0; i < this.length; i++) {
         if (this[i].classList) {
-            const hasAllClasses = classNames.every((className) => this[i].classList.contains(className));
+            const hasAllClasses = classNames.every((className) =>
+                this[i].classList.contains(className)
+            );
             if (hasAllClasses) {
                 return true;
             }

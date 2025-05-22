@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import $ from "../core";
 
@@ -12,7 +12,7 @@ import $ from "../core";
  * @param {function} callback Функция-обработчик события.
  * @returns {object} Текущий объект для цепочки вызовов.
  */
-$.prototype.on = function(eventName, callback) {
+$.prototype.on = function (eventName, callback) {
     if (!eventName || !callback) {
         return this;
     }
@@ -28,7 +28,7 @@ $.prototype.on = function(eventName, callback) {
  * @param {function} callback Функция-обработчик события.
  * @returns {object} Текущий объект для цепочки вызовов.
  */
-$.prototype.off = function(eventName, callback) {
+$.prototype.off = function (eventName, callback) {
     if (!eventName || !callback) {
         return this;
     }
@@ -43,10 +43,10 @@ $.prototype.off = function(eventName, callback) {
  * @param {function} [handler] Функция-обработчик события.
  * @returns {object} Текущий объект для цепочки вызовов.
  */
-$.prototype.click = function(handler) {
+$.prototype.click = function (handler) {
     for (let i = 0; i < this.length; i++) {
         if (handler) {
-            this[i].addEventListener('click', handler);
+            this[i].addEventListener("click", handler);
         } else {
             this[i].click();
         }
@@ -61,9 +61,10 @@ $.prototype.click = function(handler) {
  * @param {function} callback Функция-обработчик события.
  * @returns {object} Текущий объект для цепочки вызовов.
  */
-$.prototype.delegate = function(eventName, selector, callback) {
-    return this.on(eventName, function(event) {
-        if (event.target && event.target.closest(selector)) { // or matches(selector)
+$.prototype.delegate = function (eventName, selector, callback) {
+    return this.on(eventName, function (event) {
+        if (event.target && event.target.closest(selector)) {
+            // or matches(selector)
             callback.call(event.target, event);
         }
     });
@@ -75,8 +76,8 @@ $.prototype.delegate = function(eventName, selector, callback) {
  * @param {function} mouseLeave Функция, выполняемая при уходе курсора.
  * @returns {object} Текущий объект для цепочки вызовов.
  */
-$.prototype.hover = function(mouseEnter, mouseLeave) {
-    return this.on('mouseenter', mouseEnter).on('mouseleave', mouseLeave);
+$.prototype.hover = function (mouseEnter, mouseLeave) {
+    return this.on("mouseenter", mouseEnter).on("mouseleave", mouseLeave);
 };
 
 /**
@@ -85,7 +86,7 @@ $.prototype.hover = function(mouseEnter, mouseLeave) {
  * @param {function} callback Функция-обработчик события.
  * @returns {object} Текущий объект для цепочки вызовов.
  */
-$.prototype.one = function(eventName, callback) {
+$.prototype.one = function (eventName, callback) {
     return this.on(eventName, function eventHandler(event) {
         callback.call(this, event);
         $(this).off(eventName, eventHandler);

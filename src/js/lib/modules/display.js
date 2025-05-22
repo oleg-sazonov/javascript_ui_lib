@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import $ from "../core";
 
@@ -12,10 +12,10 @@ import $ from "../core";
  * @memberof $
  * @returns {Object} Текущий объект.
  */
-$.prototype.show = function() {
+$.prototype.show = function () {
     for (let i = 0; i < this.length; i++) {
         if (this[i].style) {
-            this[i].style.display = '';
+            this[i].style.display = "";
         }
     }
     return this;
@@ -27,10 +27,10 @@ $.prototype.show = function() {
  * @memberof $
  * @returns {Object} Текущий объект.
  */
-$.prototype.hide = function() {
+$.prototype.hide = function () {
     for (let i = 0; i < this.length; i++) {
         if (this[i].style) {
-            this[i].style.display = 'none';
+            this[i].style.display = "none";
         }
     }
     return this;
@@ -42,10 +42,11 @@ $.prototype.hide = function() {
  * @memberof $
  * @returns {Object} Текущий объект.
  */
-$.prototype.toggleDisplay = function() {
+$.prototype.toggleDisplay = function () {
     for (let i = 0; i < this.length; i++) {
         if (this[i].style) {
-            this[i].style.display = (this[i].style.display === 'none') ? '' : 'none';
+            this[i].style.display =
+                this[i].style.display === "none" ? "" : "none";
         }
     }
     return this;
@@ -57,9 +58,9 @@ $.prototype.toggleDisplay = function() {
  * @memberof $
  * @returns {boolean} `true`, если элемент видим, иначе `false`.
  */
-$.prototype.isVisible = function() {
+$.prototype.isVisible = function () {
     if (!this[0] || !this[0].style) return false;
-    return this[0].style.display !== 'none';
+    return this[0].style.display !== "none";
 };
 
 /**
@@ -69,7 +70,7 @@ $.prototype.isVisible = function() {
  * @param {string} [value] - Значение display (если передано).
  * @returns {Object|string} Текущий объект или текущее значение display.
  */
-$.prototype.display = function(value) {
+$.prototype.display = function (value) {
     if (value === undefined) {
         return this[0] ? this[0].style.display : undefined;
     }
