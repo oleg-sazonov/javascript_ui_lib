@@ -33,13 +33,15 @@ $.prototype.dropdownByHover = function () {
             if (!parent.contains(related)) {
                 timeout = setTimeout(() => {
                     dropdown.fadeOut(300);
-                }, 200); // Add a slight delay
+                }, 100); // Add a slight delay
             }
         };
 
         // Attach events to the parent container
-        $(parent).on("mouseenter", showDropdown);
-        $(parent).on("mouseleave", hideDropdown);
+        // $(parent).on("mouseenter", showDropdown);
+        // $(parent).on("mouseleave", hideDropdown);
+
+        $(parent).hover(showDropdown, hideDropdown);
     }
 };
 
