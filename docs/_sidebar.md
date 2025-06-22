@@ -13,15 +13,15 @@
 
 -   🧩 Модули
 
-    -   [actions.js](modules/actions.md)
-    -   [attributes.js](modules/attributes.md)
-    -   [classes.js](modules/classes.md)
-    -   [display.js](modules/display.md)
-    -   [effects.js](modules/effects.md)
-    -   [handlers.js](modules/handlers.md)
+    -   [actions.js](/modules/actions.md)
+    -   [attributes.js](/modules/attributes.md)
+    -   [classes.js](/modules/classes.md)
+    -   [display.js](/modules/display.md)
+    -   [effects.js](/modules/effects.md)
+    -   [handlers.js](/modules/handlers.md)
 
 -   🧬 Компоненты
-    -   [Accordion](components/accordion.md)
-    -   [Carousel](components/carousel.md)
-    -   [Modal](components/modal.md)
-    -   [Dropdown](components/dropdown.md)
+    -   [Accordion](/components/accordion.md)
+    -   [Carousel](/components/carousel.md)
+    -   [Modal](/components/modal.md)
+    -   [Dropdown](/components/dropdown.md)
