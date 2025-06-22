@@ -1,0 +1,27 @@
+-   📖 Введение
+
+    -   [Главная](/README.md)
+
+-   🚀 Установка и запуск
+
+    -   [Установка и запуск проекта](installation.md)
+    -   [Структура проекта](structure.md)
+
+-   🧱 Основы
+
+    -   [core.js](core.md)
+
+-   🧩 Модули
+
+    -   [actions.js](modules/actions.md)
+    -   [attributes.js](modules/attributes.md)
+    -   [classes.js](modules/classes.md)
+    -   [display.js](modules/display.md)
+    -   [effects.js](modules/effects.md)
+    -   [handlers.js](modules/handlers.md)
+
+-   🧬 Компоненты
+    -   [Accordion](components/accordion.md)
+    -   [Carousel](components/carousel.md)
+    -   [Modal](components/modal.md)
+    -   [Dropdown](components/dropdown.md)

@@ -91,6 +91,6 @@ __pycache__/
 docker-compose.override.yml
 
 # Documentation
-docs/
+# docs/
 
 updates-list.txt

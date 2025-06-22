@@ -1,6 +1,7 @@
 "use strict";
 
 import "./lib/lib";
+import $ from "./lib/lib";
 
 document.addEventListener("DOMContentLoaded", () => {
     // Accordion
