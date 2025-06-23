@@ -1,4 +1,166 @@
-// Flex alignment shortcuts
+// ------------------------------
+// 🔁 Display Flex Shortcuts
+// ------------------------------
+.d-flex {
+    display: flex;
+}
+
+.d-inline-flex {
+    display: inline-flex;
+}
+
+// ------------------------------
+// 🔁 Flex Direction
+// ------------------------------
+.f-row {
+    flex-direction: row;
+}
+
+.f-column {
+    flex-direction: column;
+}
+
+.f-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.f-column-reverse {
+    flex-direction: column-reverse;
+}
+
+// ------------------------------
+// 🔁 Flex Wrap
+// ------------------------------
+.f-wrap {
+    flex-wrap: wrap;
+}
+
+.f-nowrap {
+    flex-wrap: nowrap;
+}
+
+.f-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
+// ------------------------------
+// 📦 Justify Content
+// ------------------------------
+.f-justify-start {
+    justify-content: flex-start;
+}
+
+.f-justify-center {
+    justify-content: center;
+}
+
+.f-justify-end {
+    justify-content: flex-end;
+}
+
+.f-justify-between {
+    justify-content: space-between;
+}
+
+.f-justify-around {
+    justify-content: space-around;
+}
+
+.f-justify-evenly {
+    justify-content: space-evenly;
+}
+
+// ------------------------------
+// 📏 Align Items
+// ------------------------------
+.f-align-start {
+    align-items: flex-start;
+}
+
+.f-align-center {
+    align-items: center;
+}
+
+.f-align-end {
+    align-items: flex-end;
+}
+
+.f-align-stretch {
+    align-items: stretch;
+}
+
+.f-align-baseline {
+    align-items: baseline;
+}
+
+// ------------------------------
+// 📏 Align Content (multi-row)
+// ------------------------------
+.f-content-start {
+    align-content: flex-start;
+}
+
+.f-content-center {
+    align-content: center;
+}
+
+.f-content-end {
+    align-content: flex-end;
+}
+
+.f-content-between {
+    align-content: space-between;
+}
+
+.f-content-around {
+    align-content: space-around;
+}
+
+.f-content-stretch {
+    align-content: stretch;
+}
+
+// ------------------------------
+// 🎯 Align Self (per element)
+// ------------------------------
+.self-start {
+    align-self: flex-start;
+}
+
+.self-center {
+    align-self: center;
+}
+
+.self-end {
+    align-self: flex-end;
+}
+
+.self-stretch {
+    align-self: stretch;
+}
+
+// ------------------------------
+// 🎯 Justify Self (for grid)
+// ------------------------------
+.justify-self-start {
+    justify-self: start;
+}
+
+.justify-self-center {
+    justify-self: center;
+}
+
+.justify-self-end {
+    justify-self: end;
+}
+
+.justify-self-stretch {
+    justify-self: stretch;
+}
+
+// ------------------------------
+// 🧩 Flex Shortcuts
+// ------------------------------
 .f-centered {
     display: flex;
     justify-content: center;
@@ -14,51 +176,5 @@
 .f-right {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
-}
-
-// Flex direction
-.f-column {
-    flex-direction: column;
-}
-
-.f-row {
-    flex-direction: row;
-}
-
-// Flex wrap
-.f-wrap {
-    flex-wrap: wrap;
-}
-
-.f-nowrap {
-    flex-wrap: nowrap;
-}
-
-// Justify content
-.f-justify-start {
-    justify-content: flex-start;
-}
-.f-justify-center {
-    justify-content: center;
-}
-.f-justify-end {
-    justify-content: flex-end;
-}
-.f-justify-between {
-    justify-content: space-between;
-}
-.f-justify-around {
-    justify-content: space-around;
-}
-
-// Align items
-.f-align-start {
-    align-items: flex-start;
-}
-.f-align-center {
-    align-items: center;
-}
-.f-align-end {
     align-items: flex-end;
 }

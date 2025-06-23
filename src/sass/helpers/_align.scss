@@ -1,4 +1,7 @@
+// ==========================
 // Text alignment
+// ==========================
+
 .text-left {
     text-align: left;
 }
@@ -11,34 +14,67 @@
     text-align: right;
 }
 
-// Horizontal block alignment
+.text-justify {
+    text-align: justify;
+}
+
+// ==========================
+// Horizontal block alignment (margin auto technique)
+// ==========================
+
 .block-left {
     margin-right: auto;
 }
 
 .block-center {
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .block-right {
     margin-left: auto;
 }
 
-// Flex vertical alignment
+// ==========================
+// Flex alignment helpers
+// ==========================
+
 .v-align-middle {
     display: flex;
     align-items: center;
 }
 
-// Flex horizontal alignment
 .h-align-center {
     display: flex;
     justify-content: center;
 }
 
-// Full centering on both axes
+// Центрирование по обеим осям
 .centered-flex {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+
+// Альтернативное имя для f-centered (если используется)
+.f-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// ==========================
+// Vertical align (inline elements)
+// ==========================
+
+.align-top {
+    vertical-align: top;
+}
+
+.align-middle {
+    vertical-align: middle;
+}
+
+.align-bottom {
+    vertical-align: bottom;
 }

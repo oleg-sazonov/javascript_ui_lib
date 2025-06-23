@@ -21,7 +21,20 @@
     -   [handlers.js](/modules/handlers.md)
 
 -   🧬 Компоненты
+
     -   [Accordion](/components/accordion.md)
     -   [Carousel](/components/carousel.md)
     -   [Modal](/components/modal.md)
     -   [Dropdown](/components/dropdown.md)
+
+-   🎨 SCSS Helpers
+
+    -   [Align](/styles/helpers/align.md)
+    -   [Display](/styles/helpers/display.md)
+    -   [Flex](/styles/helpers/flex.md)
+    -   [Font](/styles/helpers/font.md)
+    -   [Gap](/styles/helpers/gap.md)
+    -   [Margin](/styles/helpers/margin.md)
+    -   [Padding](/styles/helpers/padding.md)
+    -   [Size](/styles/helpers/size.md)
+    -   [Visibility](/styles/helpers/visibility.md)

@@ -20,6 +20,17 @@ project-root/
 │   │   ├── display.md
 │   │   ├── effects.md
 │   │   └── handlers.md
+│   ├── styles/
+│   │   ├── helpers/
+│   │   │   ├── align.md
+│   │   │   ├── display.md
+│   │   │   ├── flex.md
+│   │   │   ├── font.md
+│   │   │   ├── gap.md
+│   │   │   ├── margin.md
+│   │   │   ├── padding.md
+│   │   │   ├── size.md
+│   │   │   └── visibility.md
 ├── src/
 │   ├── js/
 │   │   ├── core.js
