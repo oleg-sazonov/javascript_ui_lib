@@ -1,32 +1,171 @@
-// Display utilities
+@use "../general/variables" as *;
+
+// Display utilities (по умолчанию)
 .d-none {
-    display: none;
+    display: none !important;
 }
-
 .d-inline {
-    display: inline;
+    display: inline !important;
 }
-
 .d-inline-block {
-    display: inline-block;
+    display: inline-block !important;
 }
-
 .d-block {
-    display: block;
+    display: block !important;
 }
-
 .d-flex {
-    display: flex;
+    display: flex !important;
 }
-
 .d-inline-flex {
-    display: inline-flex;
+    display: inline-flex !important;
 }
-
 .d-grid {
-    display: grid;
+    display: grid !important;
+}
+.d-inline-grid {
+    display: inline-grid !important;
 }
 
-.d-inline-grid {
-    display: inline-grid;
+// Responsive display classes (mobile-first)
+
+// Small (≥576px)
+@media (min-width: $breakpoint-sm) {
+    .d-sm-none {
+        display: none !important;
+    }
+    .d-sm-inline {
+        display: inline !important;
+    }
+    .d-sm-inline-block {
+        display: inline-block !important;
+    }
+    .d-sm-block {
+        display: block !important;
+    }
+    .d-sm-flex {
+        display: flex !important;
+    }
+    .d-sm-inline-flex {
+        display: inline-flex !important;
+    }
+    .d-sm-grid {
+        display: grid !important;
+    }
+    .d-sm-inline-grid {
+        display: inline-grid !important;
+    }
 }
+
+// Medium (≥768px)
+@media (min-width: $breakpoint-md) {
+    .d-md-none {
+        display: none !important;
+    }
+    .d-md-inline {
+        display: inline !important;
+    }
+    .d-md-inline-block {
+        display: inline-block !important;
+    }
+    .d-md-block {
+        display: block !important;
+    }
+    .d-md-flex {
+        display: flex !important;
+    }
+    .d-md-inline-flex {
+        display: inline-flex !important;
+    }
+    .d-md-grid {
+        display: grid !important;
+    }
+    .d-md-inline-grid {
+        display: inline-grid !important;
+    }
+}
+
+// Large (≥992px)
+@media (min-width: $breakpoint-lg) {
+    .d-lg-none {
+        display: none !important;
+    }
+    .d-lg-inline {
+        display: inline !important;
+    }
+    .d-lg-inline-block {
+        display: inline-block !important;
+    }
+    .d-lg-block {
+        display: block !important;
+    }
+    .d-lg-flex {
+        display: flex !important;
+    }
+    .d-lg-inline-flex {
+        display: inline-flex !important;
+    }
+    .d-lg-grid {
+        display: grid !important;
+    }
+    .d-lg-inline-grid {
+        display: inline-grid !important;
+    }
+}
+
+// Extra large (≥1200px)
+@media (min-width: $breakpoint-xl) {
+    .d-xl-none {
+        display: none !important;
+    }
+    .d-xl-inline {
+        display: inline !important;
+    }
+    .d-xl-inline-block {
+        display: inline-block !important;
+    }
+    .d-xl-block {
+        display: block !important;
+    }
+    .d-xl-flex {
+        display: flex !important;
+    }
+    .d-xl-inline-flex {
+        display: inline-flex !important;
+    }
+    .d-xl-grid {
+        display: grid !important;
+    }
+    .d-xl-inline-grid {
+        display: inline-grid !important;
+    }
+}
+
+// @use "../general/variables" as *;
+
+// // Default display classes (non-responsive)
+// $display-values: none, inline, inline-block, block, flex, inline-flex, grid,
+//     inline-grid;
+
+// @each $value in $display-values {
+//     .d-#{$value} {
+//         display: #{$value} !important;
+//     }
+// }
+
+// // Responsive display classes
+// $breakpoints: (
+//     "sm": $breakpoint-sm,
+//     "md": $breakpoint-md,
+//     "lg": $breakpoint-lg,
+//     "xl": $breakpoint-xl,
+// );
+
+// @each $name, $size in $breakpoints {
+//     @media (min-width: #{$size}) {
+//         @each $value in $display-values {
+//             .d-#{$name}-#{$value} {
+//                 display: #{$value} !important;
+//             }
+//         }
+//     }
+// }

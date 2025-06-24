@@ -1,3 +1,5 @@
+@use "../general/variables" as *;
+
 // ==========================
 // Text alignment
 // ==========================
@@ -5,38 +7,139 @@
 .text-left {
     text-align: left;
 }
-
 .text-center {
     text-align: center;
 }
-
 .text-right {
     text-align: right;
 }
-
 .text-justify {
     text-align: justify;
 }
 
+@media (min-width: $breakpoint-sm) {
+    .text-sm-left {
+        text-align: left;
+    }
+    .text-sm-center {
+        text-align: center;
+    }
+    .text-sm-right {
+        text-align: right;
+    }
+    .text-sm-justify {
+        text-align: justify;
+    }
+}
+@media (min-width: $breakpoint-md) {
+    .text-md-left {
+        text-align: left;
+    }
+    .text-md-center {
+        text-align: center;
+    }
+    .text-md-right {
+        text-align: right;
+    }
+    .text-md-justify {
+        text-align: justify;
+    }
+}
+@media (min-width: $breakpoint-lg) {
+    .text-lg-left {
+        text-align: left;
+    }
+    .text-lg-center {
+        text-align: center;
+    }
+    .text-lg-right {
+        text-align: right;
+    }
+    .text-lg-justify {
+        text-align: justify;
+    }
+}
+@media (min-width: $breakpoint-xl) {
+    .text-xl-left {
+        text-align: left;
+    }
+    .text-xl-center {
+        text-align: center;
+    }
+    .text-xl-right {
+        text-align: right;
+    }
+    .text-xl-justify {
+        text-align: justify;
+    }
+}
+
 // ==========================
-// Horizontal block alignment (margin auto technique)
+// Horizontal block alignment (margin auto)
 // ==========================
 
 .block-left {
     margin-right: auto;
 }
-
 .block-center {
     margin-left: auto;
     margin-right: auto;
 }
-
 .block-right {
     margin-left: auto;
 }
 
+@media (min-width: $breakpoint-sm) {
+    .block-sm-left {
+        margin-right: auto;
+    }
+    .block-sm-center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .block-sm-right {
+        margin-left: auto;
+    }
+}
+@media (min-width: $breakpoint-md) {
+    .block-md-left {
+        margin-right: auto;
+    }
+    .block-md-center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .block-md-right {
+        margin-left: auto;
+    }
+}
+@media (min-width: $breakpoint-lg) {
+    .block-lg-left {
+        margin-right: auto;
+    }
+    .block-lg-center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .block-lg-right {
+        margin-left: auto;
+    }
+}
+@media (min-width: $breakpoint-xl) {
+    .block-xl-left {
+        margin-right: auto;
+    }
+    .block-xl-center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .block-xl-right {
+        margin-left: auto;
+    }
+}
+
 // ==========================
-// Flex alignment helpers
+// Flex alignment
 // ==========================
 
 .v-align-middle {
@@ -49,14 +152,7 @@
     justify-content: center;
 }
 
-// Центрирование по обеим осям
-.centered-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-// Альтернативное имя для f-centered (если используется)
+.centered-flex,
 .f-centered {
     display: flex;
     justify-content: center;
@@ -64,17 +160,15 @@
 }
 
 // ==========================
-// Vertical align (inline elements)
+// Vertical alignment (inline elements)
 // ==========================
 
 .align-top {
     vertical-align: top;
 }
-
 .align-middle {
     vertical-align: middle;
 }
-
 .align-bottom {
     vertical-align: bottom;
 }
