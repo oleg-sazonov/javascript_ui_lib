@@ -1,3 +1,5 @@
+@use "../general/variables" as *;
+
 // ------------------------------
 // 🔁 Display Flex Shortcuts
 // ------------------------------
@@ -9,23 +11,84 @@
     display: inline-flex;
 }
 
+// Adaptive versions
+@media (min-width: $breakpoint-sm) {
+    .d-sm-flex {
+        display: flex;
+    }
+    .d-sm-inline-flex {
+        display: inline-flex;
+    }
+}
+@media (min-width: $breakpoint-md) {
+    .d-md-flex {
+        display: flex;
+    }
+    .d-md-inline-flex {
+        display: inline-flex;
+    }
+}
+@media (min-width: $breakpoint-lg) {
+    .d-lg-flex {
+        display: flex;
+    }
+    .d-lg-inline-flex {
+        display: inline-flex;
+    }
+}
+@media (min-width: $breakpoint-xl) {
+    .d-xl-flex {
+        display: flex;
+    }
+    .d-xl-inline-flex {
+        display: inline-flex;
+    }
+}
+
 // ------------------------------
 // 🔁 Flex Direction
 // ------------------------------
 .f-row {
     flex-direction: row;
 }
-
 .f-column {
     flex-direction: column;
 }
-
 .f-row-reverse {
     flex-direction: row-reverse;
 }
-
 .f-column-reverse {
     flex-direction: column-reverse;
+}
+
+// Adaptive
+@media (min-width: $breakpoint-sm) {
+    .f-sm-row {
+        flex-direction: row;
+    }
+    .f-sm-column {
+        flex-direction: column;
+    }
+    .f-sm-row-reverse {
+        flex-direction: row-reverse;
+    }
+    .f-sm-column-reverse {
+        flex-direction: column-reverse;
+    }
+}
+@media (min-width: $breakpoint-md) {
+    .f-md-row {
+        flex-direction: row;
+    }
+    .f-md-column {
+        flex-direction: column;
+    }
+    .f-md-row-reverse {
+        flex-direction: row-reverse;
+    }
+    .f-md-column-reverse {
+        flex-direction: column-reverse;
+    }
 }
 
 // ------------------------------
@@ -34,13 +97,35 @@
 .f-wrap {
     flex-wrap: wrap;
 }
-
 .f-nowrap {
     flex-wrap: nowrap;
 }
-
 .f-wrap-reverse {
     flex-wrap: wrap-reverse;
+}
+
+// Adaptive
+@media (min-width: $breakpoint-sm) {
+    .f-sm-wrap {
+        flex-wrap: wrap;
+    }
+    .f-sm-nowrap {
+        flex-wrap: nowrap;
+    }
+    .f-sm-wrap-reverse {
+        flex-wrap: wrap-reverse;
+    }
+}
+@media (min-width: $breakpoint-md) {
+    .f-md-wrap {
+        flex-wrap: wrap;
+    }
+    .f-md-nowrap {
+        flex-wrap: nowrap;
+    }
+    .f-md-wrap-reverse {
+        flex-wrap: wrap-reverse;
+    }
 }
 
 // ------------------------------
