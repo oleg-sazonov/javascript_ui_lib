@@ -1,22 +1,72 @@
-@use "../general/variables";
+@use "../general/variables" as *;
 
-// Font size utilities (px)
+// ================================
+// 🔠 Font Size Utilities (px)
+// ================================
 @for $i from 4 through 60 {
     .fz-#{$i} {
         font-size: #{$i}px;
     }
+
+    @media (min-width: $breakpoint-sm) {
+        .fz-#{$i}-sm {
+            font-size: #{$i}px;
+        }
+    }
+    @media (min-width: $breakpoint-md) {
+        .fz-#{$i}-md {
+            font-size: #{$i}px;
+        }
+    }
+    @media (min-width: $breakpoint-lg) {
+        .fz-#{$i}-lg {
+            font-size: #{$i}px;
+        }
+    }
+    @media (min-width: $breakpoint-xl) {
+        .fz-#{$i}-xl {
+            font-size: #{$i}px;
+        }
+    }
 }
 
-// Font size utilities (rem)
-//   @for $i from 1 through 3 {
-// 	@for $j from 0 through 9 {
-// 	  .fz-#{$i}-#{$j} {
-// 		font-size: #{$i}.#{$j}rem;
-// 	  }
-// 	}
-//   }
+// ================================
+// 🔠 Font Size Utilities (rem)
+// ================================
+@for $i from 1 through 3 {
+    @for $j from 0 through 9 {
+        $value: $i + ($j / 10);
+        $suffix: ($i * 10) + $j; // Example: 1.2 -> 12, 2.5 -> 25
+        .fzr-#{$suffix} {
+            font-size: #{$value}rem;
+        }
 
-// Font weight
+        @media (min-width: $breakpoint-sm) {
+            .fzr-#{$suffix}-sm {
+                font-size: #{$value}rem;
+            }
+        }
+        @media (min-width: $breakpoint-md) {
+            .fzr-#{$suffix}-md {
+                font-size: #{$value}rem;
+            }
+        }
+        @media (min-width: $breakpoint-lg) {
+            .fzr-#{$suffix}-lg {
+                font-size: #{$value}rem;
+            }
+        }
+        @media (min-width: $breakpoint-xl) {
+            .fzr-#{$suffix}-xl {
+                font-size: #{$value}rem;
+            }
+        }
+    }
+}
+
+// ================================
+// 💪 Font Weight
+// ================================
 .fw-thin {
     font-weight: 300;
 }
@@ -36,7 +86,9 @@
     font-weight: 900;
 }
 
-// Font style
+// ================================
+// ✍️ Font Style
+// ================================
 .italic {
     font-style: italic;
 }
@@ -44,7 +96,9 @@
     font-style: normal;
 }
 
-// Text transform
+// ================================
+// 🔤 Text Transform
+// ================================
 .uppercase {
     text-transform: uppercase;
 }
@@ -55,21 +109,9 @@
     text-transform: capitalize;
 }
 
-// Text alignment
-.text-left {
-    text-align: left;
-}
-.text-center {
-    text-align: center;
-}
-.text-right {
-    text-align: right;
-}
-.text-justify {
-    text-align: justify;
-}
-
-// Letter spacing
+// ================================
+// 🔠 Letter Spacing
+// ================================
 .ls-tight {
     letter-spacing: -0.5px;
 }
@@ -83,7 +125,9 @@
     letter-spacing: 2px;
 }
 
-// Line height
+// ================================
+// 📏 Line Height
+// ================================
 .lh-1 {
     line-height: 1;
 }
@@ -97,40 +141,24 @@
     line-height: 2;
 }
 
-// Text colors
+// ================================
+// 🎨 Text Color
+// ================================
 .text-color-primary {
-    color: variables.$primary;
+    color: var(--primary);
 }
 .text-color-success {
-    color: variables.$success;
-}
-.text-color-danger {
-    color: variables.$danger;
+    color: var(--success);
 }
 .text-color-warning {
-    color: variables.$warning;
+    color: var(--warning);
+}
+.text-color-danger {
+    color: var(--danger);
 }
 .text-color-dark {
-    color: variables.$dark;
+    color: var(--text);
 }
 .text-color-light {
-    color: variables.$light;
-}
-
-.theme-light {
-    .text-color-primary {
-        color: variables.$primary;
-    }
-    .text-color-success {
-        color: variables.$success;
-    }
-    .text-color-danger {
-        color: variables.$danger;
-    }
-    .text-color-warning {
-        color: variables.$warning;
-    }
-    .text-color-dark {
-        color: variables.$dark;
-    }
+    color: var(--bright-100);
 }

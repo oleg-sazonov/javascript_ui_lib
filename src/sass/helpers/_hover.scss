@@ -1,0 +1,530 @@
+@use "../general/variables" as *;
+
+// // // Hover Utilities
+
+// // // Anchor hover utilities
+// // a.text-color-primary:hover {
+// //     color: var(--primary-bright);
+// // }
+
+// // a.text-color-success:hover {
+// //     color: var(--success-bright);
+// // }
+
+// // a.text-color-warning:hover {
+// //     color: var(--warning-bright);
+// // }
+
+// // a.text-color-danger:hover {
+// //     color: var(--danger-bright);
+// // }
+
+// // // Text hover utilities
+// // .text-hover-primary:hover {
+// //     color: var(--primary-bright);
+// // }
+
+// // .text-hover-success:hover {
+// //     color: var(--success-bright);
+// // }
+
+// // .text-hover-warning:hover {
+// //     color: var(--warning-bright);
+// // }
+
+// // .text-hover-danger:hover {
+// //     color: var(--danger-bright);
+// // }
+
+// // .text-hover-light:hover {
+// //     color: var(--bright-90);
+// // }
+
+// // .text-hover-dark:hover {
+// //     color: var(--text-soft);
+// // }
+
+// // // Background hover utilities
+// // .bg-hover-primary:hover {
+// //     background-color: var(--primary-bright);
+// // }
+// // .bg-hover-success:hover {
+// //     background-color: var(--success-bright);
+// // }
+// // .bg-hover-danger:hover {
+// //     background-color: var(--danger-bright);
+// // }
+// // .bg-hover-warning:hover {
+// //     background-color: var(--warning-bright);
+// // }
+
+// // // Border hover utilities
+// // .border-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // .border-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // .border-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // .border-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // .border-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // .border-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for links
+// // a.border-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // a.border-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // a.border-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // a.border-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // a.border-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // a.border-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for buttons
+// // button.border-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // button.border-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // button.border-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // button.border-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // button.border-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // button.border-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for inputs
+// // input.border-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // input.border-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // input.border-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // input.border-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // input.border-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // input.border-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for textareas
+// // textarea.border-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // textarea.border-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // textarea.border-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // textarea.border-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // textarea.border-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // textarea.border-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for selects
+// // select.border-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // select.border-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // select.border-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // select.border-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // select.border-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // select.border-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for checkboxes
+// // input[type="checkbox"].border-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // input[type="checkbox"].border-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // input[type="checkbox"].border-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // input[type="checkbox"].border-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // input[type="checkbox"].border-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // input[type="checkbox"].border-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for radio buttons
+// // input[type="radio"].border-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // input[type="radio"].border-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // input[type="radio"].border-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // input[type="radio"].border-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // input[type="radio"].border-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // input[type="radio"].border-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for file inputs
+// // input[type="file"].border-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // input[type="file"].border-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // input[type="file"].border-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // input[type="file"].border-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // input[type="file"].border-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // input[type="file"].border-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for buttons with icons
+// // button.icon-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // button.icon-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // button.icon-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // button.icon-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // button.icon-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // button.icon-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Border hover utilities for links with icons
+// // a.icon-hover-primary:hover {
+// //     border-color: var(--primary-bright);
+// // }
+// // a.icon-hover-success:hover {
+// //     border-color: var(--success-bright);
+// // }
+// // a.icon-hover-danger:hover {
+// //     border-color: var(--danger-bright);
+// // }
+// // a.icon-hover-warning:hover {
+// //     border-color: var(--warning-bright);
+// // }
+// // a.icon-hover-light:hover {
+// //     border-color: var(--bright-90);
+// // }
+// // a.icon-hover-dark:hover {
+// //     border-color: var(--text-soft);
+// // }
+
+// // // Hover utilities for desktop only
+// // .hover-only-desktop {
+// //     @media (hover: hover) and (pointer: fine) {
+// //         &:hover {
+// //             color: var(--primary-bright);
+// //         }
+// //     }
+// // }
+
+// // // Hover utilities for mobile only
+// // .hover-only-mobile {
+// //     @media (hover: none) and (pointer: coarse) {
+// //         &:hover {
+// //             color: var(--primary-bright);
+// //         }
+// //     }
+// // }
+
+// // // Hover utilities for touch devices
+// // .hover-only-touch {
+// //     @media (hover: none) and (pointer: coarse) {
+// //         &:hover {
+// //             color: var(--primary-bright);
+// //         }
+// //     }
+// // }
+
+// // // Hover utilities for all devices
+// // .hover-all-devices {
+// //     &:hover {
+// //         color: var(--primary-bright);
+// //     }
+// // }
+
+// Hover Utilities
+// Matches _root.scss color variables
+
+// ===== Color Definitions =====
+// $color-types: (
+//     primary: var(--primary-bright),
+//     primary-light: var(--primary-light),
+//     primary-dark: var(--primary-dark),
+//     success: var(--success),
+//     success-bright: var(--success-bright),
+//     warning: var(--warning),
+//     warning-bright: var(--warning-bright),
+//     danger: var(--danger),
+//     danger-bright: var(--danger-bright),
+//     text: var(--text),
+//     text-soft: var(--text-soft),
+//     text-muted: var(--text-muted),
+//     bright-100: var(--bright-100),
+//     bright-90: var(--bright-90),
+//     bright-80: var(--bright-80),
+//     bright-70: var(--bright-70),
+//     bright-60: var(--bright-60),
+//     bright-50: var(--bright-50),
+//     surface: var(--surface),
+//     hover: var(--hover),
+//     border: var(--border),
+//     border-light: var(--border-light),
+//     border-dark: var(--border-dark),
+// );
+
+// // ===== Element Types =====
+// $element-types: (
+//     "a",
+//     "button",
+//     "input",
+//     "textarea",
+//     "select",
+//     "div",
+//     "span",
+//     "li",
+//     "article",
+//     "section"
+// );
+
+// // ===== State Types =====
+// $state-types: ("hover", "focus", "focus-within", "active");
+
+// // ===== Text Utilities =====
+// @each $name, $color in $color-types {
+//     // Text color hover
+//     .text-hover-#{$name} {
+//         transition: color 0.2s ease;
+
+//         &:hover {
+//             color: $color;
+//         }
+//     }
+
+//     // Text hover with underline
+//     .text-hover-underline-#{$name} {
+//         &:hover {
+//             color: $color;
+//             text-decoration: underline;
+//             text-decoration-color: rgba($color, 0.4);
+//         }
+//     }
+
+//     // Text hover with background highlight
+//     .text-hover-highlight-#{$name} {
+//         &:hover {
+//             color: $color;
+//             background-color: rgba($color, 0.08);
+//         }
+//     }
+// }
+
+// // ===== Background Utilities =====
+// @each $name, $color in $color-types {
+//     // Background hover
+//     .bg-hover-#{$name} {
+//         transition: background-color 0.3s ease;
+
+//         &:hover {
+//             background-color: $color;
+//         }
+//     }
+
+//     // Subtle background hover
+//     .bg-hover-subtle-#{$name} {
+//         &:hover {
+//             background-color: rgba($color, 0.08);
+//         }
+//     }
+// }
+
+// // ===== Border Utilities =====
+// @each $element in $element-types {
+//     @each $name, $color in $color-types {
+//         #{$element}.border-hover-#{$name} {
+//             transition: border-color 0.3s ease;
+
+//             &:hover {
+//                 border-color: $color;
+//             }
+//         }
+//     }
+// }
+
+// // ===== Surface Utilities =====
+// .surface-hover {
+//     transition: background-color 0.3s ease;
+
+//     &-light:hover {
+//         background-color: var(--hover);
+//     }
+
+//     &-dark:hover {
+//         background-color: color.adjust(var(--surface), $lightness: -5%);
+//     }
+// }
+
+// // ===== Opacity Utilities =====
+// .hover-opacity {
+//     transition: opacity 0.2s ease;
+
+//     &:hover {
+//         opacity: 0.8;
+//     }
+
+//     &-strong:hover {
+//         opacity: 0.6;
+//     }
+
+//     &-light:hover {
+//         opacity: 0.9;
+//     }
+// }
+
+// // ===== Transform Utilities =====
+// .hover-scale {
+//     transition: transform 0.2s ease;
+
+//     &:hover {
+//         transform: scale(1.03);
+//     }
+// }
+
+// .hover-lift {
+//     transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+//     &:hover {
+//         transform: translateY(-2px);
+//         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+//     }
+// }
+
+// // ===== Dark Theme Adjustments =====
+// .dark-theme {
+//     .hover-lift:hover {
+//         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+//     }
+
+//     .bg-hover-subtle-primary:hover {
+//         background-color: rgba(var(--primary-light), 0.1);
+//     }
+// }
+
+// // ===== State Utilities =====
+// @each $state in $state-types {
+//     @each $name, $color in $color-types {
+//         .#{$state}-text-#{$name}:#{$state} {
+//             color: $color;
+//         }
+
+//         .#{$state}-bg-#{$name}:#{$state} {
+//             background-color: $color;
+//         }
+
+//         .#{$state}-border-#{$name}:#{$state} {
+//             border-color: $color;
+//         }
+//     }
+// }
+
+// // ===== Special Effects =====
+// .hover-glow {
+//     transition: box-shadow 0.3s ease;
+
+//     &-primary:hover {
+//         box-shadow: 0 0 12px rgba(var(--primary-bright), 0.3);
+//     }
+
+//     &-success:hover {
+//         box-shadow: 0 0 12px rgba(var(--success-bright), 0.3);
+//     }
+
+//     &-danger:hover {
+//         box-shadow: 0 0 12px rgba(var(--danger-bright), 0.3);
+//     }
+// }
+
+// // ===== Combination Utilities =====
+// .hover-combo {
+//     transition: all 0.3s ease;
+
+//     &-primary:hover {
+//         color: var(--primary-bright);
+//         border-color: var(--primary-light);
+//         background-color: rgba(var(--primary-light), 0.1);
+//     }
+
+//     &-surface:hover {
+//         background-color: var(--hover);
+//         border-color: var(--border);
+//     }
+// }

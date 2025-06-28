@@ -34,6 +34,7 @@
     -   [Flex](/styles/helpers/flex.md)
     -   [Font](/styles/helpers/font.md)
     -   [Gap](/styles/helpers/gap.md)
+    -   [Hover](/styles/helpers/hover.md)
     -   [Margin](/styles/helpers/margin.md)
     -   [Padding](/styles/helpers/padding.md)
     -   [Size](/styles/helpers/size.md)
