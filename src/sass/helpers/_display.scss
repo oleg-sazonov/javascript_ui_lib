@@ -2,28 +2,28 @@
 
 // Display utilities (по умолчанию)
 .d-none {
-    display: none !important;
+    display: none;
 }
 .d-inline {
-    display: inline !important;
+    display: inline;
 }
 .d-inline-block {
-    display: inline-block !important;
+    display: inline-block;
 }
 .d-block {
-    display: block !important;
+    display: block;
 }
 .d-flex {
-    display: flex !important;
+    display: flex;
 }
 .d-inline-flex {
-    display: inline-flex !important;
+    display: inline-flex;
 }
 .d-grid {
-    display: grid !important;
+    display: grid;
 }
 .d-inline-grid {
-    display: inline-grid !important;
+    display: inline-grid;
 }
 
 // Responsive display classes (mobile-first)
@@ -31,112 +31,112 @@
 // Small (≥576px)
 @media (min-width: $breakpoint-sm) {
     .d-sm-none {
-        display: none !important;
+        display: none;
     }
     .d-sm-inline {
-        display: inline !important;
+        display: inline;
     }
     .d-sm-inline-block {
-        display: inline-block !important;
+        display: inline-block;
     }
     .d-sm-block {
-        display: block !important;
+        display: block;
     }
     .d-sm-flex {
-        display: flex !important;
+        display: flex;
     }
     .d-sm-inline-flex {
-        display: inline-flex !important;
+        display: inline-flex;
     }
     .d-sm-grid {
-        display: grid !important;
+        display: grid;
     }
     .d-sm-inline-grid {
-        display: inline-grid !important;
+        display: inline-grid;
     }
 }
 
 // Medium (≥768px)
 @media (min-width: $breakpoint-md) {
     .d-md-none {
-        display: none !important;
+        display: none;
     }
     .d-md-inline {
-        display: inline !important;
+        display: inline;
     }
     .d-md-inline-block {
-        display: inline-block !important;
+        display: inline-block;
     }
     .d-md-block {
-        display: block !important;
+        display: block;
     }
     .d-md-flex {
-        display: flex !important;
+        display: flex;
     }
     .d-md-inline-flex {
-        display: inline-flex !important;
+        display: inline-flex;
     }
     .d-md-grid {
-        display: grid !important;
+        display: grid;
     }
     .d-md-inline-grid {
-        display: inline-grid !important;
+        display: inline-grid;
     }
 }
 
 // Large (≥992px)
 @media (min-width: $breakpoint-lg) {
     .d-lg-none {
-        display: none !important;
+        display: none;
     }
     .d-lg-inline {
-        display: inline !important;
+        display: inline;
     }
     .d-lg-inline-block {
-        display: inline-block !important;
+        display: inline-block;
     }
     .d-lg-block {
-        display: block !important;
+        display: block;
     }
     .d-lg-flex {
-        display: flex !important;
+        display: flex;
     }
     .d-lg-inline-flex {
-        display: inline-flex !important;
+        display: inline-flex;
     }
     .d-lg-grid {
-        display: grid !important;
+        display: grid;
     }
     .d-lg-inline-grid {
-        display: inline-grid !important;
+        display: inline-grid;
     }
 }
 
 // Extra large (≥1200px)
 @media (min-width: $breakpoint-xl) {
     .d-xl-none {
-        display: none !important;
+        display: none;
     }
     .d-xl-inline {
-        display: inline !important;
+        display: inline;
     }
     .d-xl-inline-block {
-        display: inline-block !important;
+        display: inline-block;
     }
     .d-xl-block {
-        display: block !important;
+        display: block;
     }
     .d-xl-flex {
-        display: flex !important;
+        display: flex;
     }
     .d-xl-inline-flex {
-        display: inline-flex !important;
+        display: inline-flex;
     }
     .d-xl-grid {
-        display: grid !important;
+        display: grid;
     }
     .d-xl-inline-grid {
-        display: inline-grid !important;
+        display: inline-grid;
     }
 }
 

@@ -172,3 +172,58 @@
 .align-bottom {
     vertical-align: bottom;
 }
+.align-baseline {
+    vertical-align: baseline;
+}
+
+// Modern flex utilities
+.flex {
+    &-align-center {
+        align-items: center;
+    }
+    &-justify-center {
+        justify-content: center;
+    }
+    &-center {
+        @extend .centered-flex;
+    }
+}
+
+// ==========================
+// Absolute positioning utilities
+// ==========================
+
+.abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.abs-center-y {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+// ==========================
+// Grid alignment utilities
+// ==========================
+
+.grid {
+    &-align-start {
+        align-items: start;
+    }
+    &-align-center {
+        align-items: center;
+    }
+    &-align-end {
+        align-items: end;
+    }
+}

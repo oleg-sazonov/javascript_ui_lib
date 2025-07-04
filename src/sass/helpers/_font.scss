@@ -35,7 +35,7 @@
 // ================================
 @for $i from 1 through 3 {
     @for $j from 0 through 9 {
-        $value: $i + ($j / 10);
+        $value: $i + calc($j / 10);
         $suffix: ($i * 10) + $j; // Example: 1.2 -> 12, 2.5 -> 25
         .fzr-#{$suffix} {
             font-size: #{$value}rem;
@@ -43,22 +43,22 @@
 
         @media (min-width: $breakpoint-sm) {
             .fzr-#{$suffix}-sm {
-                font-size: #{$value}rem;
+                font-size: #{($value * 1rem)};
             }
         }
         @media (min-width: $breakpoint-md) {
             .fzr-#{$suffix}-md {
-                font-size: #{$value}rem;
+                font-size: #{($value * 1rem)};
             }
         }
         @media (min-width: $breakpoint-lg) {
             .fzr-#{$suffix}-lg {
-                font-size: #{$value}rem;
+                font-size: #{($value * 1rem)};
             }
         }
         @media (min-width: $breakpoint-xl) {
             .fzr-#{$suffix}-xl {
-                font-size: #{$value}rem;
+                font-size: #{($value * 1rem)};
             }
         }
     }
