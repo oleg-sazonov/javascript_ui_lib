@@ -17,60 +17,29 @@
     text-align: justify;
 }
 
-@media (min-width: $breakpoint-sm) {
-    .text-sm-left {
-        text-align: left;
-    }
-    .text-sm-center {
-        text-align: center;
-    }
-    .text-sm-right {
-        text-align: right;
-    }
-    .text-sm-justify {
-        text-align: justify;
-    }
-}
-@media (min-width: $breakpoint-md) {
-    .text-md-left {
-        text-align: left;
-    }
-    .text-md-center {
-        text-align: center;
-    }
-    .text-md-right {
-        text-align: right;
-    }
-    .text-md-justify {
-        text-align: justify;
-    }
-}
-@media (min-width: $breakpoint-lg) {
-    .text-lg-left {
-        text-align: left;
-    }
-    .text-lg-center {
-        text-align: center;
-    }
-    .text-lg-right {
-        text-align: right;
-    }
-    .text-lg-justify {
-        text-align: justify;
-    }
-}
-@media (min-width: $breakpoint-xl) {
-    .text-xl-left {
-        text-align: left;
-    }
-    .text-xl-center {
-        text-align: center;
-    }
-    .text-xl-right {
-        text-align: right;
-    }
-    .text-xl-justify {
-        text-align: justify;
+// Адаптивные версии text-align
+@each $breakpoint,
+    $prefix
+        in (
+            $breakpoint-sm: sm,
+            $breakpoint-md: md,
+            $breakpoint-lg: lg,
+            $breakpoint-xl: xl
+        )
+{
+    @media (min-width: #{ $breakpoint }) {
+        .text-#{$prefix}-left {
+            text-align: left;
+        }
+        .text-#{$prefix}-center {
+            text-align: center;
+        }
+        .text-#{$prefix}-right {
+            text-align: right;
+        }
+        .text-#{$prefix}-justify {
+            text-align: justify;
+        }
     }
 }
 
@@ -89,52 +58,26 @@
     margin-left: auto;
 }
 
-@media (min-width: $breakpoint-sm) {
-    .block-sm-left {
-        margin-right: auto;
-    }
-    .block-sm-center {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .block-sm-right {
-        margin-left: auto;
-    }
-}
-@media (min-width: $breakpoint-md) {
-    .block-md-left {
-        margin-right: auto;
-    }
-    .block-md-center {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .block-md-right {
-        margin-left: auto;
-    }
-}
-@media (min-width: $breakpoint-lg) {
-    .block-lg-left {
-        margin-right: auto;
-    }
-    .block-lg-center {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .block-lg-right {
-        margin-left: auto;
-    }
-}
-@media (min-width: $breakpoint-xl) {
-    .block-xl-left {
-        margin-right: auto;
-    }
-    .block-xl-center {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .block-xl-right {
-        margin-left: auto;
+@each $breakpoint,
+    $prefix
+        in (
+            $breakpoint-sm: sm,
+            $breakpoint-md: md,
+            $breakpoint-lg: lg,
+            $breakpoint-xl: xl
+        )
+{
+    @media (min-width: #{ $breakpoint }) {
+        .block-#{$prefix}-left {
+            margin-right: auto;
+        }
+        .block-#{$prefix}-center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .block-#{$prefix}-right {
+            margin-left: auto;
+        }
     }
 }
 
@@ -146,17 +89,42 @@
     display: flex;
     align-items: center;
 }
-
 .h-align-center {
     display: flex;
     justify-content: center;
 }
-
 .centered-flex,
 .f-centered {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@each $breakpoint,
+    $prefix
+        in (
+            $breakpoint-sm: sm,
+            $breakpoint-md: md,
+            $breakpoint-lg: lg,
+            $breakpoint-xl: xl
+        )
+{
+    @media (min-width: #{ $breakpoint }) {
+        .v-align-middle-#{$prefix} {
+            display: flex;
+            align-items: center;
+        }
+        .h-align-center-#{$prefix} {
+            display: flex;
+            justify-content: center;
+        }
+        .centered-flex-#{$prefix},
+        .f-centered-#{$prefix} {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
 
 // ==========================
@@ -176,7 +144,10 @@
     vertical-align: baseline;
 }
 
+// ==========================
 // Modern flex utilities
+// ==========================
+
 .flex {
     &-align-center {
         align-items: center;
@@ -210,6 +181,35 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+}
+
+@each $breakpoint,
+    $prefix
+        in (
+            $breakpoint-sm: sm,
+            $breakpoint-md: md,
+            $breakpoint-lg: lg,
+            $breakpoint-xl: xl
+        )
+{
+    @media (min-width: #{ $breakpoint }) {
+        .abs-center-#{$prefix} {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .abs-center-x-#{$prefix} {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .abs-center-y-#{$prefix} {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
 }
 
 // ==========================
